@@ -1,0 +1,315 @@
+@import "prebulma";
+
+$linkcolor: #6772e5;
+$maincolor: #24b47e;
+$secondarycolor: #424770;
+$bodycolor: #525f7f;
+
+$bg1: white;
+$bg2: $white-ter;
+
+$selectnormal: #e4effa;
+
+
+p.content, p{
+	color: $bodycolor;
+}
+
+
+h1,h2,h3,h4,h5,h6{
+	font-weight: 600 !important;
+	&.title, &.subtitle{ 
+		font-family: $header-family;
+		color: $secondarycolor;
+		span{ white-space: nowrap;}
+	}
+}
+nav{
+	z-index: 3;
+}
+
+.button, button, a.button{
+	box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08);
+	transition: all .2s ease;
+	border: none !important;
+	font-weight: 600;
+	text-transform: uppercase;
+	padding-right: 1.5rem;
+	padding-left: 1.5rem;
+	&:hover, &:focus{
+		box-shadow: 0 7px 14px rgba(50,50,93,.1), 0 3px 6px rgba(0,0,0,.08);
+		transform: translateY(-2px);
+	}
+	&.circled{
+
+		padding-left: 0.75em;
+		padding-right: 0.85em;
+		&.right{
+			padding-left: 0.85em;
+			padding-right: 0.75em;
+		}
+	}
+
+	&.is-primary{
+		background: $maincolor;
+		color: white;
+		.icon{ color: white;}
+		&:hover, &:focus{
+			background: darken($maincolor,3%);
+		}
+	}
+	&.is-linkcolor{
+		background: $linkcolor;
+		color: white;
+		.icon{ color: white;}
+		&:hover, &:focus{
+			background: darken($linkcolor,3%);
+		}
+	}
+	&.is-secondary{
+		background: $linkcolor;
+		color: white;
+		&:hover, &:focus{
+			background: darken($linkcolor,3%);
+		}
+	}
+	&.is-white{
+		color: $bodycolor;
+		background: $white-ter;
+		&:hover, &:focus{
+			background: white;
+			color: $bodycolor;
+		}
+		&.with-primary{
+			color: $maincolor !important;
+		}
+		&.with-secondary{
+			color: $linkcolor !important;
+		}
+	}
+
+}
+.section{
+	position: relative;
+	&.bigger{
+		padding-top: 5rem;
+	}
+	&#home{
+		background: linear-gradient(135deg,$bg1, $bg1, $bg2);
+		position: relative;
+		min-height: 100vh;
+	}
+	.hero-foot{
+		z-index: 3;
+	}
+}
+
+@import "posbulma";
+#home{
+	nav{
+			@include tablet{
+				.navbar-item, .navbar-link{
+					color: white;
+					&:hover, &:focus{
+						color: darken(white,10%);
+					}
+				}
+				.navbar-link:after{
+					border-color: white;
+					border-width: 2px;
+
+				}
+				.navbar-dropdown .navbar-item{ 
+					color: $bodycolor;
+					&:hover, &:focus{
+						color: darken($bodycolor,10%);
+						font-weight: 600;
+					}
+				}
+			}
+		}
+}
+
+#contact{
+	@include tablet{
+		.is-half.column:first-of-type{
+			position: relative;
+			border-right: 3.5px solid darken($white-ter,2%);
+			border-top-right-radius: 5px;
+			border-bottom-right-radius: 5px;
+			&:after{
+				position: absolute;
+				right: -2.12rem;
+				content: '\f0da';
+				font-style: normal;
+				line-height: 0;
+				top: 50%;
+				font-family: "FontAwesome";
+				font-size: 6rem;
+				color: darken($white-ter,2%);
+			}
+			.arrow:after{
+				position: absolute;
+				right: -1.77rem;
+				content: '\f0da';
+				font-style: normal;
+				line-height: 0;
+				
+				top: 50%;
+				font-family: "FontAwesome";
+				font-size: 6rem;
+				color: $white-bis;
+				z-index: 2;
+			}
+		}
+		.is-half:not(:first-of-type)
+		{
+			padding-left: 4rem;
+		}
+	}
+}
+
+footer{
+	background: $white-bis !important;
+	border-top: 2px solid darken($white-ter,2%);
+	a{
+		color: $bodycolor;
+		&:hover, &:focus{
+			color: darken($bodycolor,10%);
+		}
+	}
+	p, strong{
+		color: $grey-light;
+	}
+}
+.box{
+	box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08);
+}
+input, textarea,.textarea, .input{
+	background: #f6f9fc;
+	border: none;
+	color: $bodycolor;
+	box-shadow: 0 0 0 2px #f6f9fc;
+	&:hover{
+		border: none;
+		box-shadow: 0 0 0 2px #f6f9fc;
+	}
+	&:active, &:focus{
+		border: none;
+		background: white;
+		box-shadow: 0 0 0 2px #e4effa;
+	}
+
+}
+.field{
+	.label{
+		color: $secondarycolor;
+	}
+}
+.is-vcentered{
+	align-items: center;
+}
+.icon{
+	color: $secondarycolor
+}
+a{
+	color: $maincolor;
+	font-weight: 600;
+	&:hover{
+		color: darken($maincolor,10%);
+	}
+}
+.icon{ transition: all 0.25s ease}
+input[type="radio"]:checked + span.icon { 
+	color: $maincolor;
+}
+.select:not(.is-multiple)::after{
+	border-color: $maincolor;
+	border-width: 2px;
+}
+
+
+form{
+	.item{
+		&.active{
+			z-index: 3;
+		}
+		@include tablet{
+			position: absolute;
+			left:0;
+			top: 20%;
+			width: 100%;
+			height: 100%;
+			.column{
+				opacity: 0;
+			}
+		}
+	}
+}
+#intro{
+	z-index: 2;
+}
+#controls .level-item, #progress .column{
+	opacity: 0;
+}
+progress[value]::-webkit-progress-bar{
+	background: $grey-lighter;
+}
+progress[value]::-webkit-progress-value{
+	background: $secondarycolor
+}
+
+.selector{
+	display: flex;
+	flex-flow: row nowrap;
+	align-items: center;
+	> div{
+		flex: 1;
+	}
+	.option{
+		margin: 1rem auto;
+		padding: 0.4rem;
+		border: 3px solid $selectnormal;
+		border-radius: 5px;
+		display: inline-block;
+		transition: all .2s ease;
+		p{ 
+			color: #cde0f1;
+			font-weight: 600;
+			transition: all .2s ease;
+		}
+		&:hover{
+			cursor: pointer;
+			border-color: darken($selectnormal,10%);
+			
+		}
+		&.active{
+			border-color: $maincolor;
+			background-position-y: -100px !important;
+			p{
+				color: $maincolor;
+			}
+		}
+	}
+}
+.motive{
+	> div{
+		background: url("./img/form_motive.png");
+		background-size: 300px 200px;
+		background-position: 0 0;
+		width: 100px;
+		height: 100px;
+		transition: all 0.2s ease;
+	}
+	&.active{
+		> div{
+			background-position-y: -100px !important;
+		}
+	}
+	
+	&.problematica > div{ background-position: -200px 0px}
+	&.denuncia > div{ background-position: 0 0}
+	&.peticion > div{ background-position: -100px 0px}
+
+
+}
