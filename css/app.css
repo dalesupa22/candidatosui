@@ -1,5 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600);p.content, p {
   color: #525f7f; }
+  p.content strong, p strong {
+    color: #525f7f; }
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 600 !important; }
@@ -71,6 +73,10 @@ nav {
     background: linear-gradient(135deg, white, white, whitesmoke);
     position: relative;
     min-height: 100vh; }
+    .section#home .hero-body {
+      -webkit-box-align: start;
+          -ms-flex-align: start;
+              align-items: flex-start; }
   .section .hero-foot {
     z-index: 3; }
 
@@ -7720,6 +7726,21 @@ input[type="radio"]:checked + span.icon {
   border-color: #24b47e;
   border-width: 2px; }
 
+#intro_full .column {
+  position: relative; }
+
+@media screen and (min-width: 769px), print {
+  #intro_full .slide {
+    position: absolute;
+    left: 0;
+    top: 20%;
+    width: 100%;
+    height: 80%; }
+    #intro_full .slide > * {
+      opacity: 0; }
+    #intro_full .slide.active {
+      z-index: 3; } }
+
 form .item.active {
   z-index: 3; }
 
@@ -7729,15 +7750,28 @@ form .item.active {
     left: 0;
     top: 20%;
     width: 100%;
-    height: 100%; }
+    height: 80%; }
     form .item .column {
       opacity: 0; } }
 
 #intro {
   z-index: 2; }
 
-#controls .level-item, #progress .column {
+#controls .column {
+  position: relative; }
+
+#controls .level {
+  position: absolute;
+  bottom: 0;
+  width: 100%; }
+  #controls .level.active {
+    z-index: 2; }
+
+#controls .questiondirs .level-item, #progress .column {
   opacity: 0; }
+
+#controls .level:not(:last-child) {
+  margin-bottom: 0; }
 
 progress[value]::-webkit-progress-bar {
   background: #dbdbdb; }
@@ -7751,17 +7785,21 @@ progress[value]::-webkit-progress-value {
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-flow: row nowrap;
-          flex-flow: row nowrap;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center; }
   .selector > div {
-    -webkit-box-flex: 1;
-        -ms-flex: 1;
-            flex: 1; }
+    -webkit-box-flex: 0;
+        -ms-flex: 0;
+            flex: 0;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    margin: 0.5rem; }
   .selector .option {
-    margin: 1rem auto;
+    margin: 0 auto;
     padding: 0.4rem;
     border: 3px solid #e4effa;
     border-radius: 5px;
@@ -7789,7 +7827,8 @@ progress[value]::-webkit-progress-value {
   width: 100px;
   height: 100px;
   -webkit-transition: all 0.2s ease;
-  transition: all 0.2s ease; }
+  transition: all 0.2s ease;
+  margin: 0 auto; }
 
 .motive.active > div {
   background-position-y: -100px !important; }
@@ -7802,3 +7841,43 @@ progress[value]::-webkit-progress-value {
 
 .motive.peticion > div {
   background-position: -100px 0px; }
+
+.problematicas > div {
+  background: url("./img/problematicas.png");
+  background-size: 720px 160px;
+  background-position: 0 0;
+  width: 80px;
+  height: 80px;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  margin: 0 auto; }
+
+.problematicas.active > div {
+  background-position-y: -80px !important; }
+
+.problematicas.ambiente > div {
+  background-position: 0 0; }
+
+.problematicas.salud > div {
+  background-position: -80px 0; }
+
+.problematicas.infancia > div {
+  background-position: -160px 0; }
+
+.problematicas.mayores > div {
+  background-position: -240px 0; }
+
+.problematicas.deportes > div {
+  background-position: -320px 0; }
+
+.problematicas.obras > div {
+  background-position: -400px 0; }
+
+.problematicas.movilidad > div {
+  background-position: -480px 0; }
+
+.problematicas.seguridad > div {
+  background-position: -560px 0; }
+
+.problematicas.corrupcion > div {
+  background-position: -640px 0; }

@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="section bigger">
+		<div class="container">
+			<div class="columns">
+				<div class="is-half column">
+					<h1 class="title is-1">Lorem ipsum joder</h1>
+					<p class="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae aliquid minus quas omnis, nisi unde dicta aperiam quaerat aliquam ut provident culpa iure neque ducimus voluptatum, veritatis dolore, earum suscipit.</p>
+					<a href="" class="button is-big is-primary">ver planes</a>
+				</div>
+				<div class="is-half column">
+					<img src="./img/data.png" alt="">
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="section" id="contact">
+		<div class="container">
+			<div class="columns is-variable is-8 is-vcentered">
+				<div class="is-half column">
+					<div class="arrow"></div>
+					<form action="" class="box">
+						<h3 class="title is-3">Dejanos tus datos</h3>
+						<p class="content">Hablemos de como candiDATOS te puede ayudar a gobernar mejor</p>
+						<div class="field">
+						  <label class="label">Nombre Completo</label>
+						  <div class="control">
+						    <input class="input" type="text" placeholder="Text input">
+						  </div>
+						</div>
+						<div class="field">
+						  <label class="label">Correo Electronico</label>
+						  <div class="control has-icons-left has-icons-right">
+						    <input class="input" type="email" placeholder="hello@obama.com" value="">
+						    <span class="icon is-small is-left">
+						      <i class="fas fa-envelope"></i>
+						    </span>
+						  </div>
+						</div>
+					  <div class="field">
+					  	<div class="control">
+					  		<a href="#" type="submit" class="button is-primary">enviar mensaje</a>
+					  	</div>
+					  </div>
+					</form>
+				</div>
+				<div class="is-half column">
+					<h4 class="title is-4">O por estos medios</h4>
+					<div class="level">
+						<div class="level-left">
+							<div class="level-item">
+								<div class="icon is-medium"><i class="fas fa-envelope fa-2x"></i></div>
+							</div>
+							<div class="level-item">
+								<a href="mailto:correo@candidatos.com">correo@candidatos.com</a>
+							</div>
+						</div>
+					</div>
+					<div class="level content">
+						<div class="level-left">
+							<div class="level-item">
+								<div class="icon is-medium"><i class="fas fa-phone fa-2x"></i></div>
+							</div>
+							<div class="level-item">
+								<a href="">+57 3013668888</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="section">
+		<div class="container">
+			<div class="columns is-centered">
+				<div class="is-half column box">
+					<h2 class="title is-2">Formulario</h2>
+					<p class="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus consequatur nisi accusamus, voluptates temporibus mollitia beatae assumenda nihil sunt, minus ab, in quis eveniet laudantium eaque facilis sequi! Placeat, esse.</p>
+					<form action="">
+						<div class="field">
+							<label class="label">¿Crees que la politica te ayuda a ser feliz?</label>
+						  	<div class="control">
+							  <label class="radio" for="q1a1">
+							    <input type="radio" name="answer" id="rad1">
+							    <span class="icon is-large">
+							    	<i class="far fa-smile fa-3x"></i>
+							    </span>
+							  </label>
+							  <label class="radio" for="q1a2">
+							    <input type="radio" name="answer" id="rad2">
+							    <span class="icon is-large">
+							    	<i class="far fa-frown fa-3x"></i>
+							    </span>
+							  </label>
+							</div>
+						</div>
+						<br>
+						<div class="field">
+							<label class="label">¿En que ciudad y barrio/comuna/localidad vives?</label>
+						  	<div class="control">
+							  <div class="select">
+							    <select>
+							      <option>Bogota</option>
+							      <option>Barranquilla</option>
+							      <option>Medellin</option>
+							    </select>
+							  </div>
+							</div>
+						</div>
+						<hr>
+						<div class="field">
+							<div class="control">
+								<a href="#" class="button is-primary is-medium">enviar <span>formulario</span>
+									<span class="icon is-small">
+								      <i class="fas fa-chevron-right"></i>
+								    </span>
+								</a>
+						</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+	<footer class="footer">
+	  <div class="container">
+	  	<div class="columns is-centered">
+	  		<div class="is-full column">
+	  			<div class="level">
+	  				<div class="level-item">
+	  					<h5 class="subtitle is-6 is-uppercase">
+	  						<a href="">el equipo</a>
+	  					</h5>
+	  				</div>
+	  				<div class="level-item">
+	  					<h5 class="subtitle is-6 is-uppercase">
+	  						<a href="">el equipo</a>
+	  					</h5>
+	  				</div>
+	  			</div>
+	  		</div>
+	  	</div>
+	    <div class="content has-text-centered">
+	      <p>
+	        <strong>© CandiDATOS</strong> Todos Los Derechos Reservados
+	      </p>
+	    </div>
+	  </div>
+	</footer>
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="section hero is-fullheight" id="home">
+	<div class="hero-head" id="progress">	
+		<div class="container">
+			<div class="columns is-centered">
+				<div class="is-two-thirds column has-text-centered">	
+					<small>Pregunta <span>1</span> de <span>10</span></small>
+					<progress class="progress is-small" value="0" max="100">
+					</progress>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="hero-body">
+		<div class="container" id="intro_full">
+			<div class="columns is-multiline is-centered has-text-centered">
+				<div class="is-two-thirds column">
+					<h2 class="title is-1">Formulario De Problematicas</h2>
+				</div>
+				<div class="is-two-thirds column">
+					<div class="slide" id="intro1">
+						<br>
+						<p class="content is-medium">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt temporibus impedit magnam veniam itaque eos soluta neque ut, qui hic amet, sunt quod, labore, officiis. Expedita unde repellendus in odio.</p>
+						
+					</div>
+					<div class="slide" id="intro2">
+						<br>
+						<img src="http://via.placeholder.com/400x200" alt="">
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		<form action="" id="formulario">
+			{% include 'partials/questions.html' %}
+		</form>
+	</div>
+	<div class="hero-foot" id="controls">
+		<div class="container">
+			<div class="columns is-centered">
+				<div class="is-two-thirds column">
+					<div class="level introdirs active">
+						<div class="level-item">
+							<a class="button is-rounded is-linkcolor next">
+								<span>Siguiente</span>
+							    <span class="icon">
+							      <i class="fas fa-chevron-right "></i>
+							    </span>
+							</a>
+						</div>
+					</div>
+					<div class="level questiondirs">
+						<div class="level-item">
+							<a class="button is-rounded circled is-linkcolor prev">
+							    <span class="icon">
+							      <i class="fas fa-chevron-left "></i>
+							    </span>
+							</a>
+						</div>
+						<div class="level-item">
+							<p class="content">Presiona <strong>Enter</strong> para siguiente pregunta o <strong>backspace</strong> para regresar a la anterior preguntas</p>
+						</div>
+						<div class="level-item">
+							<a class="button is-rounded circled right is-linkcolor next">
+							    <span class="icon">
+							      <i class="fas fa-chevron-right "></i>
+							    </span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock %}

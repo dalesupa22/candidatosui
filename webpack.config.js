@@ -55,11 +55,12 @@ const config = {
     new BrowserSyncPlugin({
         files: [
           './**/*.html',
-          '*.html'
+          '*.html',
+          '*.php'
         ],
         host: 'localhost',
+        proxy: 'http://localhost/candidatosui',
         port: 3000,
-        server: true,
         logPrefix: 'webpack',
         logLevel: 'debug',
         ghostMode: false
