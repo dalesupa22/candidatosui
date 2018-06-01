@@ -2074,7 +2074,8 @@ function moveToStep(step1, step2, dir) {
     if (dir) {
         var tll = new _TimelineMax2.default({ onComplete: function onComplete() {
                 moving = false;
-                $(".column.step2." + step2).toggleClass("active");
+                $(".column.step2." + step2).addClass("active");
+                $(".column.step2." + step2).removeClass("inactive");
                 $(step1).addClass("inactive");
             } });
         //Go to step 2
@@ -2085,7 +2086,8 @@ function moveToStep(step1, step2, dir) {
         $(step1).removeClass("inactive");
         var tll = new _TimelineMax2.default({ onComplete: function onComplete() {
                 moving = false;
-                $(".column.step2." + step2).toggleClass("active");
+                $(".column.step2." + step2).addClass("inactive");
+                $(".column.step2." + step2).removeClass("active");
                 //Unselect the 
                 $(".step1").find(".option.active").removeClass("active");
             } });
@@ -2116,12 +2118,17 @@ function showQuestion(i) {
     var tll = new _TimelineMax2.default({ onComplete: function onComplete() {
             $("#" + questions[index]).removeClass("active");
             $("#" + questions[i]).addClass("active");
+            //Find any step2 in the question item and remove class active
+            $("#" + questions[index]).find(".step2").removeClass("active");
+            $("#" + questions[index]).find(".step2").addClass("inactive");
+            $("#" + questions[index]).find(".step1").removeClass("inactive");
+            $("#" + questions[index]).find(".step1").addClass("active");
             index = i;
             moving = false;
             updateProgressBar();
         } });
 
-    if (i != index) tll.staggerTo("#" + questions[index] + " .column", 0.8, { x: -200, opacity: 0, clearProps: 'x' }, 0.4);else {
+    if (i != index) tll.staggerTo("#" + questions[index] + " .column:not(.step2.inactive)", 0.8, { x: -200, opacity: 0, clearProps: 'x' }, 0.4);else {
         //is the first question. We have to dissappear the intro part
         $(".introdirs").removeClass("active");
         tll.staggerTo(["#intro_full .column", ".introdirs"], 0.8, { x: -200, opacity: 0, clearProps: 'x' }, 0.4);
@@ -2227,10 +2234,26 @@ $(document).ready(function () {
         } else intros.next();
     });
 
+    $(".selector.with-select.outter-select .option").click(function (e) {
+        var parent = $(this).closest(".selector");
+        var selector = $("select.submotive");
+        //if active do nothing
+        if (!$(this).hasClass("active")) {
+            //Find active one and deactivates it
+            $(parent).find(".option.active").removeClass("active");
+            $(this).addClass("active");
+            //update input tag
+            $(selector).val($(this).data("value"));
+
+            console.log($(this).data("value"));
+            console.log($(selector).val());
+        }
+    });
     //Create selector functionality
-    $(".selector.with-select .option").click(function (e) {
+    $(".selector.with-select:not(.outter-select) .option").click(function (e) {
         var parent = $(this).closest(".selector");
         var selector = $(parent).children("select");
+        console.log(selector);
         //if active do nothing
         if (!$(this).hasClass("active")) {
             //Find active one and deactivates it
@@ -2243,6 +2266,7 @@ $(document).ready(function () {
                 //Go to step 2
                 moveToStep($(this).closest(".step1"), $(this).data("value"), true);
             }
+            console.log($(selector).val());
         }
     });
     //Create radio functionality
