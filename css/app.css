@@ -7726,33 +7726,73 @@ input[type="radio"]:checked + span.icon {
   border-color: #24b47e;
   border-width: 2px; }
 
-#intro_full .column {
-  position: relative; }
+#intro_full {
+  padding-bottom: 3rem; }
+  @media screen and (min-width: 769px), print {
+    #intro_full {
+      padding: 0;
+      height: 100%; } }
+  #intro_full .column {
+    position: relative; }
+  @media screen and (min-width: 769px), print {
+    #intro_full .slide {
+      position: absolute;
+      left: 0;
+      top: 20%;
+      width: 100%;
+      height: 80%; }
+      #intro_full .slide > * {
+        opacity: 0; }
+      #intro_full .slide.active {
+        z-index: 3; } }
+
+.hero-foot, .hero-head {
+  display: none; }
+  @media screen and (min-width: 769px), print {
+    .hero-foot, .hero-head {
+      display: inherit; } }
 
 @media screen and (min-width: 769px), print {
-  #intro_full .slide {
+  .questionare {
     position: absolute;
-    left: 0;
     top: 20%;
-    width: 100%;
-    height: 80%; }
-    #intro_full .slide > * {
-      opacity: 0; }
-    #intro_full .slide.active {
-      z-index: 3; } }
-
-form .item.active {
-  z-index: 3; }
-
-@media screen and (min-width: 769px), print {
-  form .item {
-    position: absolute;
+    right: 0;
     left: 0;
-    top: 20%;
-    width: 100%;
-    height: 80%; }
-    form .item .column {
+    height: 80%; } }
+
+form .item {
+  padding: 2rem 0; }
+  form .item > .container {
+    height: 100%; }
+  form .item.active {
+    z-index: 3; }
+  form .item:not(:last-child) {
+    border-bottom: 1px solid #dbdbdb; }
+  @media screen and (min-width: 769px), print {
+    form .item {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 80%;
+      padding: 0;
+      border-bottom: none !important; }
+      form .item .column {
+        opacity: 0; } }
+  @media screen and (min-width: 769px), print {
+    form .item .column.step2, form .item .column.step1 {
+      position: absolute;
+      left: 0;
+      top: 10%;
+      right: 0;
+      margin: 0 auto;
       opacity: 0; } }
+  form .item .column.step2.active, form .item .column.step1.active {
+    z-index: 2; }
+  form .item .column.step2.inactive, form .item .column.step1.inactive {
+    z-index: -1; }
+  form .item .column.step1 {
+    z-index: 2; }
 
 #intro {
   z-index: 2; }
@@ -7798,10 +7838,13 @@ progress[value]::-webkit-progress-value {
         -ms-flex-align: start;
             align-items: flex-start;
     margin: 0.5rem; }
+  .selector.only-texts > div {
+    -ms-flex-preferred-size: auto;
+        flex-basis: auto; }
   .selector .option {
     margin: 0 auto;
     padding: 0.4rem;
-    border: 3px solid #e4effa;
+    border: 3px solid #c9d9e9;
     border-radius: 5px;
     display: inline-block;
     -webkit-transition: all .2s ease;
@@ -7811,13 +7854,26 @@ progress[value]::-webkit-progress-value {
       font-weight: 600;
       -webkit-transition: all .2s ease;
       transition: all .2s ease; }
+    .selector .option .icon {
+      color: #a5c0da; }
+    .selector .option.text p {
+      color: #c9d9e9;
+      text-transform: uppercase; }
+    .selector .option.text:hover p {
+      color: #a5c0da; }
+    .selector .option.text.active p {
+      color: #24b47e; }
     .selector .option:hover {
       cursor: pointer;
-      border-color: #b9d6f2; }
+      border-color: #a5c0da; }
+      .selector .option:hover .icon {
+        color: #a5c0da; }
     .selector .option.active {
       border-color: #24b47e;
       background-position-y: -100px !important; }
       .selector .option.active p {
+        color: #24b47e; }
+      .selector .option.active .icon {
         color: #24b47e; }
 
 .motive > div {
@@ -7842,9 +7898,9 @@ progress[value]::-webkit-progress-value {
 .motive.peticion > div {
   background-position: -100px 0px; }
 
-.problematicas > div {
+.answers > div {
   background: url("./img/problematicas.png");
-  background-size: 720px 160px;
+  background-size: 880px 160px;
   background-position: 0 0;
   width: 80px;
   height: 80px;
@@ -7852,32 +7908,72 @@ progress[value]::-webkit-progress-value {
   transition: all 0.2s ease;
   margin: 0 auto; }
 
-.problematicas.active > div {
+.answers.active > div {
   background-position-y: -80px !important; }
 
-.problematicas.ambiente > div {
+.answers.ambiente > div {
   background-position: 0 0; }
 
-.problematicas.salud > div {
+.answers.salud > div {
   background-position: -80px 0; }
 
-.problematicas.infancia > div {
+.answers.infancia > div {
   background-position: -160px 0; }
 
-.problematicas.mayores > div {
+.answers.mayores > div {
   background-position: -240px 0; }
 
-.problematicas.deportes > div {
+.answers.deportes > div {
   background-position: -320px 0; }
 
-.problematicas.obras > div {
+.answers.obras > div {
   background-position: -400px 0; }
 
-.problematicas.movilidad > div {
+.answers.movilidad > div {
   background-position: -480px 0; }
 
-.problematicas.seguridad > div {
+.answers.seguridad > div {
   background-position: -560px 0; }
 
-.problematicas.corrupcion > div {
+.answers.corrupcion > div {
   background-position: -640px 0; }
+
+.answers.si > div {
+  background-position: -720px 0; }
+
+.answers.no > div {
+  background-position: -800px 0; }
+
+.partidos > div {
+  background: url("./img/partidos.png");
+  background-size: 560px 160px;
+  background-position: 0 0;
+  width: 80px;
+  height: 80px;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  margin: 0 auto; }
+
+.partidos.active > div {
+  background-position-y: -80px !important; }
+
+.partidos.cambioradical > div {
+  background-position: 0 0; }
+
+.partidos.centrodemocratico > div {
+  background-position: -80px 0; }
+
+.partidos.verde > div {
+  background-position: -160px 0; }
+
+.partidos.polo > div {
+  background-position: -240px 0; }
+
+.partidos.conservador > div {
+  background-position: -320px 0; }
+
+.partidos.liberal > div {
+  background-position: -400px 0; }
+
+.partidos.noimporta > div {
+  background-position: -480px 0; }

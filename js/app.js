@@ -2069,6 +2069,34 @@ var intro_index = 0;
 var started = false;
 var moving = false;
 
+function moveToStep(step1, step2, dir) {
+    moving = true;
+    if (dir) {
+        var tll = new _TimelineMax2.default({ onComplete: function onComplete() {
+                moving = false;
+                $(".column.step2." + step2).toggleClass("active");
+                $(step1).addClass("inactive");
+            } });
+        //Go to step 2
+        tll.staggerTo($(step1), 0.8, { x: -200, opacity: 0, clearProps: 'x' }, 0.4);
+        tll.staggerFrom(".column.step2." + step2, 0.8, { x: 200 }, 0.4, "same");
+        tll.staggerTo(".column.step2." + step2, 0.8, { opacity: 1 }, 0.4, "same");
+    } else {
+        $(step1).removeClass("inactive");
+        var tll = new _TimelineMax2.default({ onComplete: function onComplete() {
+                moving = false;
+                $(".column.step2." + step2).toggleClass("active");
+                //Unselect the 
+                $(".step1").find(".option.active").removeClass("active");
+            } });
+        //Go to step 1
+        tll.staggerTo($(".column.step2." + step2), 0.8, { x: -200, opacity: 0, clearProps: 'x' }, 0.4);
+        tll.staggerFrom($(step1), 0.8, { x: 200 }, 0.4, "same");
+        tll.staggerTo($(step1), 0.8, { opacity: 1 }, 0.4, "same");
+    }
+    tll.play();
+}
+
 function updateProgressBar() {
     var total = questions.length;
     var newValue = (index + 1) * 100 / total;
@@ -2098,13 +2126,13 @@ function showQuestion(i) {
         $(".introdirs").removeClass("active");
         tll.staggerTo(["#intro_full .column", ".introdirs"], 0.8, { x: -200, opacity: 0, clearProps: 'x' }, 0.4);
     }
-    tll.staggerFrom("#" + questions[i] + " .column", 0.8, { x: 200 }, 0.4, "same");
-    tll.staggerTo("#" + questions[i] + " .column", 0.8, { opacity: 1 }, 0.4, "same");
+    tll.staggerFrom("#" + questions[i] + " .column:not(.step2)", 0.8, { x: 200 }, 0.4, "same");
+    tll.staggerTo("#" + questions[i] + " .column:not(.step2)", 0.8, { opacity: 1 }, 0.4, "same");
     if (i == index) {
         tll.staggerFrom("#controls .questiondirs .level-item", 0.8, { x: 200 }, 0.4, "same");
         tll.staggerTo("#controls .questiondirs .level-item", 0.8, { opacity: 1 }, 0.4, "same");
-        tll.staggerFrom("#progress .column", 0.8, { x: 200 }, 0.4, "same");
-        tll.staggerTo("#progress .column", 0.8, { opacity: 1 }, 0.4, "same");
+        tll.staggerFrom("#progress .column:not(.step2)", 0.8, { x: 200 }, 0.4, "same");
+        tll.staggerTo("#progress .column:not(.step2)", 0.8, { opacity: 1 }, 0.4, "same");
     }
     tll.play();
 }
@@ -2133,7 +2161,11 @@ var iterify = function iterify() {
         var fromIntro = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
 
         if (fromIntro) showQuestion(0);else if (index < this.length - 1 && !moving) {
-            showQuestion(index + 1);
+            var tmp = 1;
+            while (index + tmp < this.length && $("#" + questions[index + tmp]).hasClass("unavailable")) {
+                tmp++;
+            }
+            if (index + tmp < this.length) showQuestion(index + 1);
             return true;
         }
 
@@ -2196,7 +2228,7 @@ $(document).ready(function () {
     });
 
     //Create selector functionality
-    $(".selector .option").click(function (e) {
+    $(".selector.with-select .option").click(function (e) {
         var parent = $(this).closest(".selector");
         var selector = $(parent).children("select");
         //if active do nothing
@@ -2206,7 +2238,43 @@ $(document).ready(function () {
             $(this).addClass("active");
             //update input tag
             $(selector).val($(this).data("value"));
+
+            if ($(parent).hasClass("with-step")) {
+                //Go to step 2
+                moveToStep($(this).closest(".step1"), $(this).data("value"), true);
+            }
         }
+    });
+    //Create radio functionality
+    $(".selector.with-radios .option").click(function (e) {
+        var parent = $(this).closest(".selector");
+        var radio = $(this).data("value");
+        var item = $(this).data("item");
+        var able = $(this).data("able");
+        //if active do nothing
+        if (!$(this).hasClass("active")) {
+            //Find active one and deactivates it
+            $(parent).find(".option.active").removeClass("active");
+            $(this).addClass("active");
+            //update input tag
+            $("#" + radio).prop("checked", true);
+            if (able) $("#" + item).removeClass("unavailable");else $("#" + item).addClass("unavailable");
+        }
+    });
+
+    //Create multiple checkbox functionality
+    $(".selector.with-checkboxes .option").click(function (e) {
+        var parent = $(this).closest(".selector");
+        var checkbox = $(this).data("value");
+        //if active do nothing
+        if ($(this).hasClass("active")) $("#" + checkbox).prop("checked", false);else $("#" + checkbox).prop("checked", true);
+
+        $(this).toggleClass("active");
+    });
+
+    $("a.backstep").click(function (e) {
+        moveToStep($(".step1"), "active", false);
+        return false;
     });
 
     //Show first intro

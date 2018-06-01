@@ -8,7 +8,7 @@ $bodycolor: #525f7f;
 $bg1: white;
 $bg2: $white-ter;
 
-$selectnormal: #e4effa;
+$selectnormal: #c9d9e9;
 
 
 p.content, p{
@@ -235,7 +235,11 @@ input[type="radio"]:checked + span.icon {
 }
 
 #intro_full {
-
+	padding-bottom: 3rem;
+	@include tablet{
+		padding: 0;
+		height: 100%;
+	}
 	.column{ position: relative;}
 	.slide{
 		@include tablet{
@@ -252,22 +256,70 @@ input[type="radio"]:checked + span.icon {
 			}
 		}
 	}
+
 }
 
+.hero-foot, .hero-head{
+	display: none;
+	@include tablet{
+		display: inherit;
+	}
+}
+
+.questionare{
+	@include tablet{
+		position: absolute;
+		top: 20%;
+		right: 0;
+		left: 0;
+		height: 80%;
+	}
+}
 form{
 	.item{
+		> .container{
+			height: 100%
+		}
 		&.active{
 			z-index: 3;
 		}
+		padding: 2rem 0;
+		&:not(:last-child)
+		{
+			border-bottom: 1px solid $grey-lighter;
+		}
+
 		@include tablet{
 			position: absolute;
 			left:0;
-			top: 20%;
+			top: 0;
 			width: 100%;
 			height: 80%;
+			padding: 0;
+			border-bottom: none !important;
 			.column{
 				opacity: 0;
 			}
+		}
+		
+		.column.step2, .column.step1{
+			@include tablet{
+				position: absolute;
+				left:0;
+				top:10%;
+				right: 0;
+				margin: 0 auto;
+				opacity: 0
+			}
+			&.active{
+				z-index: 2;
+			}
+			&.inactive{
+				z-index: -1;
+			}
+		}
+		.column.step1{
+			z-index: 2;
 		}
 	}
 }
@@ -308,6 +360,11 @@ progress[value]::-webkit-progress-value{
 		align-items: flex-start;
 		margin: 0.5rem;
 	}
+	&.only-texts{
+		> div{
+			flex-basis: auto;
+		}
+	}
 	.option{
 		margin: 0 auto;
 		padding: 0.4rem;
@@ -320,15 +377,40 @@ progress[value]::-webkit-progress-value{
 			font-weight: 600;
 			transition: all .2s ease;
 		}
+		.icon{
+			color: darken($selectnormal,10%);
+		}
+		&.text{
+			p{
+				color: $selectnormal;
+				text-transform: uppercase;
+			}
+			&:hover{
+				p{
+					color: darken($selectnormal,10%);
+				}
+			}
+			&.active{
+				p{
+					color: $maincolor;
+				}
+			}
+		}
 		&:hover{
 			cursor: pointer;
 			border-color: darken($selectnormal,10%);
+			.icon{
+				color: darken($selectnormal,10%);
+			}
 			
 		}
 		&.active{
 			border-color: $maincolor;
 			background-position-y: -100px !important;
 			p{
+				color: $maincolor;
+			}
+			.icon{
 				color: $maincolor;
 			}
 		}
@@ -354,10 +436,10 @@ progress[value]::-webkit-progress-value{
 	&.denuncia > div{ background-position: 0 0}
 	&.peticion > div{ background-position: -100px 0px}
 }
-.problematicas{
+.answers{
 	> div{
 		background: url("./img/problematicas.png");
-		background-size: 720px 160px;
+		background-size: 880px 160px;
 		background-position: 0 0;
 		width: 80px;
 		height: 80px;
@@ -379,4 +461,30 @@ progress[value]::-webkit-progress-value{
 	&.movilidad > div{ background-position: -480px 0}
 	&.seguridad > div{ background-position: -560px 0}
 	&.corrupcion > div{ background-position: -640px 0}
+	
+	&.si > div{ background-position: -720px 0}
+	&.no > div{ background-position: -800px 0}
+}
+.partidos{
+	> div{
+		background: url("./img/partidos.png");
+		background-size: 560px 160px;
+		background-position: 0 0;
+		width: 80px;
+		height: 80px;
+		transition: all 0.2s ease;
+		margin: 0 auto;
+	}
+	&.active{
+		> div{
+			background-position-y: -80px !important;
+		}
+	}
+	&.cambioradical > div{ background-position:  0 0}
+	&.centrodemocratico > div{ background-position:  -80px 0}
+	&.verde > div{ background-position:  -160px 0}
+	&.polo > div{ background-position:  -240px 0}
+	&.conservador > div{ background-position:  -320px 0}
+	&.liberal > div{ background-position:  -400px 0}
+	&.noimporta > div{ background-position:  -480px 0}
 }

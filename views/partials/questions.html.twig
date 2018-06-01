@@ -1,0 +1,309 @@
+<div class="item" id="q1">
+	<div class="container">
+		<div class="columns is-centered is-multiline">
+			<div class="is-two-thirds column">
+				<h2 class="title is-4">Por favor llena con tus datos personales</h2>
+			</div>
+			<div class="is-two-thirds column">
+				<div class="field">
+				  <div class="control has-icons-left ">
+				    <input class="input" type="text" placeholder="Nombre completo" name="fullname">
+				    <span class="icon is-small is-left">
+				      <i class="fas fa-user"></i>
+				    </span>
+				  </div>
+				</div>
+				<div class="field is-horizontal">
+					<div class="field-body">
+						<div class="field">
+						  <div class="control has-icons-left ">
+						    <input class="input" type="number" placeholder="Celular" name="phone">
+						    <span class="icon is-small is-left">
+						      <i class="fab fa-whatsapp"></i>
+						    </span>
+						  </div>
+						</div>
+						<div class="field">
+						  <div class="control ">
+						    <input class="input" type="text" placeholder="Edad" name="age">
+						  </div>
+						</div>
+					</div>
+				</div>
+				<div class="field">
+					<br>	
+					<label for="" class="label">Genero</label>
+					<div class="selector with-radios">
+						<input type="radio" id="genderm" name="gender" value="M" hidden>
+					    <input type="radio" id="genderf" name="gender" value="F" hidden>
+						<div>
+							<div class="option" data-value="M">
+								<i class="icon is-large">
+									<span class="fas fa-male fa-2x"></span>
+								</i>
+							</div>
+						</div>
+						<div>
+							<div class="option" data-value="F">
+								<i class="icon is-large">
+									<span class="fas fa-female fa-2x"></span>
+								</i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="item" id="q2">
+	<div class="container">
+		<div class="columns is-centered is-multiline">
+			<div class="is-two-thirds column">
+				<h2 class="title is-4">¿Estarías dispuesto a apoyar un político que oiga tus quejas y se identifique con tu forma de pensar?</h2>
+			</div>
+			<div class="is-two-thirds column">
+				<div class="field">
+					<div class="selector with-radios">
+						<input type="radio" id="dispuestosi" name="dispuesto" value="Si" hidden>
+					    <input type="radio" id="dispuestono" name="dispuesto" value="No" hidden>
+						<div>
+							<div class="option answers si" data-value="dispuestosi">
+								<div></div>
+								<p class="has-text-centered">Si</p>
+							</div>
+						</div>
+						<div>
+							<div class="option answers no" data-value="dispuestono">
+								<div></div>
+								<p class="has-text-centered">No</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="item" id="q3">
+	<div class="container">
+		<div class="columns is-centered is-multiline">
+			<div class="is-two-thirds column">
+				<h2 class="title is-4">¿Cuál es e tema que mas te preocupa?</h2>
+			</div>
+			<select name="submotive" hidden>
+				{# Ambiente #}
+				<option value="Basuras"></option>
+				<option value="Ríos y cuerpos de agua"></option>
+				<option value="Bosques"></option>
+				<option value="Fauna"></option>
+				<option value="Aire"></option>
+
+				{# Infancia y Adulto Mayor #}
+				<option value="Abandono"></option>
+				<option value="Salud"></option>
+
+				{# Salud #}
+
+				{# Rural #}
+				<option value="Cultivos"></option>
+				<option value="Vias Terciarias"></option>
+				<option value="Insumos Quimicos"></option>
+
+				{# Deporte #}
+				<option value="Especios Deportivos"></option>
+				<option value="Inversion"></option>
+				<option value="Insumos"></option>
+
+				{# Obras #}
+				<option value="Movilidad"></option>
+				<option value="Vivienda"></option>
+				<option value="Servicios Publicos"></option>
+				<option value="Deporte"></option>
+
+				{# Movilidad #}
+
+				{# Seguridad #}
+				<option value="Robos"></option>
+				<option value="Secuestros"></option>
+				<option value="Extorsion"></option>
+				<option value="Desplazamiento Forzado"></option>
+				<option value="Ciberacoso"></option>
+				<option value="Acoso Sexual"></option>
+
+				{# Corrupcion #}
+				<option value="Desempleo"></option>
+				<option value="Inseguridad"></option>
+				<option value="Falsificacion"></option>
+
+				{# Especiales #}
+				<option value="Indigenas"></option>
+				<option value="Afros"></option>
+				<option value="Comunidad LGBT"></option>
+				<option value="Venezolanos"></option>
+			</select>
+			<div class="is-two-thirds column step1">
+				<div class="field">
+					<div class="selector with-select with-step">
+						<select name="motive" hidden>
+							<option value="ambiente"></option>
+							<option value="salud"></option>
+							<option value="infancia"></option>
+							<option value="mayores"></option>
+							<option value="deportes"></option>
+							<option value="obras"></option>
+							<option value="seguridad"></option>
+							<option value="corrupcion"></option>
+						</select>
+						<div>
+							<div class="option answers ambiente" data-value="ambiente">
+								<div></div>
+								<p class="has-text-centered">Ambiente</p>
+							</div>
+						</div>
+						<div>
+							<div class="option answers salud" data-value="salud">
+								<div></div>
+								<p class="has-text-centered">Salud</p>
+							</div>
+						</div>
+						<div>
+							<div class="option answers infancia" data-value="infancia">
+								<div></div>
+								<p class="has-text-centered">Infancia</p>
+							</div>
+						</div>
+						<div>
+							<div class="option answers mayores" data-value="mayores">
+								<div></div>
+								<p class="has-text-centered">Mayores</p>
+							</div>
+						</div>
+						<div>
+							<div class="option answers deportes" data-value="deportes">
+								<div></div>
+								<p class="has-text-centered">Deportes</p>
+							</div>
+						</div>
+						<div>
+							<div class="option answers obras" data-value="obras">
+								<div></div>
+								<p class="has-text-centered">Obras</p>
+							</div>
+						</div>
+						<div>
+							<div class="option answers movilidad" data-value="movilidad">
+								<div></div>
+								<p class="has-text-centered">Movilidad</p>
+							</div>
+						</div>
+						<div>
+							<div class="option answers seguridad" data-value="seguridad">
+								<div></div>
+								<p class="has-text-centered">Seguridad</p>
+							</div>
+						</div>
+						<div>
+							<div class="option answers corrupcion" data-value="corrupcion">
+								<div></div>
+								<p class="has-text-centered is-capitalized">corrupcion</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			{# Ambiente #}
+			{% include 'partials/step2.html' with {'name':'ambiente', 
+			'items':['Basuras', 'Ríos y cuerpos de agua','Bosques','Fauna','Aire'] }  %}
+
+			{# Salud #}
+			{% include 'partials/step2.html' with {'name':'salud', 
+			'items':['Basuras', 'Ríos y cuerpos de agua'] }  %}
+			{# Infancia #}
+			{% include 'partials/step2.html' with {'name':'infancia', 
+			'items':['Abandono', 'Salud'] }  %}
+			{# Adulto Mayor #}
+			{% include 'partials/step2.html' with {'name':'mayores', 
+			'items':['Abandono', 'Salud'] }  %}
+			{# Rural #}
+			{% include 'partials/step2.html' with {'name':'rural', 
+			'items':['Cultivos', 'Vías Terciarias','Insumos Quimicos'] }  %}
+			{# Deporte #}
+			{% include 'partials/step2.html' with {'name':'deporte', 
+			'items':['Espacios deportivos', 'Inversión','Insumos'] }  %}
+			{# Obras #}
+			{% include 'partials/step2.html' with {'name':'obras', 
+			'items':['Movilidad', 'Vivienda','Servicios Publicos','Deporte'] }  %}
+			{# Movilidad #}
+			{% include 'partials/step2.html' with {'name':'movilidad', 
+			'items':['xxx', 'xxx'] }  %}
+			{# Seguridad #}
+			{% include 'partials/step2.html' with {'name':'seguridad', 
+			'items':['Robos', 'Secuestros','Extorsión','Desplazamiento Forzado','Ciberacoso','Acoso Sexual'] }  %}
+			{# Corrupcion #}
+			{% include 'partials/step2.html' with {'name':'corrupcion', 
+			'items':['Desempleo', 'Inseguridad','Falsificacion','Desplazamiento Forzado','Ciberacoso','Acoso Sexual'] }  %}
+
+			{# Especiales #}
+			{% include 'partials/step2.html' with {'name':'especiales', 
+			'items':['Desempleo', 'Indigenas','Afros','Comunidad LGBT','Venezolanos'] }  %}
+		</div>
+	</div>
+</div>
+<div class="item" id="q3">
+	<div class="container">
+		<div class="columns is-centered is-multiline">
+			<div class="is-two-thirds column">
+				<h2 class="title is-4">¿Te importa el partido politico? De ser así por favor escoge los que de tu interes o selecciona "no importa"</h2>
+			</div>
+			<div class="is-two-thirds column">
+				<div class="field">
+					<div class="selector with-checkboxes">
+						<input type="checkbox" name="partido" value="cr" id="cr" hidden>
+  						<input type="checkbox" name="partido" value="cd" id="cd" hidden>
+  						<input type="checkbox" name="partido" value="verde" id="verde" hidden>
+  						<input type="checkbox" name="partido" value="polo" id="polo" hidden>
+  						<input type="checkbox" name="partido" value="conservador" id="conservador" hidden>
+  						<input type="checkbox" name="partido" value="liberal" id="liberal" hidden>
+  						<input type="checkbox" name="partido" value="na" id="na" hidden>
+						<div>
+							<div class="option partidos cambioradical" data-value="cr">
+								<div></div>
+							</div>
+						</div>
+						<div>
+							<div class="option partidos centrodemocratico" data-value="cd">
+								<div></div>
+							</div>
+						</div>
+						<div>
+							<div class="option partidos verde" data-value="verde">
+								<div></div>
+							</div>
+						</div>
+						<div>
+							<div class="option partidos polo" data-value="polo">
+								<div></div>
+							</div>
+						</div>
+						<div>
+							<div class="option partidos conservador" data-value="conservador">
+								<div></div>
+							</div>
+						</div>
+						<div>
+							<div class="option partidos liberal" data-value="liberal">
+								<div></div>
+							</div>
+						</div>
+						<div>
+							<div class="option partidos noimporta" data-value="na">
+								<div></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<section class="section hero is-fullheight" id="home">
+<section class="section hero" id="home">
 	<div class="hero-head" id="progress">	
 		<div class="container">
 			<div class="columns is-centered">
@@ -32,9 +32,12 @@
 				</div>
 			</div>
 		</div>
-		<form action="" id="formulario">
-			{% include 'partials/questions.html' %}
-		</form>
+		<div class="container questionare">
+			<form action="" id="formulario">
+				{% include 'partials/questions.html.twig' %}
+			</form>
+			
+		</div>
 	</div>
 	<div class="hero-foot" id="controls">
 		<div class="container">
@@ -59,7 +62,7 @@
 							</a>
 						</div>
 						<div class="level-item">
-							<p class="content">Presiona <strong>Enter</strong> para siguiente pregunta o <strong>backspace</strong> para regresar a la anterior preguntas</p>
+							<p class="content"><strong>Enter</strong> para siguiente pregunta o <strong>backspace</strong> para regresar a la anterior preguntas</p>
 						</div>
 						<div class="level-item">
 							<a class="button is-rounded circled right is-linkcolor next">
