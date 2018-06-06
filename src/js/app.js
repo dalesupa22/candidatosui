@@ -215,15 +215,14 @@ $(document).ready(function(){
             //update input tag
             $(selector).val($(this).data("value"))
 
-            console.log($(this).data("value"))
-            console.log($(selector).val())
+            questions.next()
+
         }
     });
     //Create selector functionality
     $(".selector.with-select:not(.outter-select) .option").click(function(e){
         var parent = $(this).closest(".selector")
         var selector = $(parent).children("select")
-        console.log(selector)
         //if active do nothing
         if(!$(this).hasClass("active"))
         {
@@ -238,7 +237,12 @@ $(document).ready(function(){
                 //Go to step 2
                 moveToStep($(this).closest(".step1"),$(this).data("value"),true)
             }
-            console.log($(selector).val())
+            else
+            {
+                //Go to next question
+                questions.next()
+            }
+
         }
     });
     //Create radio functionality
@@ -259,6 +263,9 @@ $(document).ready(function(){
                 $("#"+item).removeClass("unavailable");
             else
                 $("#"+item).addClass("unavailable");
+
+            if(!$(this).hasClass("notnext"))
+                questions.next();
         }
     });
 
@@ -270,9 +277,31 @@ $(document).ready(function(){
         if($(this).hasClass("active"))
             $("#"+checkbox).prop("checked", false);
         else
+        {
             $("#"+checkbox).prop("checked", true);
-
+            if($(this).hasClass("deselectall"))
+            {
+                let activeitems = $(parent).find(".option.active").not(".deselectall")
+                console.log(activeitems)
+                activeitems.each(function(){
+                    $(this).removeClass('active')
+                    let cb = $(this).data("value")
+                    $("#"+cb).prop("checked", false);
+                })
+            }
+            else{
+                //Check if deselectall is active, if its then deactivates it
+                let desall = (parent).find(".option.deselectall")
+                if(desall && $(desall).hasClass("active"))
+                {
+                    $(desall).removeClass('active')
+                    let cb = $(desall).data("value")
+                    $("#"+cb).prop("checked", false);
+                }
+            }
+        }
         $(this).toggleClass("active")
+
     });
 
     $("a.backstep").click(function(e){
