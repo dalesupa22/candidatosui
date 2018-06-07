@@ -1,7 +1,7 @@
 @import "prebulma";
 
 $linkcolor: #6772e5;
-$maincolor: #24b47e;
+$maincolor: #16c6cc;//#24b47e;
 $secondarycolor: #424770;
 $bodycolor: #525f7f;
 
@@ -497,4 +497,17 @@ progress[value]::-webkit-progress-value{
 	&.conservador > div{ background-position:  -320px 0}
 	&.liberal > div{ background-position:  -400px 0}
 	&.noimporta > div{ background-position:  -480px 0}
+}
+.infografia{
+	width: 150px;
+	height: 150px;
+	background-image: -webkit-image-set(url('./img/1x/infografia.png') 1x, url('./img/2x/infografia@2x.png') 2x);
+	background-size: 300px 300px;
+
+	margin: 0 auto;
+	margin-bottom: 1rem;
+	&.one{ background-position: -150px 0;}
+	&.two{ background-position: 0 -150px}
+	&.three{ background-position: -150px -150px}
+	&.four{ background-position: 0 0}
 }
