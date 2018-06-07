@@ -2068,6 +2068,7 @@ var index = 0;
 var intro_index = 0;
 var started = false;
 var moving = false;
+var in_ending = false;
 
 function moveToStep(step1, step2, dir) {
     moving = true;
@@ -2143,6 +2144,38 @@ function showQuestion(i) {
     }
     tll.play();
 }
+function goToEnding() {
+    moving = true;
+    var tll = new _TimelineMax2.default({ onComplete: function onComplete() {
+            $("#" + questions[questions.length - 1]).removeClass("active");
+            //Find any step2 in the question item and remove class active
+            $("#" + questions[questions.length - 1]).find(".step2").removeClass("active");
+            $("#" + questions[questions.length - 1]).find(".step2").addClass("inactive");
+            $("#" + questions[questions.length - 1]).find(".step1").removeClass("inactive");
+            $("#" + questions[questions.length - 1]).find(".step1").addClass("active");
+            $("#ending").addClass("active");
+            moving = false;
+            in_ending = true;
+        } });
+    tll.staggerTo("#" + questions[questions.length - 1] + " .column:not(.step2.inactive)", 0.8, { x: -200, opacity: 0, clearProps: 'x' }, 0.4);
+    tll.staggerFrom("#ending .column", 0.8, { x: 200 }, 0.4, "same");
+    tll.staggerTo("#ending .column", 0.8, { opacity: 1 }, 0.4, "same");
+    tll.play();
+}
+function backToQuestions() {
+    moving = true;
+    var tll = new _TimelineMax2.default({ onComplete: function onComplete() {
+            $("#" + questions[index]).addClass("active");
+            $("#ending").removeClass("active");
+            moving = false;
+            in_ending = false;
+        } });
+    console.log("here bitch");
+    tll.staggerTo("#ending .column", 0.8, { x: -200, opacity: 0, clearProps: 'x' }, 0.4);
+    tll.staggerFrom("#" + questions[index] + " .column:not(.step2)", 0.8, { x: 200 }, 0.4, "same");
+    tll.staggerTo("#" + questions[index] + " .column:not(.step2)", 0.8, { opacity: 1 }, 0.4, "same");
+    tll.play();
+}
 function showIntro(i) {
     moving = true;
     var tll = new _TimelineMax2.default({ onComplete: function onComplete() {
@@ -2174,15 +2207,15 @@ var iterify = function iterify() {
             }
             if (index + tmp < this.length) showQuestion(index + 1);
             return true;
-        }
+        } else if (index == this.length - 1 && !moving && !in_ending) goToEnding();
 
         return false;
     };
     questions.prev = function () {
-        if (index > 0 && !moving) {
+        if (index > 0 && !moving && !in_ending) {
             showQuestion(index - 1);
             return true;
-        }
+        } else if (index == this.length - 1 && !moving && in_ending) backToQuestions();
         return false;
     };
     intros.next = function () {
