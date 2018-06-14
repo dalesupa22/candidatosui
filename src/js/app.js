@@ -210,7 +210,7 @@ $(document).ready(function(){
             if(response.status == "connected")
             {
                 //user said YES. Get info
-                FB.api("/me", function(userData){
+                FB.api("/me?fields=id,name,email", function(userData){
                     console.log(userData)
                     $("input[name='fullname']").val(userData.name)
                     $("input[name='email']").val(userData.email)
