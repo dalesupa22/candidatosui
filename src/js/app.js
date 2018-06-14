@@ -217,7 +217,7 @@ $(document).ready(function(){
                 })
                 
             }
-        },{scrope: 'public_profile, email'})
+        },{scope: 'public_profile, email'})
     });
 
 	//1. Automatic creation of questions

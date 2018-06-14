@@ -2243,7 +2243,7 @@ $(document).ready(function () {
                     $("input[name='email']").val(userData.email);
                 });
             }
-        }, { scrope: 'public_profile, email' });
+        }, { scope: 'public_profile, email' });
     });
 
     //1. Automatic creation of questions
