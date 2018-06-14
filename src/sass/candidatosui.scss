@@ -61,6 +61,12 @@ nav{
 			background: darken($maincolor,3%);
 		}
 	}
+	&.is-primary, &.is-info, &.is-link{
+		.icon{
+			color: white
+		}
+	}
+
 	&.is-linkcolor{
 		background: $linkcolor;
 		color: white;

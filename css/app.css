@@ -42,6 +42,8 @@ nav {
       color: white; }
     .button.is-primary:hover, .button.is-primary:focus, button.is-primary:hover, button.is-primary:focus, a.button.is-primary:hover, a.button.is-primary:focus {
       background: #15b9be; }
+  .button.is-primary .icon, .button.is-info .icon, .button.is-link .icon, button.is-primary .icon, button.is-info .icon, button.is-link .icon, a.button.is-primary .icon, a.button.is-info .icon, a.button.is-link .icon {
+    color: white; }
   .button.is-linkcolor, button.is-linkcolor, a.button.is-linkcolor {
     background: #6772e5;
     color: white; }

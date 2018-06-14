@@ -2231,6 +2231,21 @@ var iterify = function iterify() {
     return questions;
 };
 $(document).ready(function () {
+
+    $(".fblogin").click(function (e) {
+        e.preventDefault();
+        FB.login(function (response) {
+            if (response.status == "connected") {
+                //user said YES. Get info
+                FB.api("/me", function (userData) {
+                    console.log(userData);
+                    $("input[name='fullname']").val(userData.name);
+                    $("input[name='email']").val(userData.email);
+                });
+            }
+        }, { scrope: 'public_profile, email' });
+    });
+
     //1. Automatic creation of questions
     $(this).find(".item").each(function () {
         var id = $(this).attr('id');
