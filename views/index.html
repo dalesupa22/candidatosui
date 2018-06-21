@@ -1,5 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
+<div class="modal" id="formodal">
+  <div class="modal-background"></div>
+  <div class="modal-content has-text-centered box">
+    	<h3 class="title is-size-3 is-spaced">¡Gracias por darnos tu opinión!</h3>
+    	<h5 class="subtitle is-6">Estamos procesando tu información para hacerla llegar a las personas correctas y asegurarno que tu voz tenga efecto :)</h5>
+    	<br>
+    	<button class="button is-linkcolor closebtn">Ok</button>
+  </div>
+  <button class="modal-close is-large" aria-label="close"></button>
+</div>
 <section class="section hero" id="home">
 	<div class="hero-head" id="progress">	
 		<div class="container">
@@ -21,13 +31,7 @@
 				<div class="is-two-thirds column">
 					<div class="slide" id="intro1">
 						<br>
-						<p class="content is-medium">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt temporibus impedit magnam veniam itaque eos soluta neque ut, qui hic amet, sunt quod, labore, officiis. Expedita unde repellendus in odio.</p>
-
-
-						
-
-
-						
+						<p class="content is-medium">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt temporibus impedit magnam veniam itaque eos soluta neque ut, qui hic amet, sunt quod, labore, officiis. Expedita unde repellendus in odio.</p>					
 					</div>
 					<div class="slide" id="intro2">
 						<br>
@@ -67,7 +71,7 @@
 					<h2 class="title is-1">Formulario De Problematicas</h2>
 				</div>
 				<div class="is-two-thirds column">
-					<button class="button is-primary is-huge">enviar respuestas</button>
+					<button class="button is-primary is-huge" type="submit">enviar respuestas</button>
 				</div>
 			</div>
 		</div>

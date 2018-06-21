@@ -315,6 +315,8 @@ $(document).ready(function(){
             $(this).addClass("active");
             //update input tag
             $("#"+radio).prop("checked", true);
+            console.log($("#"+radio))
+
             if(able)
                 $("#"+item).removeClass("unavailable");
             else
@@ -368,6 +370,25 @@ $(document).ready(function(){
 
     //Show first intro
     intros.next(true);
+
+    $("#formulario").submit(function(event) {
+        event.preventDefault();
+        console.log($(this).serialize())
+
+        $("#formodal").addClass("is-active")
+        TweenMax.to($("#formodal"), 0.6, {opacity: 1})
+
+
+    });
+    $(".modal-close, .closebtn").click(function(e)
+    {
+        TweenMax.to($(this).closest(".modal"), 0.8, {opacity: 0, onComplete: function(){
+            TweenMax.delayedCall(0.5, function(){$(this).closest(".modal").removeClass("is-active")});
+            location.reload();
+            
+        }})
+
+    })
 
 });
 $(document).keyup(function(e) {

@@ -1,7 +1,7 @@
 @import "prebulma";
 
 $linkcolor: #6772e5;
-$maincolor: #16c6cc;//#24b47e;
+$maincolor: #16c6cc;
 $secondarycolor: #424770;
 $bodycolor: #525f7f;
 
@@ -73,6 +73,7 @@ nav{
 		.icon{ color: white;}
 		&:hover, &:focus{
 			background: darken($linkcolor,3%);
+			color: white
 		}
 	}
 	&.is-secondary{
@@ -516,4 +517,16 @@ progress[value]::-webkit-progress-value{
 	&.two{ background-position: 0 -150px}
 	&.three{ background-position: -150px -150px}
 	&.four{ background-position: 0 0}
+}
+
+.modal-close{
+	padding-right: 0;
+}
+.modal{
+	display: flex !important;
+	opacity: 0;
+	z-index: -9;
+	&.is-active{
+		z-index: 9;
+	}
 }

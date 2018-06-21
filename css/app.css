@@ -50,7 +50,8 @@ nav {
     .button.is-linkcolor .icon, button.is-linkcolor .icon, a.button.is-linkcolor .icon {
       color: white; }
     .button.is-linkcolor:hover, .button.is-linkcolor:focus, button.is-linkcolor:hover, button.is-linkcolor:focus, a.button.is-linkcolor:hover, a.button.is-linkcolor:focus {
-      background: #5a66e3; }
+      background: #5a66e3;
+      color: white; }
   .button.is-secondary, button.is-secondary, a.button.is-secondary {
     background: #6772e5;
     color: white; }
@@ -8003,3 +8004,15 @@ progress[value]::-webkit-progress-value {
     background-position: -150px -150px; }
   .infografia.four {
     background-position: 0 0; }
+
+.modal-close {
+  padding-right: 0; }
+
+.modal {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  opacity: 0;
+  z-index: -9; }
+  .modal.is-active {
+    z-index: 9; }
