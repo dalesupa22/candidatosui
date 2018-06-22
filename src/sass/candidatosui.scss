@@ -25,6 +25,10 @@ h1,h2,h3,h4,h5,h6{
 		font-family: $header-family;
 		color: $secondarycolor;
 		span{ white-space: nowrap;}
+		strong{
+			font-weight: 800;
+			color: $secondarycolor;
+		}
 	}
 }
 nav{
@@ -294,6 +298,9 @@ input[type="radio"]:checked + span.icon {
 }
 form{
 	.item{
+		.step2subtitle{
+			display: none
+		}
 		> .container{
 			height: 100%
 		}
@@ -319,6 +326,9 @@ form{
 			}
 		}
 		
+		.column.step2{
+			display: none;
+		}
 		.column.step2, .column.step1{
 			@include tablet{
 				position: absolute;
@@ -326,7 +336,8 @@ form{
 				top:10%;
 				right: 0;
 				margin: 0 auto;
-				opacity: 0
+				opacity: 0;
+				display: initial ;
 			}
 			&.active{
 				z-index: 2;

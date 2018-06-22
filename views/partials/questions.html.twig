@@ -56,8 +56,8 @@
 					<br>	
 					<label for="" class="label">Genero</label>
 					<div class="selector with-radios">
-						<input type="radio" id="genderm" name="gender" value="M">
-					    <input type="radio" id="genderf" name="gender" value="F">
+						<input type="radio" id="genderm" name="gender" value="M" hidden>
+					    <input type="radio" id="genderf" name="gender" value="F" hidden>
 						<div>
 							<div class="option notnext" data-value="genderm">
 								<i class="icon is-large">
@@ -234,6 +234,7 @@
 					</div>
 				</div>
 			</div>
+			<h2 class="subtitle is-hidden-tablet is-5 step2subtitle">¿Qué es lo que te preocupa de <strong></strong>?</h2>
 			{# Ambiente #}
 			{% include 'partials/step2.html' with {'name':'ambiente', 
 			'items':['Basuras', 'Ríos y cuerpos de agua','Bosques','Fauna','Aire'] }  %}
@@ -281,13 +282,13 @@
 			<div class="is-two-thirds column">
 				<div class="field">
 					<div class="selector with-checkboxes">
-						<input type="checkbox" name="partido" value="cr" id="cr">
-  						<input type="checkbox" name="partido" value="cd" id="cd">
-  						<input type="checkbox" name="partido" value="verde" id="verde">
-  						<input type="checkbox" name="partido" value="polo" id="polo">
-  						<input type="checkbox" name="partido" value="conservador" id="conservador">
-  						<input type="checkbox" name="partido" value="liberal" id="liberal">
-  						<input type="checkbox" name="partido" value="na" id="na"  checked>
+						<input type="checkbox" name="partido" value="cr" id="cr" hidden>
+  						<input type="checkbox" name="partido" value="cd" id="cd" hidden>
+  						<input type="checkbox" name="partido" value="verde" id="verde" hidden>
+  						<input type="checkbox" name="partido" value="polo" id="polo" hidden>
+  						<input type="checkbox" name="partido" value="conservador" id="conservador" hidden>
+  						<input type="checkbox" name="partido" value="liberal" id="liberal" hidden>
+  						<input type="checkbox" name="partido" value="na" id="na" hidden checked>
 						<div>
 							<div class="option partidos cambioradical" data-value="cr">
 								<div></div>

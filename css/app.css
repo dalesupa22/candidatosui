@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600);p.content, p {
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,800);p.content, p {
   color: #525f7f; }
   p.content strong, p strong {
     color: #525f7f; }
@@ -10,6 +10,9 @@ h1, h2, h3, h4, h5, h6 {
     color: #424770; }
     h1.title span, h1.subtitle span, h2.title span, h2.subtitle span, h3.title span, h3.subtitle span, h4.title span, h4.subtitle span, h5.title span, h5.subtitle span, h6.title span, h6.subtitle span {
       white-space: nowrap; }
+    h1.title strong, h1.subtitle strong, h2.title strong, h2.subtitle strong, h3.title strong, h3.subtitle strong, h4.title strong, h4.subtitle strong, h5.title strong, h5.subtitle strong, h6.title strong, h6.subtitle strong {
+      font-weight: 800;
+      color: #424770; }
 
 nav {
   z-index: 3; }
@@ -7773,6 +7776,8 @@ input[type="radio"]:checked + span.icon {
 
 form .item {
   padding: 2rem 0; }
+  form .item .step2subtitle {
+    display: none; }
   form .item > .container {
     height: 100%; }
   form .item.active {
@@ -7790,6 +7795,8 @@ form .item {
       border-bottom: none !important; }
       form .item .column {
         opacity: 0; } }
+  form .item .column.step2 {
+    display: none; }
   @media screen and (min-width: 769px), print {
     form .item .column.step2, form .item .column.step1 {
       position: absolute;
@@ -7797,7 +7804,8 @@ form .item {
       top: 10%;
       right: 0;
       margin: 0 auto;
-      opacity: 0; } }
+      opacity: 0;
+      display: initial; } }
   form .item .column.step2.active, form .item .column.step1.active {
     z-index: 2; }
   form .item .column.step2.inactive, form .item .column.step1.inactive {

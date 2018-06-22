@@ -12,40 +12,58 @@ var started = false;
 var moving = false;
 var in_ending = false;
 
+//Mobile breakdown
+var is_mobile = false
+
+
 
 function moveToStep(step1, step2, dir)
 {
-    moving = true;
-    if(dir)
+    if(!is_mobile)
     {
-        var tll = new TimelineMax({onComplete: function(){
-            moving = false;
-            $(".column.step2."+step2).addClass("active")
-            $(".column.step2."+step2).removeClass("inactive")
-            $(step1).addClass("inactive")
-        }});
-        //Go to step 2
-        tll.staggerTo($(step1), 0.8, {x:-200,opacity:0, clearProps:'x'}, 0.4)
-        tll.staggerFrom(".column.step2."+step2, 0.8, {x: 200}, 0.4, "same");
-        tll.staggerTo(".column.step2."+step2, 0.8, {opacity: 1}, 0.4, "same");
+        moving = true;
+        if(dir)
+        {
+            var tll = new TimelineMax({onComplete: function(){
+                moving = false;
+                $(".column.step2."+step2).addClass("active")
+                $(".column.step2."+step2).removeClass("inactive")
+                $(step1).addClass("inactive")
+            }});
+            //Go to step 2
+            tll.staggerTo($(step1), 0.8, {x:-200,opacity:0, clearProps:'x'}, 0.4)
+            tll.staggerFrom(".column.step2."+step2, 0.8, {x: 200}, 0.4, "same");
+            tll.staggerTo(".column.step2."+step2, 0.8, {opacity: 1}, 0.4, "same");
+        }
+        else
+        {
+            $(step1).removeClass("inactive")
+            var tll = new TimelineMax({onComplete: function(){
+                moving = false;
+                $(".column.step2."+step2).addClass("inactive")
+                $(".column.step2."+step2).removeClass("active")
+                //Unselect the 
+                $(".step1").find(".option.active").removeClass("active")
+               
+            }});
+            //Go to step 1
+            tll.staggerTo($(".column.step2."+step2), 0.8, {x:-200,opacity:0, clearProps:'x'}, 0.4)
+            tll.staggerFrom($(step1), 0.8, {x: 200}, 0.4, "same");
+            tll.staggerTo($(step1), 0.8, {opacity: 1}, 0.4, "same");
+        }
+        tll.play();
     }
-    else
-    {
-        $(step1).removeClass("inactive")
-        var tll = new TimelineMax({onComplete: function(){
-            moving = false;
-            $(".column.step2."+step2).addClass("inactive")
-            $(".column.step2."+step2).removeClass("active")
-            //Unselect the 
-            $(".step1").find(".option.active").removeClass("active")
-           
-        }});
-        //Go to step 1
-        tll.staggerTo($(".column.step2."+step2), 0.8, {x:-200,opacity:0, clearProps:'x'}, 0.4)
-        tll.staggerFrom($(step1), 0.8, {x: 200}, 0.4, "same");
-        tll.staggerTo($(step1), 0.8, {opacity: 1}, 0.4, "same");
+    else{
+        //is mobile, just show 
+        $(".column.step2.active").hide();
+        $(".column.step2."+step2).show();
+        $(".column.step2."+step2).addClass('active')
+
+        //update subtitle
+        $(".step2subtitle strong").text(step2)
+        if($('.step2subtitle').css('display') == 'none')
+            $(".step2subtitle").show();
     }
-    tll.play();
 }
 
 function updateProgressBar()
@@ -69,59 +87,65 @@ function updateProgressBar()
 }
 function showQuestion(i)
 {
-    moving = true;
-    var tll = new TimelineMax({onComplete: function(){
-        $("#"+questions[index]).removeClass("active");
-        $("#"+questions[i]).addClass("active");
-        //Find any step2 in the question item and remove class active
-        $("#"+questions[index]).find(".step2").removeClass("active")
-        $("#"+questions[index]).find(".step2").addClass("inactive")
-        $("#"+questions[index]).find(".step1").removeClass("inactive")
-        $("#"+questions[index]).find(".step1").addClass("active")
-        index = i;
-        moving = false;
-        updateProgressBar()
-    }});
-
-    if(i!=index)
-        tll.staggerTo("#"+questions[index]+" .column:not(.step2.inactive)", 0.8, {x:-200,opacity:0, clearProps:'x'}, 0.4)
-    else
+    if(!is_mobile)
     {
-        //is the first question. We have to dissappear the intro part
-        $(".introdirs").removeClass("active");
-        tll.staggerTo(["#intro_full .column",".introdirs"], 0.8, {x:-200,opacity:0, clearProps:'x'}, 0.4)
+        moving = true;
+        var tll = new TimelineMax({onComplete: function(){
+            $("#"+questions[index]).removeClass("active");
+            $("#"+questions[i]).addClass("active");
+            //Find any step2 in the question item and remove class active
+            $("#"+questions[index]).find(".step2").removeClass("active")
+            $("#"+questions[index]).find(".step2").addClass("inactive")
+            $("#"+questions[index]).find(".step1").removeClass("inactive")
+            $("#"+questions[index]).find(".step1").addClass("active")
+            index = i;
+            moving = false;
+            updateProgressBar()
+        }});
 
+        if(i!=index)
+            tll.staggerTo("#"+questions[index]+" .column:not(.step2.inactive)", 0.8, {x:-200,opacity:0, clearProps:'x'}, 0.4)
+        else
+        {
+            //is the first question. We have to dissappear the intro part
+            $(".introdirs").removeClass("active");
+            tll.staggerTo(["#intro_full .column",".introdirs"], 0.8, {x:-200,opacity:0, clearProps:'x'}, 0.4)
+
+        }
+        tll.staggerFrom("#"+questions[i]+" .column:not(.step2)", 0.8, {x: 200}, 0.4, "same");
+        tll.staggerTo("#"+questions[i]+" .column:not(.step2)", 0.8, {opacity: 1}, 0.4, "same");
+        if(i==index)
+        {
+            tll.staggerFrom("#controls .questiondirs .level-item", 0.8, {x: 200}, 0.4, "same");
+            tll.staggerTo("#controls .questiondirs .level-item", 0.8, {opacity: 1}, 0.4, "same");     
+            tll.staggerFrom("#progress .column:not(.step2)", 0.8, {x: 200}, 0.4, "same");
+            tll.staggerTo("#progress .column:not(.step2)", 0.8, {opacity: 1}, 0.4, "same");
+        }
+        tll.play();
     }
-    tll.staggerFrom("#"+questions[i]+" .column:not(.step2)", 0.8, {x: 200}, 0.4, "same");
-    tll.staggerTo("#"+questions[i]+" .column:not(.step2)", 0.8, {opacity: 1}, 0.4, "same");
-    if(i==index)
-    {
-        tll.staggerFrom("#controls .questiondirs .level-item", 0.8, {x: 200}, 0.4, "same");
-        tll.staggerTo("#controls .questiondirs .level-item", 0.8, {opacity: 1}, 0.4, "same");     
-        tll.staggerFrom("#progress .column:not(.step2)", 0.8, {x: 200}, 0.4, "same");
-        tll.staggerTo("#progress .column:not(.step2)", 0.8, {opacity: 1}, 0.4, "same");
-    }
-    tll.play();
 
 }
 function goToEnding()
 {
-    moving = true
-    var tll = new TimelineMax({onComplete: function(){
-        $("#"+questions[questions.length-1]).removeClass("active");
-        //Find any step2 in the question item and remove class active
-        $("#"+questions[questions.length-1]).find(".step2").removeClass("active")
-        $("#"+questions[questions.length-1]).find(".step2").addClass("inactive")
-        $("#"+questions[questions.length-1]).find(".step1").removeClass("inactive")
-        $("#"+questions[questions.length-1]).find(".step1").addClass("active")
-        $("#ending").addClass("active");
-        moving = false;
-        in_ending = true;
-    }});
-    tll.staggerTo("#"+questions[questions.length-1]+" .column:not(.step2.inactive)", 0.8, {x:-200,opacity:0, clearProps:'x'}, 0.4)
-    tll.staggerFrom("#ending .column", 0.8, {x: 200}, 0.4, "same");
-    tll.staggerTo("#ending .column", 0.8, {opacity: 1}, 0.4, "same");
-    tll.play()
+    if(!is_mobile)
+    {
+        moving = true
+        var tll = new TimelineMax({onComplete: function(){
+            $("#"+questions[questions.length-1]).removeClass("active");
+            //Find any step2 in the question item and remove class active
+            $("#"+questions[questions.length-1]).find(".step2").removeClass("active")
+            $("#"+questions[questions.length-1]).find(".step2").addClass("inactive")
+            $("#"+questions[questions.length-1]).find(".step1").removeClass("inactive")
+            $("#"+questions[questions.length-1]).find(".step1").addClass("active")
+            $("#ending").addClass("active");
+            moving = false;
+            in_ending = true;
+        }});
+        tll.staggerTo("#"+questions[questions.length-1]+" .column:not(.step2.inactive)", 0.8, {x:-200,opacity:0, clearProps:'x'}, 0.4)
+        tll.staggerFrom("#ending .column", 0.8, {x: 200}, 0.4, "same");
+        tll.staggerTo("#ending .column", 0.8, {opacity: 1}, 0.4, "same");
+        tll.play()
+    }
 }
 function backToQuestions(){
     moving = true
@@ -139,26 +163,29 @@ function backToQuestions(){
 }
 function showIntro(i)
 {
-	moving = true;
-	var tll = new TimelineMax({onComplete: function(){
-        $("#"+intros[intro_index]).removeClass("active");
-        $("#"+intros[i]).addClass("active");
-        intro_index = i;
-        moving = false;
-        //If the current intro is the last one, change color and text of next button
-        if(intro_index == intros.length - 1)
-        {
-            $(".introdirs a.next").removeClass("is-linkcolor")
-            $(".introdirs a.next").addClass("is-primary")
-            $(".introdirs a.next span:first-of-type").text("empezar formulario")
-        }
-    }});
+    if(!is_mobile)
+    {
+    	moving = true;
+    	var tll = new TimelineMax({onComplete: function(){
+            $("#"+intros[intro_index]).removeClass("active");
+            $("#"+intros[i]).addClass("active");
+            intro_index = i;
+            moving = false;
+            //If the current intro is the last one, change color and text of next button
+            if(intro_index == intros.length - 1)
+            {
+                $(".introdirs a.next").removeClass("is-linkcolor")
+                $(".introdirs a.next").addClass("is-primary")
+                $(".introdirs a.next span:first-of-type").text("empezar formulario")
+            }
+        }});
 
-	if(i!=intro_index)
-		tll.staggerTo("#"+intros[intro_index]+" > *", 0.8, {x:-200,opacity:0, clearProps:'x'}, 0.4)
-    tll.staggerFrom("#"+intros[i]+" > *", 0.8, {x: 200}, 0.4, "same");
-    tll.staggerTo("#"+intros[i]+" > *", 0.8, {opacity: 1}, 0.4, "same");
-    tll.play();
+    	if(i!=intro_index)
+    		tll.staggerTo("#"+intros[intro_index]+" > *", 0.8, {x:-200,opacity:0, clearProps:'x'}, 0.4)
+        tll.staggerFrom("#"+intros[i]+" > *", 0.8, {x: 200}, 0.4, "same");
+        tll.staggerTo("#"+intros[i]+" > *", 0.8, {opacity: 1}, 0.4, "same");
+        tll.play();
+    }
 
 }
 var iterify = function(){
@@ -202,6 +229,9 @@ var iterify = function(){
     return questions;
 }
 $(document).ready(function(){
+    if( $(window).width() <= 768 )
+        is_mobile = true
+
 
 
     $(".fblogin").click( function(e){
@@ -232,6 +262,14 @@ $(document).ready(function(){
         intros.push(id);
     });
     iterify();
+
+    if(is_mobile)
+    {
+        //Add numeric stuff
+        $( ".item .title" ).each(function( index ) {
+            $(this).prepend((index+1)+") ")
+        });
+    }
     $("#progress small span:nth-of-type(2)").text(questions.length)
 
     $("a.intro").click(function(e){
@@ -272,7 +310,6 @@ $(document).ready(function(){
             $(selector).val($(this).data("value"))
 
             questions.next()
-
         }
     });
     //Create selector functionality
@@ -315,7 +352,6 @@ $(document).ready(function(){
             $(this).addClass("active");
             //update input tag
             $("#"+radio).prop("checked", true);
-            console.log($("#"+radio))
 
             if(able)
                 $("#"+item).removeClass("unavailable");
