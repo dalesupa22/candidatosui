@@ -6,12 +6,34 @@
 			</div>
 			<div class="is-two-thirds column">
 				<div class="field">
-				  <div class="control has-icons-left ">
-				    <input class="input" type="text" placeholder="Nombre completo" name="fullname">
-				    <span class="icon is-small is-left">
-				      <i class="fas fa-user"></i>
-				    </span>
-				  </div>
+					<div class="control">
+						<button class="button is-link fblogin">
+							<span>Completar con Facebook</span>
+								<span class="icon is-small">
+									<i class="fab fa-facebook-f"></i>
+								</span>
+						</button>
+					</div>
+				</div>
+				<div class="field is-horizontal">
+					<div class="field-body">
+						<div class="field">
+						  <div class="control has-icons-left ">
+						    <input class="input" type="text" placeholder="Nombre completo" name="fullname">
+						    <span class="icon is-small is-left">
+						      <i class="fas fa-user"></i>
+						    </span>
+						  </div>
+						</div>
+						<div class="field">
+						  <div class="control has-icons-left ">
+						    <input class="input" type="email" placeholder="Correo Electrónico" name="email">
+						    <span class="icon is-small is-left">
+						      <i class="fas fa-envelope"></i>
+						    </span>
+						  </div>
+						</div>
+					</div>
 				</div>
 				<div class="field is-horizontal">
 					<div class="field-body">
@@ -37,14 +59,14 @@
 						<input type="radio" id="genderm" name="gender" value="M" hidden>
 					    <input type="radio" id="genderf" name="gender" value="F" hidden>
 						<div>
-							<div class="option" data-value="M">
+							<div class="option notnext" data-value="genderm">
 								<i class="icon is-large">
 									<span class="fas fa-male fa-2x"></span>
 								</i>
 							</div>
 						</div>
 						<div>
-							<div class="option" data-value="F">
+							<div class="option notnext" data-value="genderf">
 								<i class="icon is-large">
 									<span class="fas fa-female fa-2x"></span>
 								</i>
@@ -212,6 +234,7 @@
 					</div>
 				</div>
 			</div>
+			<h2 class="subtitle is-hidden-tablet is-5 step2subtitle">¿Qué es lo que te preocupa de <strong></strong>?</h2>
 			{# Ambiente #}
 			{% include 'partials/step2.html' with {'name':'ambiente', 
 			'items':['Basuras', 'Ríos y cuerpos de agua','Bosques','Fauna','Aire'] }  %}
@@ -265,7 +288,7 @@
   						<input type="checkbox" name="partido" value="polo" id="polo" hidden>
   						<input type="checkbox" name="partido" value="conservador" id="conservador" hidden>
   						<input type="checkbox" name="partido" value="liberal" id="liberal" hidden>
-  						<input type="checkbox" name="partido" value="na" id="na" hidden>
+  						<input type="checkbox" name="partido" value="na" id="na" hidden checked>
 						<div>
 							<div class="option partidos cambioradical" data-value="cr">
 								<div></div>
@@ -297,7 +320,7 @@
 							</div>
 						</div>
 						<div>
-							<div class="option partidos noimporta" data-value="na">
+							<div class="option partidos noimporta deselectall active" data-value="na">
 								<div></div>
 							</div>
 						</div>

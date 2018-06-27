@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600);p.content, p {
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,800);p.content, p {
   color: #525f7f; }
   p.content strong, p strong {
     color: #525f7f; }
@@ -10,6 +10,9 @@ h1, h2, h3, h4, h5, h6 {
     color: #424770; }
     h1.title span, h1.subtitle span, h2.title span, h2.subtitle span, h3.title span, h3.subtitle span, h4.title span, h4.subtitle span, h5.title span, h5.subtitle span, h6.title span, h6.subtitle span {
       white-space: nowrap; }
+    h1.title strong, h1.subtitle strong, h2.title strong, h2.subtitle strong, h3.title strong, h3.subtitle strong, h4.title strong, h4.subtitle strong, h5.title strong, h5.subtitle strong, h6.title strong, h6.subtitle strong {
+      font-weight: 800;
+      color: #424770; }
 
 nav {
   z-index: 3; }
@@ -36,19 +39,22 @@ nav {
       padding-left: 0.85em;
       padding-right: 0.75em; }
   .button.is-primary, button.is-primary, a.button.is-primary {
-    background: #24b47e;
+    background: #16c6cc;
     color: white; }
     .button.is-primary .icon, button.is-primary .icon, a.button.is-primary .icon {
       color: white; }
     .button.is-primary:hover, .button.is-primary:focus, button.is-primary:hover, button.is-primary:focus, a.button.is-primary:hover, a.button.is-primary:focus {
-      background: #21a775; }
+      background: #15b9be; }
+  .button.is-primary .icon, .button.is-info .icon, .button.is-link .icon, button.is-primary .icon, button.is-info .icon, button.is-link .icon, a.button.is-primary .icon, a.button.is-info .icon, a.button.is-link .icon {
+    color: white; }
   .button.is-linkcolor, button.is-linkcolor, a.button.is-linkcolor {
     background: #6772e5;
     color: white; }
     .button.is-linkcolor .icon, button.is-linkcolor .icon, a.button.is-linkcolor .icon {
       color: white; }
     .button.is-linkcolor:hover, .button.is-linkcolor:focus, button.is-linkcolor:hover, button.is-linkcolor:focus, a.button.is-linkcolor:hover, a.button.is-linkcolor:focus {
-      background: #5a66e3; }
+      background: #5a66e3;
+      color: white; }
   .button.is-secondary, button.is-secondary, a.button.is-secondary {
     background: #6772e5;
     color: white; }
@@ -61,7 +67,7 @@ nav {
       background: white;
       color: #525f7f; }
     .button.is-white.with-primary, button.is-white.with-primary, a.button.is-white.with-primary {
-      color: #24b47e !important; }
+      color: #16c6cc !important; }
     .button.is-white.with-secondary, button.is-white.with-secondary, a.button.is-white.with-secondary {
       color: #6772e5 !important; }
 
@@ -7710,40 +7716,40 @@ input, textarea, .textarea, .input {
   color: #424770; }
 
 a {
-  color: #24b47e;
+  color: #16c6cc;
   font-weight: 600; }
   a:hover {
-    color: #1c8a60; }
+    color: #11999e; }
 
 .icon {
   -webkit-transition: all 0.25s ease;
   transition: all 0.25s ease; }
 
 input[type="radio"]:checked + span.icon {
-  color: #24b47e; }
+  color: #16c6cc; }
 
 .select:not(.is-multiple)::after {
-  border-color: #24b47e;
+  border-color: #16c6cc;
   border-width: 2px; }
 
-#intro_full {
+#intro_full, #ending {
   padding-bottom: 3rem; }
   @media screen and (min-width: 769px), print {
-    #intro_full {
+    #intro_full, #ending {
       padding: 0;
       height: 100%; } }
-  #intro_full .column {
+  #intro_full .column, #ending .column {
     position: relative; }
   @media screen and (min-width: 769px), print {
-    #intro_full .slide {
+    #intro_full .slide, #ending .slide {
       position: absolute;
       left: 0;
       top: 20%;
       width: 100%;
       height: 80%; }
-      #intro_full .slide > * {
+      #intro_full .slide > *, #ending .slide > * {
         opacity: 0; }
-      #intro_full .slide.active {
+      #intro_full .slide.active, #ending .slide.active {
         z-index: 3; } }
 
 .hero-foot, .hero-head {
@@ -7753,15 +7759,25 @@ input[type="radio"]:checked + span.icon {
       display: inherit; } }
 
 @media screen and (min-width: 769px), print {
-  .questionare {
+  .questionare, #ending {
     position: absolute;
     top: 20%;
     right: 0;
     left: 0;
     height: 80%; } }
 
+#ending {
+  z-index: 0; }
+  #ending.active {
+    z-index: 3; }
+  @media screen and (min-width: 769px), print {
+    #ending .column {
+      opacity: 0; } }
+
 form .item {
   padding: 2rem 0; }
+  form .item .step2subtitle {
+    display: none; }
   form .item > .container {
     height: 100%; }
   form .item.active {
@@ -7779,6 +7795,8 @@ form .item {
       border-bottom: none !important; }
       form .item .column {
         opacity: 0; } }
+  form .item .column.step2 {
+    display: none; }
   @media screen and (min-width: 769px), print {
     form .item .column.step2, form .item .column.step1 {
       position: absolute;
@@ -7786,7 +7804,8 @@ form .item {
       top: 10%;
       right: 0;
       margin: 0 auto;
-      opacity: 0; } }
+      opacity: 0;
+      display: initial; } }
   form .item .column.step2.active, form .item .column.step1.active {
     z-index: 2; }
   form .item .column.step2.inactive, form .item .column.step1.inactive {
@@ -7862,19 +7881,19 @@ progress[value]::-webkit-progress-value {
     .selector .option.text:hover p {
       color: #a5c0da; }
     .selector .option.text.active p {
-      color: #24b47e; }
+      color: #16c6cc; }
     .selector .option:hover {
       cursor: pointer;
       border-color: #a5c0da; }
       .selector .option:hover .icon {
         color: #a5c0da; }
     .selector .option.active {
-      border-color: #24b47e;
+      border-color: #16c6cc;
       background-position-y: -100px !important; }
       .selector .option.active p {
-        color: #24b47e; }
+        color: #16c6cc; }
       .selector .option.active .icon {
-        color: #24b47e; }
+        color: #16c6cc; }
 
 .motive > div {
   background: url("./img/form_motive.png");
@@ -7977,3 +7996,31 @@ progress[value]::-webkit-progress-value {
 
 .partidos.noimporta > div {
   background-position: -480px 0; }
+
+.infografia {
+  width: 150px;
+  height: 150px;
+  background-image: -webkit-image-set(url("./img/1x/infografia.png") 1x, url("./img/2x/infografia@2x.png") 2x);
+  background-size: 300px 300px;
+  margin: 0 auto;
+  margin-bottom: 1rem; }
+  .infografia.one {
+    background-position: -150px 0; }
+  .infografia.two {
+    background-position: 0 -150px; }
+  .infografia.three {
+    background-position: -150px -150px; }
+  .infografia.four {
+    background-position: 0 0; }
+
+.modal-close {
+  padding-right: 0; }
+
+.modal {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  opacity: 0;
+  z-index: -9; }
+  .modal.is-active {
+    z-index: 9; }

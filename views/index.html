@@ -1,5 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
+<div class="modal" id="formodal">
+  <div class="modal-background"></div>
+  <div class="modal-content has-text-centered box">
+    	<h3 class="title is-size-3 is-spaced">¡Gracias por darnos tu opinión!</h3>
+    	<h5 class="subtitle is-size-7 is-size-6-desktop">Estamos procesando tu información para hacerla llegar a las personas correctas y asegurarno que tu voz tenga efecto :)</h5>
+    	<br>
+    	<button class="button is-linkcolor closebtn">Ok</button>
+  </div>
+  <button class="modal-close is-large" aria-label="close"></button>
+</div>
 <section class="section hero" id="home">
 	<div class="hero-head" id="progress">	
 		<div class="container">
@@ -16,28 +26,56 @@
 		<div class="container" id="intro_full">
 			<div class="columns is-multiline is-centered has-text-centered">
 				<div class="is-two-thirds column">
-					<h2 class="title is-1">Formulario De Problematicas</h2>
+					<h2 class="title is-size-3 is-size-1-desktop">Formulario De Problematicas</h2>
 				</div>
 				<div class="is-two-thirds column">
 					<div class="slide" id="intro1">
 						<br>
-						<p class="content is-medium">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt temporibus impedit magnam veniam itaque eos soluta neque ut, qui hic amet, sunt quod, labore, officiis. Expedita unde repellendus in odio.</p>
-						
+						<p class="subtitle is-size-6 is-size-5-desktop">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt temporibus impedit magnam veniam itaque eos soluta neque ut, qui hic amet, sunt quod, labore, officiis. Expedita unde repellendus in odio.</p>					
 					</div>
 					<div class="slide" id="intro2">
 						<br>
-						<img src="http://via.placeholder.com/400x200" alt="">
+						<div class="columns has-text-centered is-centered">
+							<div class="column is-one-third">
+								<div class="infografia one"></div>
+								<h4 class="title is-5">Captura de información de la población</h4>
+							</div>
+							<div class="column is-one-third">
+								<div class="infografia two"></div>
+								<h4 class="title is-5">Segmentación de información</h4>
+							</div>
+						</div>
+						<div class="columns has-text-centered is-centered">
+							<div class="column is-one-third">
+								<div class="infografia three"></div>
+								<h4 class="title is-5">Entrega de info a politicos y entidades publicas</h4>
+							</div>
+							<div class="column is-one-third">
+								<div class="infografia four"></div>
+								<h4 class="title is-5">Publicación de resultados</h4>
+							</div>
+						</div>
 						
 					</div>
 				</div>
 			</div>
 		</div>
+		<form action="" id="formulario">
 		<div class="container questionare">
-			<form action="" id="formulario">
 				{% include 'partials/questions.html.twig' %}
-			</form>
 			
 		</div>
+		<div class="container" id="ending">
+			<div class="columns is-multiline is-centered has-text-centered">
+				<div class="column is-two-thirds">
+					<h2 class="title is-1 is-hidden-mobile">Formulario De Problematicas</h2>
+				</div>
+				<div class="is-two-thirds column">
+					<button class="button is-primary is-huge" type="submit">enviar respuestas</button>
+				</div>
+			</div>
+		</div>
+		</form>
 	</div>
 	<div class="hero-foot" id="controls">
 		<div class="container">

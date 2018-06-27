@@ -1,7 +1,7 @@
 @import "prebulma";
 
 $linkcolor: #6772e5;
-$maincolor: #24b47e;
+$maincolor: #16c6cc;
 $secondarycolor: #424770;
 $bodycolor: #525f7f;
 
@@ -25,6 +25,10 @@ h1,h2,h3,h4,h5,h6{
 		font-family: $header-family;
 		color: $secondarycolor;
 		span{ white-space: nowrap;}
+		strong{
+			font-weight: 800;
+			color: $secondarycolor;
+		}
 	}
 }
 nav{
@@ -61,12 +65,19 @@ nav{
 			background: darken($maincolor,3%);
 		}
 	}
+	&.is-primary, &.is-info, &.is-link{
+		.icon{
+			color: white
+		}
+	}
+
 	&.is-linkcolor{
 		background: $linkcolor;
 		color: white;
 		.icon{ color: white;}
 		&:hover, &:focus{
 			background: darken($linkcolor,3%);
+			color: white
 		}
 	}
 	&.is-secondary{
@@ -234,7 +245,7 @@ input[type="radio"]:checked + span.icon {
 	border-width: 2px;
 }
 
-#intro_full {
+#intro_full, #ending {
 	padding-bottom: 3rem;
 	@include tablet{
 		padding: 0;
@@ -256,8 +267,8 @@ input[type="radio"]:checked + span.icon {
 			}
 		}
 	}
-
 }
+
 
 .hero-foot, .hero-head{
 	display: none;
@@ -266,7 +277,7 @@ input[type="radio"]:checked + span.icon {
 	}
 }
 
-.questionare{
+.questionare, #ending{
 	@include tablet{
 		position: absolute;
 		top: 20%;
@@ -275,8 +286,21 @@ input[type="radio"]:checked + span.icon {
 		height: 80%;
 	}
 }
+#ending{
+	z-index: 0;
+	&.active{
+		z-index: 3;
+	}
+	@include tablet{
+		.column {opacity: 0;}
+	}
+
+}
 form{
 	.item{
+		.step2subtitle{
+			display: none
+		}
 		> .container{
 			height: 100%
 		}
@@ -302,6 +326,9 @@ form{
 			}
 		}
 		
+		.column.step2{
+			display: none;
+		}
 		.column.step2, .column.step1{
 			@include tablet{
 				position: absolute;
@@ -309,7 +336,8 @@ form{
 				top:10%;
 				right: 0;
 				margin: 0 auto;
-				opacity: 0
+				opacity: 0;
+				display: initial ;
 			}
 			&.active{
 				z-index: 2;
@@ -487,4 +515,29 @@ progress[value]::-webkit-progress-value{
 	&.conservador > div{ background-position:  -320px 0}
 	&.liberal > div{ background-position:  -400px 0}
 	&.noimporta > div{ background-position:  -480px 0}
+}
+.infografia{
+	width: 150px;
+	height: 150px;
+	background-image: -webkit-image-set(url('./img/1x/infografia.png') 1x, url('./img/2x/infografia@2x.png') 2x);
+	background-size: 300px 300px;
+
+	margin: 0 auto;
+	margin-bottom: 1rem;
+	&.one{ background-position: -150px 0;}
+	&.two{ background-position: 0 -150px}
+	&.three{ background-position: -150px -150px}
+	&.four{ background-position: 0 0}
+}
+
+.modal-close{
+	padding-right: 0;
+}
+.modal{
+	display: flex !important;
+	opacity: 0;
+	z-index: -9;
+	&.is-active{
+		z-index: 9;
+	}
 }

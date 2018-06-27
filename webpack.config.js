@@ -59,7 +59,7 @@ const config = {
           '*.php'
         ],
         host: 'localhost',
-        proxy: 'http://localhost/candidatosui',
+        proxy: 'https://localhost/candidatosui',
         port: 3000,
         logPrefix: 'webpack',
         logLevel: 'debug',
