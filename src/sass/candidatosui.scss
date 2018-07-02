@@ -460,9 +460,9 @@ progress[value]::-webkit-progress-value{
 		}
 	}
 	
-	&.problematica > div{ background-position: -200px 0px}
-	&.denuncia > div{ background-position: 0 0}
-	&.peticion > div{ background-position: -100px 0px}
+	&.opinion > div{ background-position: 0 0}
+	&.propuesta > div{ background-position: -100px 0px}
+	&.reclamo > div{ background-position: -200px 0px}
 }
 .answers{
 	> div{
