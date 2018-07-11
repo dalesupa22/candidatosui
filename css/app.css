@@ -7908,14 +7908,14 @@ progress[value]::-webkit-progress-value {
 .motive.active > div {
   background-position-y: -100px !important; }
 
-.motive.problematica > div {
-  background-position: -200px 0px; }
-
-.motive.denuncia > div {
+.motive.opinion > div {
   background-position: 0 0; }
 
-.motive.peticion > div {
+.motive.propuesta > div {
   background-position: -100px 0px; }
+
+.motive.reclamo > div {
+  background-position: -200px 0px; }
 
 .answers > div {
   background: url("./img/problematicas.png");
