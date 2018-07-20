@@ -7,7 +7,7 @@
 			<div class="is-two-thirds column">
 				<div class="field">
 					<div class="control">
-						<button class="button is-link fblogin">
+						<button class="button is-link fblogin is-small">
 							<span>Completar con Facebook</span>
 								<span class="icon is-small">
 									<i class="fab fa-facebook-f"></i>
@@ -52,38 +52,60 @@
 						</div>
 					</div>
 				</div>
-				<div class="field">
-					<br>	
-					<label for="" class="label">Genero</label>
-					<div class="selector with-radios">
-						<input type="radio" id="genderm" name="gender" value="M" hidden>
-					    <input type="radio" id="genderf" name="gender" value="F" hidden>
-						<div>
-							<div class="option notnext" data-value="genderm">
-								<i class="icon is-large">
-									<span class="fas fa-male fa-2x"></span>
-								</i>
+				<div class="columns">	
+					<div class="is-half column">	
+						<div class="field">
+							<br>	
+							<label for="" class="label">Genero</label>
+							<div class="selector with-radios">
+								<input type="radio" id="genderm" name="gender" value="M" hidden>
+							    <input type="radio" id="genderf" name="gender" value="F" hidden>
+							    <input type="radio" id="genderlgbt" name="gender" value="LGBT" hidden>
+								<div>
+									<div class="option notnext has-text-centered" data-value="genderm">
+										<i class="icon is-large">
+											<span class="fas fa-male fa-2x"></span>
+										</i>
+										<p>Hombre</p>
+									</div>
+								</div>
+								<div>
+									<div class="option notnext has-text-centered" data-value="genderf">
+										<i class="icon is-large">
+											<span class="fas fa-female fa-2x"></span>
+										</i>
+										<p>Mujer</p>
+									</div>
+								</div>
+								<div>
+									<div class="option notnext has-text-centered" data-value="genderlgbt">
+										<i class="icon is-large">
+											<span class="fas fa-transgender fa-2x"></span>
+										</i>
+										<p>LGBT</p>
+									</div>
+								</div>
 							</div>
 						</div>
-						<div>
-							<div class="option notnext" data-value="genderf">
-								<i class="icon is-large">
-									<span class="fas fa-female fa-2x"></span>
-								</i>
-							</div>
-						</div>
+						
 					</div>
-				</div>
-			</div>
-			<div class="is-two-thirds column">
-				<hr>
-				<div class="field">
-					<label for="" class="label">O elige esta opción para llenar el formulario como anonimo</label>
-					<div class="control">
-					  <label class="checkbox">
-						  <input type="checkbox">
-						  Quiero permanecer anonimo
-						</label>
+					<div class="is-half column">
+						<div class="field">
+							<br>	
+							<label for="" class="label">Dpto</label>
+							<div class="control">
+							    <input class="input" type="text" placeholder="Ej: Cundinamarca" name="state">
+							</div>
+
+						</div>
+						<div class="field">
+							<br>	
+							<label for="" class="label">Municipio</label>
+							<div class="control">
+							    <input class="input" type="text" placeholder="Ej: Bogota" name="city">
+							</div>
+
+						</div>	
 					</div>
 				</div>
 			</div>

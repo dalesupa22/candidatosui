@@ -176,6 +176,7 @@ function showIntro(i)
             {
                 $(".introdirs a.next").removeClass("is-linkcolor")
                 $(".introdirs a.next").addClass("is-primary")
+                $(".introdirs a.next").addClass("is-medium")
                 $(".introdirs a.next span:first-of-type").text("empezar formulario")
             }
         }});

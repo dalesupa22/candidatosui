@@ -2206,6 +2206,7 @@ function showIntro(i) {
                 if (intro_index == intros.length - 1) {
                     $(".introdirs a.next").removeClass("is-linkcolor");
                     $(".introdirs a.next").addClass("is-primary");
+                    $(".introdirs a.next").addClass("is-medium");
                     $(".introdirs a.next span:first-of-type").text("empezar formulario");
                 }
             } });
