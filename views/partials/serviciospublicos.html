@@ -10,10 +10,27 @@
 			{% endfor %}
 		</div>
 	</div>
+	<div class="field">
+		<label class="label is-small">¿Cuál de estas opciones hace más referencia a tu queja?</label>
+		<div class="control">
+		  <label class="radio">
+		    <input type="radio" name="answer">
+		    Infraestructura
+		  </label>
+		  <label class="radio">
+		    <input type="radio" name="answer">
+		    Prestación del Servicio
+		  </label>
+		  <label class="radio">
+		    <input type="radio" name="answer">
+		    Pirateria
+		  </label>
+		</div>
+	</div>
 	<div class="field" id="comment">
 		<div class="control">
 			<label for="">¿Algo especifico que te gustaria comentar?</label>
-			<textarea name="{{name}}_extracomment" rows="2" class="textarea"></textarea>
+			<textarea name="{{name}}_extracomment" class="textarea"></textarea>
 		</div>
 	</div>
 	<div class="field">

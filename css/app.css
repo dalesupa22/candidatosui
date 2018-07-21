@@ -7688,6 +7688,9 @@ footer {
   -webkit-box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
           box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08); }
 
+textarea.textarea {
+  min-height: 100px !important; }
+
 .field .label {
   color: #424770; }
 
@@ -7847,7 +7850,7 @@ progress[value]::-webkit-progress-value {
   .selector .option {
     margin: 0 auto;
     padding: 0.4rem;
-    border: 3px solid #c9d9e9;
+    border: 3px solid #a5c0da;
     border-radius: 5px;
     display: inline-block;
     -webkit-transition: all .2s ease;
@@ -7862,23 +7865,23 @@ progress[value]::-webkit-progress-value {
     .selector .option .icon {
       color: #a5c0da; }
     .selector .option.text p {
-      color: #c9d9e9;
-      text-transform: uppercase; }
+      text-transform: uppercase;
+      font-size: 0.8rem; }
     .selector .option.text:hover p {
-      color: #a5c0da; }
+      color: #93b3d3; }
     .selector .option.text.active p {
       color: #16c6cc; }
     .selector .option:hover {
       cursor: pointer;
-      border-color: #a5c0da; }
+      border-color: #93b3d3; }
       .selector .option:hover .icon {
-        color: #a5c0da; }
+        color: #93b3d3; }
     .selector .option.active {
       border-color: #16c6cc;
       background-position-y: -100px !important; }
       .selector .option.active p {
         color: #16c6cc; }
-      .selector .option.active .icon {
+      .selector .option.active .icon span {
         color: #16c6cc; }
 
 .motive > div {
@@ -7905,7 +7908,7 @@ progress[value]::-webkit-progress-value {
 
 .answers > div {
   background: url("./img/problematicas.png");
-  background-size: 880px 160px;
+  background-size: 1040px 160px;
   background-position: 0 0;
   width: 80px;
   height: 80px;
@@ -7928,7 +7931,7 @@ progress[value]::-webkit-progress-value {
 .answers.mayores > div {
   background-position: -240px 0; }
 
-.answers.deportes > div {
+.answers.educacion > div {
   background-position: -320px 0; }
 
 .answers.obras > div {
@@ -7948,6 +7951,12 @@ progress[value]::-webkit-progress-value {
 
 .answers.no > div {
   background-position: -800px 0; }
+
+.answers.serviciospublicos > div {
+  background-position: -880px 0; }
+
+.answers.discriminacion > div {
+  background-position: -960px 0; }
 
 .partidos > div {
   background: url("./img/partidos.png");

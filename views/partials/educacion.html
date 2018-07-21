@@ -1,5 +1,18 @@
 <div class="is-two-thirds column step2 {{name}} inactive">
 	<div class="field">
+		<label class="label is-small">Selecciona que clase de problema es</label>
+		<div class="control">
+		  <label class="radio">
+		    <input type="radio" name="answer">
+		    Con Educación Primaria/Secundaria
+		  </label>
+		  <label class="radio">
+		    <input type="radio" name="answer">
+		    Acceso a Educación Superior
+		  </label>
+		</div>
+	</div>
+	<div class="field">
 		<div class="selector with-select outter-select only-texts">
 			{% for item in items %}
 			<div>
@@ -13,7 +26,7 @@
 	<div class="field" id="comment">
 		<div class="control">
 			<label for="">¿Algo especifico que te gustaria comentar?</label>
-			<textarea name="{{name}}_extracomment" rows="2" class="textarea"></textarea>
+			<textarea name="{{name}}_extracomment" class="textarea"></textarea>
 		</div>
 	</div>
 	<div class="field">

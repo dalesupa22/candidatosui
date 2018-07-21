@@ -206,6 +206,9 @@ footer{
 input, textarea,.textarea, .input{
 
 }
+textarea.textarea{
+	min-height: 100px !important;
+}
 .field{
 	.label{
 		color: $secondarycolor;
@@ -384,7 +387,7 @@ progress[value]::-webkit-progress-value{
 	.option{
 		margin: 0 auto;
 		padding: 0.4rem;
-		border: 3px solid $selectnormal;
+		border: 3px solid darken($selectnormal,10%);
 		border-radius: 5px;
 		display: inline-block;
 		transition: all .2s ease;
@@ -401,12 +404,12 @@ progress[value]::-webkit-progress-value{
 		}
 		&.text{
 			p{
-				color: $selectnormal;
 				text-transform: uppercase;
+				font-size: 0.8rem
 			}
 			&:hover{
 				p{
-					color: darken($selectnormal,10%);
+					color: darken($selectnormal,15%);
 				}
 			}
 			&.active{
@@ -417,9 +420,9 @@ progress[value]::-webkit-progress-value{
 		}
 		&:hover{
 			cursor: pointer;
-			border-color: darken($selectnormal,10%);
+			border-color: darken($selectnormal,15%);
 			.icon{
-				color: darken($selectnormal,10%);
+				color: darken($selectnormal,15%);
 			}
 			
 		}
@@ -429,7 +432,7 @@ progress[value]::-webkit-progress-value{
 			p{
 				color: $maincolor;
 			}
-			.icon{
+			.icon span{
 				color: $maincolor;
 			}
 		}
@@ -458,7 +461,7 @@ progress[value]::-webkit-progress-value{
 .answers{
 	> div{
 		background: url("./img/problematicas.png");
-		background-size: 880px 160px;
+		background-size: 1040px 160px;
 		background-position: 0 0;
 		width: 80px;
 		height: 80px;
@@ -475,7 +478,7 @@ progress[value]::-webkit-progress-value{
 	&.salud > div{ background-position: -80px 0}
 	&.infancia > div{ background-position: -160px 0}
 	&.mayores > div{ background-position: -240px 0}
-	&.deportes > div{ background-position: -320px 0}
+	&.educacion > div{ background-position: -320px 0}
 	&.obras > div{ background-position: -400px 0}
 	&.movilidad > div{ background-position: -480px 0}
 	&.seguridad > div{ background-position: -560px 0}
@@ -483,6 +486,8 @@ progress[value]::-webkit-progress-value{
 	
 	&.si > div{ background-position: -720px 0}
 	&.no > div{ background-position: -800px 0}
+	&.serviciospublicos > div{ background-position: -880px 0}
+	&.discriminacion > div{ background-position: -960px 0}
 }
 .partidos{
 	> div{

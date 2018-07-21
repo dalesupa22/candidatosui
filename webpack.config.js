@@ -56,6 +56,8 @@ const config = {
         files: [
           './**/*.html',
           '*.html',
+          '*.html.twig',
+          './**/*.html.twig',
           '*.php'
         ],
         host: 'localhost',
