@@ -2,6 +2,8 @@
   color: #525f7f; }
   p.content strong, p strong {
     color: #525f7f; }
+  p.content#fileproblem, p#fileproblem {
+    display: none; }
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 600 !important; }
@@ -7883,6 +7885,10 @@ progress[value]::-webkit-progress-value {
         color: #16c6cc; }
       .selector .option.active .icon span {
         color: #16c6cc; }
+    .selector .option.disabled {
+      border-color: #4a4a4a !important; }
+      .selector .option.disabled p, .selector .option.disabled .icon span {
+        color: #4a4a4a !important; }
 
 .motive > div {
   background: url("./img/form_motive.png");
@@ -7905,6 +7911,25 @@ progress[value]::-webkit-progress-value {
 
 .motive.reclamo > div {
   background-position: -200px 0px; }
+
+.usertype > div {
+  background: url("./img/anonimato.png");
+  background-size: 140px 140px;
+  background-position: 0 0;
+  width: 70px;
+  height: 70px;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  margin: 0 auto; }
+
+.usertype.active > div {
+  background-position-y: -70px !important; }
+
+.usertype.normal > div {
+  background-position: 0 0; }
+
+.usertype.anonymous > div {
+  background-position: -70px 0px; }
 
 .answers > div {
   background: url("./img/problematicas.png");

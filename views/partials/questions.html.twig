@@ -4,7 +4,25 @@
 			<div class="is-two-thirds column">
 				<h2 class="title is-5">Por favor llena con tus datos personales</h2>
 			</div>
-			<div class="is-two-thirds column">
+			<div class="is-two-thirds column personalinfo step0">
+				<div class="field">
+					<div class="selector with-radios">
+						<input type="radio" id="usertypenormal" name="usertype" value="normal" selected hidden>
+					    <input type="radio" id="usertypeanonymous" name="usertype" value="anonymous" hidden>
+						<div>
+							<div class="option notnext usertype normal active has-text-centered" data-value="usertypenormal">
+								<div></div>
+								<p>Normal</p>
+							</div>
+						</div>
+						<div>
+							<div class="option notnext usertype anonymous has-text-centered" data-value="usertypeanonymous">
+								<div></div>
+								<p>Anónimo</p>
+							</div>
+						</div>
+					</div>
+				</div>
 				<div class="field">
 					<div class="control">
 						<button class="button is-link fblogin is-small">
@@ -89,24 +107,48 @@
 						</div>
 						
 					</div>
+				</div>
+				<div class="field">
+					<a class="button is-rounded is-linkcolor is-small is-hidden-mobile nextstep">
+						<span>Siguiente</span>
+					    <span class="icon">
+					      <i class="fas fa-chevron-right "></i>
+					    </span>
+					</a>
+				</div>
+			</div>
+			<div class="is-two-thirds column personalinfo step2 inactive">
+				<div class="columns">
 					<div class="is-half column">
 						<div class="field">
-							<br>	
-							<label for="" class="label">Dpto</label>
+							<label for="">Municipio</label>
 							<div class="control">
-							    <input class="input" type="text" placeholder="Ej: Cundinamarca" name="state">
+								<div class="select">
+								  <select name="state">
+								  </select>
+								</div>
 							</div>
-
 						</div>
-						<div class="field">
-							<br>	
-							<label for="" class="label">Municipio</label>
-							<div class="control">
-							    <input class="input" type="text" placeholder="Ej: Bogota" name="city">
-							</div>
-
-						</div>	
 					</div>
+					<div class="is-half column">
+						<div class="field">
+							<label for="">Ciudad</label>
+							<div class="control">
+								<div class="select">
+								  <select name="city">
+								  </select>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="field">
+					<a class="button is-rounded is-linkcolor is-small backsteppersonalinfo is-hidden-mobile">
+					    <span class="icon">
+					      <i class="fas fa-chevron-left "></i>
+					    </span>
+						<span>Atras</span>
+					</a>
 				</div>
 			</div>
 		</div>
@@ -326,6 +368,87 @@
 	<div class="container">
 		<div class="columns is-centered is-multiline">
 			<div class="is-two-thirds column">
+				<h2 class="title is-5">Información Adicional (opcional)</h2>
+				<h4 class="subtitle is-7">Si tienes mas información sobre la problematica que estás identificadno por favor llena los sgtes campos.</h4>
+			</div>
+			<select name="submotive" hidden>
+				{# Ambiente #}
+				<option value="ContaminacionAgua">jose</option>
+				<option value="ContaminacionAire">jose</option>
+				<option value="ResiduosToxicos">jose</option>
+				<option value="Basuras">jose</option>
+				<option value="Minerias">jose</option>
+				<option value="Deforestacion">jose</option>
+				<option value="Plagas">jose</option>
+
+				{# Infancia y Adulto Mayor #}
+				<option value="Abandono">jose</option>
+				<option value="Salud">jose</option>
+
+
+				{# Rural #}
+				<option value="Cultivos">jose2</option>
+				<option value="Vias Terciarias">jose2</option>
+				<option value="Insumos Quimicos">jose2</option>
+
+				{# Deporte #}
+				<option value="Especios Deportivos">jose2</option>
+				<option value="Inversion">jose2</option>
+				<option value="Insumos">jose2</option>
+
+				{# Obras #}
+				<option value="Movilidad">jose2</option>
+				<option value="Vivienda">jose2</option>
+				<option value="Servicios Publicos">jose2</option>
+				<option value="Deporte">jose2</option>
+
+				{# Movilidad #}
+
+				{# Seguridad #}
+				<option value="Robos">jose3</option>
+				<option value="Secuestros">jose3</option>
+				<option value="Extorsion">jose3</option>
+				<option value="Desplazamiento Forzado">jose3</option>
+				<option value="Ciberacoso">jose3</option>
+				<option value="Acoso Sexual">jose3</option>
+
+				{# Corrupcion #}
+				<option value="Obras"></option>
+				<option value="Educacion"></option>
+				<option value="Salud"></option>
+				<option value="Otros"></option>
+
+				{# Especiales #}
+				<option value="Indigenas">jose5</option>
+				<option value="Afros">jose5</option>
+				<option value="Comunidad LGBT">jose5</option>
+				<option value="Venezolanos">jose5</option>
+			</select>
+			<div class="is-two-thirds column step1">
+				<div class="field">
+					<div class="control">
+						<label for="">¿Algo especifico que te gustaria compartir?</label>
+						<textarea name="{{name}}_extracomment" rows="2" class="textarea"></textarea>
+					</div>
+				</div>
+				<div class="field">
+					<label>Adjunta una imagen o PDF de prueba (max 2mb)</label>
+					<div class="control">
+						<input type="file" id="prooffile" name="proof" 
+					accept="image/png, image/jpeg, aplication/pdf" data-max-size="2048"/>
+		              <p class="help is-danger" id="fileproblem">Recuerda: No puedes adjuntar un arhcivo que no sea imagen, PDF y que pese mas de 2mb</p>
+						
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</div>
+<div class="item" id="q5">
+	<div class="container">
+		<div class="columns is-centered is-multiline">
+			<div class="is-two-thirds column">
 				<h2 class="title is-5">¿Como te interesaría que tu petición llegara al político que piensas apoyar?</h2>
 			</div>
 			<div class="is-two-thirds column">
@@ -355,7 +478,7 @@
 		</div>
 	</div>
 </div>
-<div class="item" id="q5">
+<div class="item" id="q6">
 	<div class="container">
 		<div class="columns is-centered is-multiline">
 			<div class="is-two-thirds column">
@@ -412,7 +535,7 @@
 		</div>
 	</div>
 </div>
-<div class="item" id="q6">
+<div class="item" id="q7">
 	<div class="container">
 		<div class="columns is-centered is-multiline">
 			<div class="is-two-thirds column">
@@ -447,7 +570,7 @@
 		</div>
 	</div>
 </div>
-<div class="item" id="q7">
+<div class="item" id="q8">
 	<div class="container">
 		<div class="columns is-centered is-multiline">
 			<div class="is-two-thirds column">

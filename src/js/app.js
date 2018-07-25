@@ -1,8 +1,11 @@
 import "jquery";
+import "./defiant.min.js";
 import TweenMax from "gsap/TweenMax"; // imports TweenLite
 import TimelineMax from "gsap/TimelineMax"; // imports TimelineLite
 
 import "../sass/candidatosui.scss";
+import cities from "./t_geo_city_201807241330.json"
+import states from "./t_geo_state_201807241330.json"
 
 var questions = [];
 var intros = [];
@@ -155,7 +158,6 @@ function backToQuestions(){
         moving = false;
         in_ending = false
     }});
-    console.log("here bitch")
     tll.staggerTo("#ending .column", 0.8, {x:-200,opacity:0, clearProps:'x'}, 0.4)
     tll.staggerFrom("#"+questions[index]+" .column:not(.step2)", 0.8, {x: 200}, 0.4, "same");
     tll.staggerTo("#"+questions[index]+" .column:not(.step2)", 0.8, {opacity: 1}, 0.4, "same");
@@ -229,11 +231,48 @@ var iterify = function(){
     });
     return questions;
 }
+function getCities(stateId)
+{
+    $('[name="city"]').find('option').remove()
+    let theCities = JSON.search(cities, '//*[STA_ID="'+stateId+'"]');
+    for(var i = 0; i < theCities.length; i++) {
+        var city = theCities[i];
+
+        let id = city.CIT_CODE
+        let name =  city.CIT_NAME
+        $("[name='city']").append("<option value='"+id+"'>"+name+"</option>")
+    }
+}
 $(document).ready(function(){
     if( $(window).width() <= 768 )
         is_mobile = true
 
+    var searcher = JSON.search(cities, '//*[CIT_CODE="43"]');
 
+    //Put states
+    for(var i = 0; i < states.length; i++) {
+        var state = states[i];
+
+        let id = state.STA_ID
+        let name =  state.STA_NAME
+        $("[name='state']").append("<option value='"+id+"'>"+name+"</option>")
+    }
+    $("[name='state']").val($("[name='state'] option:first").val());
+
+    $('[name="state"]').change(function() {
+        getCities($(this).val())
+    });
+
+    $('[name="state"]').trigger("change")
+
+    $('#prooffile').change(function(e){ 
+        var maxSize = $(this).data('max-size');
+        var fileSize = ($(this).get(0).files[0].size)/1000 // in bytes
+            if(fileSize>maxSize)
+                $("#fileproblem").show();
+            else
+                $("#fileproblem").hide();
+    });
 
     $(".fblogin").click( function(e){
         e.preventDefault();
@@ -242,7 +281,6 @@ $(document).ready(function(){
             {
                 //user said YES. Get info
                 FB.api("/me?fields=id,name,email", function(userData){
-                    console.log(userData)
                     $("input[name='fullname']").val(userData.name)
                     $("input[name='email']").val(userData.email)
                 })
@@ -298,7 +336,7 @@ $(document).ready(function(){
             intros.next();
     })
 
-    $(".selector.with-select.outter-select .option").click(function(e){
+    $(".selector.with-select.outter-select .option:not(.disabled)").click(function(e){
         var parent = $(this).closest(".selector")
         var selector = $("select.submotive")
         //if active do nothing
@@ -310,11 +348,12 @@ $(document).ready(function(){
             //update input tag
             $(selector).val($(this).data("value"))
 
-            questions.next()
+            if(!$(this).hasClass("notnext"))
+                questions.next()
         }
     });
     //Create selector functionality
-    $(".selector.with-select:not(.outter-select) .option").click(function(e){
+    $(".selector.with-select:not(.outter-select) .option:not(.disabled)").click(function(e){
         var parent = $(this).closest(".selector")
         var selector = $(parent).children("select")
         //if active do nothing
@@ -334,13 +373,14 @@ $(document).ready(function(){
             else
             {
                 //Go to next question
-                questions.next()
+                if(!$(this).hasClass("notnext"))
+                    questions.next()
             }
 
         }
     });
     //Create radio functionality
-    $(".selector.with-radios .option").click(function(e){
+    $(".selector.with-radios .option:not(.disabled)").click(function(e){
         var parent = $(this).closest(".selector")
         var radio = $(this).data("value")
         var item = $(this).data("item")
@@ -353,6 +393,7 @@ $(document).ready(function(){
             $(this).addClass("active");
             //update input tag
             $("#"+radio).prop("checked", true);
+            $("#"+radio).trigger("change")
 
             if(able)
                 $("#"+item).removeClass("unavailable");
@@ -364,8 +405,16 @@ $(document).ready(function(){
         }
     });
 
+    $("[name='usertype']").change(function(e){
+        if($(this).val() == "anonymous")
+            $(".personalinfo.step0 input, .personalinfo.step2 input").prop('disabled', true)
+        else
+            $(".personalinfo.step0 input, .personalinfo.step2 select").prop('disabled', false)
+        $(".personalinfo.step0 .option:not(.usertype), .personalinfo.step2 .option:not(.usertype)").toggleClass('disabled')
+    })
+
     //Create multiple checkbox functionality
-    $(".selector.with-checkboxes .option").click(function(e){
+    $(".selector.with-checkboxes .option:not(.disabled)").click(function(e){
         var parent = $(this).closest(".selector")
         var checkbox = $(this).data("value")
         //if active do nothing
@@ -377,7 +426,6 @@ $(document).ready(function(){
             if($(this).hasClass("deselectall"))
             {
                 let activeitems = $(parent).find(".option.active").not(".deselectall")
-                console.log(activeitems)
                 activeitems.each(function(){
                     $(this).removeClass('active')
                     let cb = $(this).data("value")
@@ -400,7 +448,15 @@ $(document).ready(function(){
     });
 
     $("a.backstep").click(function(e){
-        moveToStep($(".step1"),"active",false)
+        moveToStep($(".step1"),$(this).data("step")+".active",false)
+        return false;
+    })
+    $("a.backsteppersonalinfo").click(function(e){
+        moveToStep($(".step0"),"personalinfo",false)
+        return false;
+    })
+    $("a.nextstep").click(function(e){
+        moveToStep($(this).closest(".step0"),"personalinfo",true)
         return false;
     })
 

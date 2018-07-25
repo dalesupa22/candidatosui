@@ -16,6 +16,9 @@ p.content, p{
 	strong{
 		color: $bodycolor;
 	}
+	&#fileproblem{
+		display: none
+	}
 }
 
 
@@ -436,6 +439,12 @@ progress[value]::-webkit-progress-value{
 				color: $maincolor;
 			}
 		}
+		&.disabled{
+			border-color: $grey-dark !important;
+			p, .icon span{
+				color: $grey-dark !important;
+			}
+		}
 	}
 }
 .motive{
@@ -457,6 +466,25 @@ progress[value]::-webkit-progress-value{
 	&.opinion > div{ background-position: 0 0}
 	&.propuesta > div{ background-position: -100px 0px}
 	&.reclamo > div{ background-position: -200px 0px}
+}
+.usertype{
+	> div{
+		background: url("./img/anonimato.png");
+		background-size: 140px 140px;
+		background-position: 0 0;
+		width: 70px;
+		height: 70px;
+		transition: all 0.2s ease;
+		margin: 0 auto;
+	}
+	&.active{
+		> div{
+			background-position-y: -70px !important;
+		}
+	}
+	
+	&.normal > div{ background-position: 0 0}
+	&.anonymous > div{ background-position: -70px 0px}
 }
 .answers{
 	> div{
