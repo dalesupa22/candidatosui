@@ -327,7 +327,7 @@ form{
 			@include tablet{
 				position: absolute;
 				left:0;
-				top:10%;
+				top:0;
 				right: 0;
 				margin: 0 auto;
 				opacity: 0;
@@ -450,22 +450,22 @@ progress[value]::-webkit-progress-value{
 .motive{
 	> div{
 		background: url("./img/form_motive.png");
-		background-size: 300px 200px;
+		background-size: 210px 140px;
 		background-position: 0 0;
-		width: 100px;
-		height: 100px;
+		width: 70px;
+		height: 70px;
 		transition: all 0.2s ease;
 		margin: 0 auto;
 	}
 	&.active{
 		> div{
-			background-position-y: -100px !important;
+			background-position-y: -70px !important;
 		}
 	}
 	
 	&.opinion > div{ background-position: 0 0}
-	&.propuesta > div{ background-position: -100px 0px}
-	&.reclamo > div{ background-position: -200px 0px}
+	&.propuesta > div{ background-position: -70px 0px}
+	&.reclamo > div{ background-position: -140px 0px}
 }
 .usertype{
 	> div{
@@ -501,6 +501,33 @@ progress[value]::-webkit-progress-value{
 			background-position-y: -80px !important;
 		}
 	}
+
+	&.is-small{
+		> div{
+			background-size: 624px 96px;
+			width: 48px;
+			height: 48px;
+		}
+		&.active{
+			> div{
+				background-position-y: -48px !important;
+			}
+		}
+		&.ambiente > div{ background-position: 0 0}
+		&.salud > div{ background-position: -48px 0}
+		&.infancia > div{ background-position: -96px 0}
+		&.mayores > div{ background-position: -144px 0}
+		&.educacion > div{ background-position: -192px 0}
+		&.obras > div{ background-position: -240px 0}
+		&.movilidad > div{ background-position: -288px 0}
+		&.seguridad > div{ background-position: -336px 0}
+		&.corrupcion > div{ background-position: -384px 0}
+		
+		&.si > div{ background-position: -432px 0}
+		&.no > div{ background-position: -480px 0}
+		&.serviciospublicos > div{ background-position: -528px 0}
+		&.discriminacion > div{ background-position: -576px 0}
+	}
 	
 	&.ambiente > div{ background-position: 0 0}
 	&.salud > div{ background-position: -80px 0}
@@ -520,25 +547,25 @@ progress[value]::-webkit-progress-value{
 .partidos{
 	> div{
 		background: url("./img/partidos.png");
-		background-size: 560px 160px;
+		background-size: 420px 120px;
 		background-position: 0 0;
-		width: 80px;
-		height: 80px;
+		width: 60px;
+		height: 60px;
 		transition: all 0.2s ease;
 		margin: 0 auto;
 	}
 	&.active{
 		> div{
-			background-position-y: -80px !important;
+			background-position-y: -60px !important;
 		}
 	}
 	&.cambioradical > div{ background-position:  0 0}
-	&.centrodemocratico > div{ background-position:  -80px 0}
-	&.verde > div{ background-position:  -160px 0}
-	&.polo > div{ background-position:  -240px 0}
-	&.conservador > div{ background-position:  -320px 0}
-	&.liberal > div{ background-position:  -400px 0}
-	&.noimporta > div{ background-position:  -480px 0}
+	&.centrodemocratico > div{ background-position:  -60px 0}
+	&.verde > div{ background-position:  -120px 0}
+	&.polo > div{ background-position:  -180px 0}
+	&.conservador > div{ background-position:  -240px 0}
+	&.liberal > div{ background-position:  -300px 0}
+	&.noimporta > div{ background-position:  -360px 0}
 }
 .infografia{
 	width: 150px;

@@ -231,6 +231,10 @@ var iterify = function(){
     });
     return questions;
 }
+function capitalizeFirstLetter(string) 
+{
+  return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+}
 function getCities(stateId)
 {
     $('[name="city"]').find('option').remove()
@@ -239,7 +243,7 @@ function getCities(stateId)
         var city = theCities[i];
 
         let id = city.CIT_CODE
-        let name =  city.CIT_NAME
+        let name =  capitalizeFirstLetter(city.CIT_NAME)
         $("[name='city']").append("<option value='"+id+"'>"+name+"</option>")
     }
 }
@@ -254,7 +258,7 @@ $(document).ready(function(){
         var state = states[i];
 
         let id = state.STA_ID
-        let name =  state.STA_NAME
+        let name =  capitalizeFirstLetter(state.STA_NAME)
         $("[name='state']").append("<option value='"+id+"'>"+name+"</option>")
     }
     $("[name='state']").val($("[name='state'] option:first").val());

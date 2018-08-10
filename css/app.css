@@ -7790,7 +7790,7 @@ form .item {
     form .item .column.step2, form .item .column.step1 {
       position: absolute;
       left: 0;
-      top: 10%;
+      top: 0;
       right: 0;
       margin: 0 auto;
       opacity: 0;
@@ -7892,25 +7892,25 @@ progress[value]::-webkit-progress-value {
 
 .motive > div {
   background: url("./img/form_motive.png");
-  background-size: 300px 200px;
+  background-size: 210px 140px;
   background-position: 0 0;
-  width: 100px;
-  height: 100px;
+  width: 70px;
+  height: 70px;
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
   margin: 0 auto; }
 
 .motive.active > div {
-  background-position-y: -100px !important; }
+  background-position-y: -70px !important; }
 
 .motive.opinion > div {
   background-position: 0 0; }
 
 .motive.propuesta > div {
-  background-position: -100px 0px; }
+  background-position: -70px 0px; }
 
 .motive.reclamo > div {
-  background-position: -200px 0px; }
+  background-position: -140px 0px; }
 
 .usertype > div {
   background: url("./img/anonimato.png");
@@ -7943,6 +7943,53 @@ progress[value]::-webkit-progress-value {
 
 .answers.active > div {
   background-position-y: -80px !important; }
+
+.answers.is-small > div {
+  background-size: 624px 96px;
+  width: 48px;
+  height: 48px; }
+
+.answers.is-small.active > div {
+  background-position-y: -48px !important; }
+
+.answers.is-small.ambiente > div {
+  background-position: 0 0; }
+
+.answers.is-small.salud > div {
+  background-position: -48px 0; }
+
+.answers.is-small.infancia > div {
+  background-position: -96px 0; }
+
+.answers.is-small.mayores > div {
+  background-position: -144px 0; }
+
+.answers.is-small.educacion > div {
+  background-position: -192px 0; }
+
+.answers.is-small.obras > div {
+  background-position: -240px 0; }
+
+.answers.is-small.movilidad > div {
+  background-position: -288px 0; }
+
+.answers.is-small.seguridad > div {
+  background-position: -336px 0; }
+
+.answers.is-small.corrupcion > div {
+  background-position: -384px 0; }
+
+.answers.is-small.si > div {
+  background-position: -432px 0; }
+
+.answers.is-small.no > div {
+  background-position: -480px 0; }
+
+.answers.is-small.serviciospublicos > div {
+  background-position: -528px 0; }
+
+.answers.is-small.discriminacion > div {
+  background-position: -576px 0; }
 
 .answers.ambiente > div {
   background-position: 0 0; }
@@ -7985,37 +8032,37 @@ progress[value]::-webkit-progress-value {
 
 .partidos > div {
   background: url("./img/partidos.png");
-  background-size: 560px 160px;
+  background-size: 420px 120px;
   background-position: 0 0;
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
   margin: 0 auto; }
 
 .partidos.active > div {
-  background-position-y: -80px !important; }
+  background-position-y: -60px !important; }
 
 .partidos.cambioradical > div {
   background-position: 0 0; }
 
 .partidos.centrodemocratico > div {
-  background-position: -80px 0; }
+  background-position: -60px 0; }
 
 .partidos.verde > div {
-  background-position: -160px 0; }
+  background-position: -120px 0; }
 
 .partidos.polo > div {
-  background-position: -240px 0; }
+  background-position: -180px 0; }
 
 .partidos.conservador > div {
-  background-position: -320px 0; }
+  background-position: -240px 0; }
 
 .partidos.liberal > div {
-  background-position: -400px 0; }
+  background-position: -300px 0; }
 
 .partidos.noimporta > div {
-  background-position: -480px 0; }
+  background-position: -360px 0; }
 
 .infografia {
   width: 150px;
