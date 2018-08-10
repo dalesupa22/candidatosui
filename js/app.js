@@ -2107,6 +2107,7 @@ function moveToStep(step1, step2, dir) {
                     $(".step1").find(".option.active").removeClass("active");
                 } });
             //Go to step 1
+            console.log("Step1: " + step1 + " Step2: " + step2);
             tll.staggerTo($(".column.step2." + step2), 0.8, { x: -200, opacity: 0, clearProps: 'x' }, 0.4);
             tll.staggerFrom($(step1), 0.8, { x: 200 }, 0.4, "same");
             tll.staggerTo($(step1), 0.8, { opacity: 1 }, 0.4, "same");

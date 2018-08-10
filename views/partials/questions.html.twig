@@ -159,10 +159,63 @@
 								</div>
 							</div>
 						</div>
+						<select name="submotive" hidden>
+							{# Ambiente #}
+							<option value="ContaminacionAgua">jose</option>
+							<option value="ContaminacionAire">jose</option>
+							<option value="ResiduosToxicos">jose</option>
+							<option value="Basuras">jose</option>
+							<option value="Minerias">jose</option>
+							<option value="Deforestacion">jose</option>
+							<option value="Plagas">jose</option>
+
+							{# Infancia y Adulto Mayor #}
+							<option value="Abandono">jose</option>
+							<option value="Salud">jose</option>
+
+
+							{# Rural #}
+							<option value="Cultivos">jose2</option>
+							<option value="Vias Terciarias">jose2</option>
+							<option value="Insumos Quimicos">jose2</option>
+
+							{# Deporte #}
+							<option value="Especios Deportivos">jose2</option>
+							<option value="Inversion">jose2</option>
+							<option value="Insumos">jose2</option>
+
+							{# Obras #}
+							<option value="Movilidad">jose2</option>
+							<option value="Vivienda">jose2</option>
+							<option value="Servicios Publicos">jose2</option>
+							<option value="Deporte">jose2</option>
+
+							{# Movilidad #}
+
+							{# Seguridad #}
+							<option value="Robos">jose3</option>
+							<option value="Secuestros">jose3</option>
+							<option value="Extorsion">jose3</option>
+							<option value="Desplazamiento Forzado">jose3</option>
+							<option value="Ciberacoso">jose3</option>
+							<option value="Acoso Sexual">jose3</option>
+
+							{# Corrupcion #}
+							<option value="Obras"></option>
+							<option value="Educacion"></option>
+							<option value="Salud"></option>
+							<option value="Otros"></option>
+
+							{# Especiales #}
+							<option value="Indigenas">jose5</option>
+							<option value="Afros">jose5</option>
+							<option value="Comunidad LGBT">jose5</option>
+							<option value="Venezolanos">jose5</option>
+						</select>
 					</div>
 				</div>
 			</div>
-			<h2 class="subtitle is-hidden-tablet is-5 step2subtitle">¿Qué es lo que te preocupa de <strong></strong>?</h2>
+			
 			{# Ambiente #}
 			{% include 'partials/step2.html' with {'name':'ambiente', 
 			'items':["Contaminación de Agua","Contaminación de Aire","Residuos Tóxicos",
@@ -207,89 +260,8 @@
 		</div>
 	</div>
 </div>
+
 <div class="item" id="q2">
-	<div class="container">
-		<div class="columns is-centered is-multiline">
-			<div class="is-full column">
-				<h2 class="title is-5">Información Adicional (opcional)</h2>
-				<h4 class="subtitle is-7">Si tienes mas información sobre la problematica que estás identificadno por favor llena los sgtes campos.</h4>
-			</div>
-			<select name="submotive" hidden>
-				{# Ambiente #}
-				<option value="ContaminacionAgua">jose</option>
-				<option value="ContaminacionAire">jose</option>
-				<option value="ResiduosToxicos">jose</option>
-				<option value="Basuras">jose</option>
-				<option value="Minerias">jose</option>
-				<option value="Deforestacion">jose</option>
-				<option value="Plagas">jose</option>
-
-				{# Infancia y Adulto Mayor #}
-				<option value="Abandono">jose</option>
-				<option value="Salud">jose</option>
-
-
-				{# Rural #}
-				<option value="Cultivos">jose2</option>
-				<option value="Vias Terciarias">jose2</option>
-				<option value="Insumos Quimicos">jose2</option>
-
-				{# Deporte #}
-				<option value="Especios Deportivos">jose2</option>
-				<option value="Inversion">jose2</option>
-				<option value="Insumos">jose2</option>
-
-				{# Obras #}
-				<option value="Movilidad">jose2</option>
-				<option value="Vivienda">jose2</option>
-				<option value="Servicios Publicos">jose2</option>
-				<option value="Deporte">jose2</option>
-
-				{# Movilidad #}
-
-				{# Seguridad #}
-				<option value="Robos">jose3</option>
-				<option value="Secuestros">jose3</option>
-				<option value="Extorsion">jose3</option>
-				<option value="Desplazamiento Forzado">jose3</option>
-				<option value="Ciberacoso">jose3</option>
-				<option value="Acoso Sexual">jose3</option>
-
-				{# Corrupcion #}
-				<option value="Obras"></option>
-				<option value="Educacion"></option>
-				<option value="Salud"></option>
-				<option value="Otros"></option>
-
-				{# Especiales #}
-				<option value="Indigenas">jose5</option>
-				<option value="Afros">jose5</option>
-				<option value="Comunidad LGBT">jose5</option>
-				<option value="Venezolanos">jose5</option>
-			</select>
-			<div class="is-full column step1">
-				<div class="field">
-					<div class="control">
-						<label for="">¿Algo especifico que te gustaria compartir?</label>
-						<textarea name="{{name}}_extracomment" rows="2" class="textarea"></textarea>
-					</div>
-				</div>
-				<div class="field">
-					<label>Adjunta una imagen o PDF de prueba (max 2mb)</label>
-					<div class="control">
-						<input type="file" id="prooffile" name="proof" 
-					accept="image/png, image/jpeg, aplication/pdf" data-max-size="2048"/>
-		              <p class="help is-danger" id="fileproblem">Recuerda: No puedes adjuntar un arhcivo que no sea imagen, PDF y que pese mas de 2mb</p>
-						
-					</div>
-				</div>
-			</div>
-			
-		</div>
-	</div>
-</div>
-
-<div class="item" id="q3">
 	<div class="container">
 		<div class="columns is-centered is-multiline">
 			<div class="column is-full">
@@ -380,7 +352,7 @@
 		</div>
 	</div>
 </div>
-<div class="item" id="q4">
+<div class="item" id="q3">
 	<div class="container">
 		<div class="columns is-centered is-multiline">
 			<div class="is-full column personalinfo">
