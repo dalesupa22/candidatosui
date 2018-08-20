@@ -1,0 +1,34 @@
+<div class="field" >
+	<div class="control">
+		<label for="">¿Algo especifico que te gustaria comentar/denunciar?</label>
+		<textarea name="{{name}}_extracomment" rows="1" class="textarea"></textarea>
+	</div>
+</div>
+<div class="field">
+	<div class="control">
+		<label for="{{name}}_prooffile" class="filelabel">
+			<div class="level">
+			  <!-- Left side -->
+			  	<div class="level-left">
+			    	<div class="level-item">
+			    		<i class="icon is-medium">
+							<span class="far fa-file-image fa-2x"></span>
+						</i>
+				    </div>
+				    <div class="level-item">
+			    		<i class="icon is-medium">
+							<span class="far fa-file-pdf fa-2x"></span>
+						</i>
+				    </div>
+				    <div class="level-item">
+				    	<span>Adjunta un doc de prueba (< 2mb)</span>
+				    </div>
+				</div>
+			</div>
+		</label>
+		<input type="file" id="{{name}}_prooffile" name="{{name}}_proof" 
+	accept="image/png, image/jpeg, aplication/pdf" data-max-size="2048"/>
+      <p class="help is-danger" id="fileproblem">Recuerda: No puedes adjuntar un arhcivo que no sea imagen, PDF y que pese mas de 2mb</p>
+		
+	</div>
+</div>

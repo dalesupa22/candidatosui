@@ -210,7 +210,7 @@ input, textarea,.textarea, .input{
 
 }
 textarea.textarea{
-	min-height: 100px !important;
+	min-height: 80px !important;
 }
 .field{
 	.label{
@@ -233,6 +233,18 @@ a{
 .icon{ transition: all 0.25s ease}
 input[type="radio"]:checked + span.icon { 
 	color: $maincolor;
+}
+input[type="file"]{
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+label.filelabel {
+	cursor: pointer; /* "hand" cursor */
+	
 }
 .select:not(.is-multiple)::after{
 	border-color: $maincolor;

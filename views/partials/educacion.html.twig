@@ -1,4 +1,5 @@
 <div class="is-full column step2 {{name}} inactive">
+	<h3 class="subtitle is-6">¿Qué es lo que te preocupa de <strong>Educación</strong>?</h3>
 	<div class="field">
 		<label class="label is-small">Selecciona que clase de problema es</label>
 		<div class="control">
@@ -23,12 +24,8 @@
 			{% endfor %}
 		</div>
 	</div>
-	<div class="field" id="comment">
-		<div class="control">
-			<label for="">¿Algo especifico que te gustaria comentar/denunciar?</label>
-			<textarea name="{{name}}_extracomment" class="textarea"></textarea>
-		</div>
-	</div>
+	{% include 'partials/extra_comment.twig' %}
+	
 	<div class="field">
 		<a class="button is-rounded is-linkcolor is-small backstep is-hidden-mobile" data-step="{{name}}">
 		    <span class="icon">

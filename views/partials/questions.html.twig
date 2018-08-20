@@ -56,15 +56,15 @@
 			</select>
 			<div class="is-full column step1">
 				<div class="columns">
-					<div class="column is-half">
-						<h3 class="title is-5">¿Como te interesaría que tu petición llegara al político que piensas apoyar?</h3>
+					<div class="column is-full">
+						<h3 class="title is-6" style="margin-bottom: 0.4rem">¿Como te interesaría que tu petición llegara al político que piensas apoyar?</h3>
 						<div class="field">
 							<div class="selector with-radios">
-								<input type="radio" id="tipoqueja" name="tipoform" value="queja" hidden>
-							    <input type="radio" id="tipoopinion" name="tipoform" value="opinion" hidden>
+								<input type="radio" id="tipoqueja" name="tipoform" value="queja" hidden >
+							    <input type="radio" id="tipoopinion" name="tipoform" value="opinion" hidden checked>
 							    <input type="radio" id="tipopropuesta" name="tipoform" value="propuesta" hidden>
 								<div>
-									<div class="option notnext motive opinion" data-value="tipoopinion">
+									<div class="option notnext motive opinion active" data-value="tipoopinion">
 										<div></div>
 									</div>
 								</div>
@@ -80,22 +80,19 @@
 								</div>
 							</div>
 						</div>
-						
-					</div>
-					<div class="column is-half">
-						<h2 class="title is-5">¿Cuál tema te preocupa más?</h2>
+						<h3 class="title is-6" style="margin-bottom: 0.4rem">¿Cuál tema te preocupa más?</h3>
 						<div class="field">
 							<div class="selector with-select with-step">
 								<select name="motive" hidden>
-									<option value="ambiente"></option>
-									<option value="salud"></option>
-									<option value="infancia"></option>
-									<option value="educacion"></option>
-									<option value="obras"></option>
-									<option value="seguridad"></option>
-									<option value="corrupcion"></option>
-									<option value="serviciospublicos"></option>
-									<option value="discriminacion"></option>
+									<option value="ambiente">ambiente</option>
+									<option value="salud">salud</option>
+									<option value="infancia">infancia</option>
+									<option value="educacion">educacion</option>
+									<option value="obras">obras</option>
+									<option value="seguridad">seguridad</option>
+									<option value="corrupcion">corrupcion</option>
+									<option value="serviciospublicos">servicios</option>
+									<option value="discriminacion">discriminacion</option>
 								</select>
 								<div>
 									<div class="option answers is-small ambiente" data-value="ambiente">
@@ -212,49 +209,50 @@
 							<option value="Comunidad LGBT">jose5</option>
 							<option value="Venezolanos">jose5</option>
 						</select>
+						
 					</div>
 				</div>
 			</div>
 			
 			{# Ambiente #}
-			{% include 'partials/step2.html' with {'name':'ambiente', 
+			{% include 'partials/step2.html.twig' with {'name':'ambiente', 
 			'items':["Contaminación de Agua","Contaminación de Aire","Residuos Tóxicos",
 			"Basuras", 'Minería','Deforestación','Plagas'] }  %}
 
 			{# Salud #}
-			{% include 'partials/salud.html' with {'name':'salud', 
-			'items':['Citas', 'Autorizaciones',"Entrega de Medicamentos","No hay acceso a un centro de salud a menos de 30 Km"] }  %}
+			{% include 'partials/salud.html.twig' with {'name':'salud', 
+			'items':['Citas', "No hay acceso a un centro de salud a menos de 30 Km",'Autorizaciones',"Entrega de Medicamentos"] }  %}
 
 			{# Corrupcion #}
-			{% include 'partials/step2.html' with {'name':'corrupcion', 
+			{% include 'partials/step2.html.twig' with {'name':'corrupcion', 
 			'items':['Obras', 'Educación',"Salud", "Otros"] }  %}
 
 			{# Educacion #}
-			{% include 'partials/educacion.html' with {'name':'educacion', 
+			{% include 'partials/educacion.html.twig' with {'name':'educacion', 
 			'items':['No hay centro educativo', 'No hay como llegar al centro educativo',"No hay quien dicte clases en el centro educativo"] }  %}
 
 			{# Infancia #}
-			{% include 'partials/step2.html' with {'name':'infancia', 
+			{% include 'partials/step2.html.twig' with {'name':'infancia', 
 			'items':['Trabajo Forzado', 'Abandono',"Violencia","Salud","Educación"] }  %}
 
 			{# Servicios Publicos #}
-			{% include 'partials/serviciospublicos.html' with {'name':'serviciospublicos', 
+			{% include 'partials/serviciospublicos.html.twig' with {'name':'serviciospublicos', 
 			'items':['Acueducto y Alcantarillado', 'Luz',"Gas","Internet","Transporte Público"] }  %}
 
 			{# Seguridad #}
-			{% include 'partials/step2.html' with {'name':'seguridad', 
+			{% include 'partials/step2.html.twig' with {'name':'seguridad', 
 			'items':['Grupos al margen de la ley', 'Violencia Intrafamiliar',"Amenazas","Desplazamiento","Robo","Riñas"] }  %}
 
 			{# Obras #}
-			{% include 'partials/step2.html' with {'name':'obras', 
+			{% include 'partials/step2.html.twig' with {'name':'obras', 
 			'items':['Viales', 'Espacio Público',"Parques","Acueducto y Alcantarillado","Alumbrado","Transporte Público"] }  %}
 
 			{# Movilidad #}
-			{% include 'partials/step2.html' with {'name':'movilidad', 
+			{% include 'partials/step2.html.twig' with {'name':'movilidad', 
 			'items':['Falta de transporte público',"Falta de carreteras/infraestructura para transporte","Señalización","Accidentes en la vía"] }  %}
 
 			{# Discriminación #}
-			{% include 'partials/step2.html' with {'name':'discriminacion', 
+			{% include 'partials/step2.html.twig' with {'name':'discriminacion', 
 			'items':['LGBTI',"Racial","Social","Ideológica"] }  %}
 			
 		</div>
@@ -431,11 +429,11 @@
 						<div class="field">
 							<label for="" class="label">Genero</label>
 							<div class="selector with-radios">
-								<input type="radio" id="genderm" name="gender" value="M" hidden>
+								<input type="radio" id="genderm" name="gender" value="M" hidden checked>
 							    <input type="radio" id="genderf" name="gender" value="F" hidden>
 							    <input type="radio" id="genderlgbt" name="gender" value="LGBT" hidden>
 								<div>
-									<div class="option notnext has-text-centered" data-value="genderm">
+									<div class="option notnext has-text-centered active" data-value="genderm">
 										<i class="icon is-large">
 											<span class="fas fa-male fa-2x"></span>
 										</i>
@@ -465,8 +463,8 @@
 						<h3 class="title is-6">O compelta el formulario como anónimo</h3>
 						<div class="field">
 							<div class="selector with-radios">
-								<input type="radio" id="usertypenormal" name="usertype" value="normal" selected hidden>
-							    <input type="radio" id="usertypeanonymous" name="usertype" value="anonymous" hidden>
+								<input type="radio" id="usertypenormal" name="usertype" value="normal" checked>
+							    <input type="radio" id="usertypeanonymous" name="usertype" value="anonymous">
 								<div>
 									<div class="option notnext usertype normal active has-text-centered" data-value="usertypenormal">
 										<div></div>

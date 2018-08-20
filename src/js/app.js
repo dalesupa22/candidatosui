@@ -14,6 +14,7 @@ var intro_index = 0;
 var started = false;
 var moving = false;
 var in_ending = false;
+var validPersonalInfo = false
 
 //Mobile breakdown
 var is_mobile = false
@@ -192,6 +193,22 @@ function showIntro(i)
     }
 
 }
+function checkValidations(i)
+{
+    console.log(i)
+    console.log(validPersonalInfo)
+    console.log($("input[name='usertype']").val())
+    if($("input[name='usertype']:checked").val() != 'anonymous')
+    {
+        if(i == 2 && !validPersonalInfo)
+        {
+            $(".personalinfo input:not([type='radio'])").trigger("change")
+            return false;
+        }
+    }
+    validPersonalInfo = true
+    return true; 
+}
 var iterify = function(){
     questions.next = (function (fromIntro = false) { 
         if(fromIntro)
@@ -203,11 +220,17 @@ var iterify = function(){
                 tmp++;
             }
             if((index + tmp) < this.length)
+            {
+                //Check validations
                 showQuestion(index + 1)
+            }
             return true;
         }
         else if(index == this.length-1 && !moving && !in_ending)
-            goToEnding();
+        {
+            if(checkValidations(index))
+                goToEnding();
+        }
         
         return false;
     });
@@ -248,6 +271,20 @@ function getCities(stateId)
         $("[name='city']").append("<option value='"+id+"'>"+name+"</option>")
     }
 }
+function beforeSendValidations(){
+    //validates EVERYTHING
+    //At least one motive is selected
+    var errors = [];
+    if($('select[name="motive"]').val().length < 1)
+        errors.push("Por favor selecciona por lo menos un motivo")
+    if($("input[name='dispuesto']:checked").val() == null)
+        errors.push("Por favor selecciona si apoyarias o no a un politico en la pregunta 2")
+    if($(".personalinfo input:empty").length > 0 && $("input[name='usertype']:checked").val() != 'anonymous')
+        errors.push("Por favor llena toda la parte")
+
+    return errors;
+    
+}
 $(document).ready(function(){
     if( $(window).width() <= 768 )
         is_mobile = true
@@ -269,6 +306,21 @@ $(document).ready(function(){
     });
 
     $('[name="state"]').trigger("change")
+
+    $(".personalinfo input:not([type='radio'])").on("change",function(){
+        console.log("input change")
+        var input=$(this);
+        if(input.val())
+        {
+            input.removeClass("is-danger")
+            validPersonalInfo = true
+        }
+        else
+        {
+            input.addClass("is-danger")
+            validPersonalInfo = false
+        }
+    })
 
     $('#prooffile').change(function(e){ 
         var maxSize = $(this).data('max-size');
@@ -328,6 +380,7 @@ $(document).ready(function(){
 
     $(".questiondirs a.next").click(function(e){
     	e.preventDefault();
+        //Check if validations 
     	questions.next();
     })
      $(".introdirs a.next").click(function(e){
@@ -412,10 +465,10 @@ $(document).ready(function(){
 
     $("[name='usertype']").change(function(e){
         if($(this).val() == "anonymous")
-            $(".personalinfo.step0 input, .personalinfo.step2 input").prop('disabled', true)
+            $(".personalinfo input, .personalinfo select").prop('disabled', true)
         else
-            $(".personalinfo.step0 input, .personalinfo.step2 select").prop('disabled', false)
-        $(".personalinfo.step0 .option:not(.usertype), .personalinfo.step2 .option:not(.usertype)").toggleClass('disabled')
+            $(".personalinfo input, .personalinfo select").prop('disabled', false)
+        $(".personalinfo .option:not(.usertype)").toggleClass('disabled')
     })
 
     //Create multiple checkbox functionality
@@ -471,13 +524,24 @@ $(document).ready(function(){
 
     $("#formulario").submit(function(event) {
         event.preventDefault();
-        console.log($(this).serialize())
 
-        $("#formodal").addClass("is-active")
-        TweenMax.to($("#formodal"), 0.6, {opacity: 1})
-
-
+        var err = beforeSendValidations()
+        console.log(err)
+        if(err.length == 0)
+        {
+            //send
+            $("#formodal").addClass("is-active")
+            TweenMax.to($("#formodal"), 0.6, {opacity: 1})
+        }
+        else{
+            //show errors
+            for(i=0;i<err.length;i++)
+            {
+                $("ul.errors").append("<li>"+err[i]+"</li>");
+            }
+        }
     });
+
     $(".modal-close, .closebtn").click(function(e)
     {
         TweenMax.to($(this).closest(".modal"), 0.8, {opacity: 0, onComplete: function(){
@@ -487,12 +551,17 @@ $(document).ready(function(){
         }})
 
     })
+    $("#termswitch").click(function(e){
+        e.preventDefault();
+        $("#terms").addClass("is-active")
+        TweenMax.to($("#terms"), 0.6, {opacity: 1});
+
+        return false;
+    })
 
 });
 $(document).keyup(function(e) {
     if(e.which == 13 && !moving && started) {
     	questions.next();
     }
-    else if(e.which == 8 && started)
-    	questions.prev();
 });

@@ -7691,7 +7691,7 @@ footer {
           box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08); }
 
 textarea.textarea {
-  min-height: 100px !important; }
+  min-height: 80px !important; }
 
 .field .label {
   color: #424770; }
@@ -7716,6 +7716,18 @@ a {
 
 input[type="radio"]:checked + span.icon {
   color: #16c6cc; }
+
+input[type="file"] {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1; }
+
+label.filelabel {
+  cursor: pointer;
+  /* "hand" cursor */ }
 
 .select:not(.is-multiple)::after {
   border-color: #16c6cc;

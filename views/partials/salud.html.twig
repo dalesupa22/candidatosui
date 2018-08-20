@@ -1,22 +1,24 @@
 <div class="is-full column step2 {{name}} inactive">
-	<h3 class="subtitle is-hidden-tablet is-6">¿Qué es lo que te preocupa de <strong>Salud</strong>?</h3>
-	<div class="field">
-		<div class="selector with-select outter-select only-texts">
-			{% for item in items %}
-			<div>
-				<div class="option notnext text" data-value="{{item}}">
-					<p>{{item}}</p>
+	<h3 class="subtitle is-6">¿Qué es lo que te preocupa de <strong>Salud</strong>?</h3>
+	<div class="columns is-multiline">
+		<div class="column is-half">
+			<div class="field">
+				<div class="selector with-select outter-select only-texts">
+					{% for item in items %}
+					<div>
+						<div class="option notnext text" data-value="{{item}}">
+							<p>{{item}}</p>
+						</div>
+					</div>
+					{% endfor %}
 				</div>
 			</div>
-			{% endfor %}
 		</div>
-	</div>
-	<div class="columns">
-		<div class="is-two-thirds column">
+		<div class="column is-half">
 			<div class="field">
 				<div class="control">
 					<label class="label is-small">¿Quién no te está dando la atención, medicamento o autorización? Hospital/EPS</label>
-					<div class="select">
+					<div class="select is-small">
 					  <select name="salud_extra_eps">
 					    <option value="EPS" selected="">EPS</option>
 					    <option value="Hospital">Hospital</option>
@@ -24,14 +26,16 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="column">
 			<div class="field">
 				<div class="control">
 					<label class="label is-small">Nombre de la EPS u Hospital</label>
-					<input type="text" name="salud_extra_eps_name" class="input">
+					<input type="text" name="salud_extra_eps_name" class="input is-small">
 				</div>
 			</div>
+			
+		</div>
+		<div class="column is-full">
+			{% include 'partials/extra_comment.twig' %}
 		</div>
 	</div>
 	<div class="field">

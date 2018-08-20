@@ -1,9 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
+<div class="modal" id="terms">
+	<div class="modal-background"></div>
+	<div class="modal-card">
+	    <div class="modal-card-head">
+	      <p class="modal-card-title">Términos y Condiciones</p>
+	    </div>
+	    <section class="modal-card-body">
+	      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut tempore quasi praesentium veniam odit, molestias rerum alias, omnis modi accusantium velit id eius voluptatem. Dicta dolor facilis, quia modi harum.</p>
+	    </section>
+	    <footer class="modal-card-foot">
+	      <button class="button closebtn is-primary" aria-label="close">Cerrar</button>
+	    </footer>
+	  </div>
+</div>
 <div class="modal" id="formodal">
   <div class="modal-background"></div>
   <div class="modal-content has-text-centered box">
-    	<img src="./css/img/thankyou.png" alt="gracias" style="max-width: 90%; margin: 0 auto"><br>
+    	<img src="./css/img/thankyou.png" alt="gracias" style="max-width: 65%; margin: 0 auto"><br>
     	<h5 class="subtitle is-size-7 is-size-6-desktop">Estamos procesando tu información para hacerla llegar a las personas correctas y asegurarno que tu voz tenga efecto :)</h5>
     	<br>
     	<button class="button is-linkcolor closebtn">Ok</button>
@@ -65,7 +79,10 @@
 				</div>
 				<div class="is-two-thirds column">
 					<button class="button is-primary is-huge" type="submit">enviar respuestas</button>
+					<p class="content">Al enviar estás aceptando nuestro <a href="#" id="termswitch">Términos y Condiciones</a></p>
+					<ul class="errors"></ul>
 				</div>
+
 			</div>
 		</div>
 		</form>
