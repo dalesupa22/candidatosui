@@ -462,22 +462,55 @@ progress[value]::-webkit-progress-value{
 .motive{
 	> div{
 		background: url("./img/form_motive.png");
-		background-size: 210px 140px;
+		background-size: 240px 160px;
 		background-position: 0 0;
-		width: 70px;
-		height: 70px;
+		width: 80px;
+		height: 80px;
 		transition: all 0.2s ease;
 		margin: 0 auto;
 	}
 	&.active{
 		> div{
-			background-position-y: -70px !important;
+			background-position-y: -80px !important;
 		}
 	}
 	
 	&.opinion > div{ background-position: 0 0}
-	&.propuesta > div{ background-position: -70px 0px}
-	&.reclamo > div{ background-position: -140px 0px}
+	&.propuesta > div{ background-position: -80px 0px}
+	&.reclamo > div{ background-position: -160px 0px}
+
+	@include widescreen{
+		> div{
+			background-size: 300px 200px;
+			width: 100px;
+			height: 100px;
+		}	
+		&.active{
+			> div{
+				background-position-y: -100px !important;
+			}
+		}
+		
+		&.opinion > div{ background-position: 0 0}
+		&.propuesta > div{ background-position: -100px 0px}
+		&.reclamo > div{ background-position: -200px 0px}
+	}
+	@include fullhd{
+		> div{
+			background-size: 450px 300px;
+			width: 150px;
+			height: 150px;
+		}	
+		&.active{
+			> div{
+				background-position-y: -150px !important;
+			}
+		}
+		
+		&.opinion > div{ background-position: 0 0}
+		&.propuesta > div{ background-position: -150px 0px}
+		&.reclamo > div{ background-position: -300px 0px}
+	}
 }
 .usertype{
 	> div{
