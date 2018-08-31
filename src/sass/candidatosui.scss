@@ -190,6 +190,14 @@ $input-hover-border-color: darken($grey-light,7%);
 	}
 }
 
+ul.errors{
+	list-style: initial;
+	li, strong{
+		color: $danger
+	}
+
+}
+
 footer{
 	background: $white-bis !important;
 	border-top: 2px solid darken($white-ter,2%);

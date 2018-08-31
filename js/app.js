@@ -2297,12 +2297,49 @@ function getCities(stateId) {
 function beforeSendValidations() {
     //validates EVERYTHING
     //At least one motive is selected
+    $(".errors").empty();
+    $(".personalinfo input:not([type='radio'])").trigger('change');
+
+    //check if motive selected
     var errors = [];
-    if ($('select[name="motive"]').val().length < 1) errors.push("Por favor selecciona por lo menos un motivo");
-    if ($("input[name='dispuesto']:checked").val() == null) errors.push("Por favor selecciona si apoyarias o no a un politico en la pregunta 2");
-    if ($(".personalinfo input:empty").length > 0 && $("input[name='usertype']:checked").val() != 'anonymous') errors.push("Por favor llena toda la parte");
+    if ($('select[name="motive"] option:selected').val().length < 1) errors.push("Por favor selecciona por lo menos un motivo");else if ($('select[name="submotive"] option:selected').val().length < 1) {
+        errors.push("Por favor selecciona que te molesta más de <strong>" + $('select[name="motive"] option:selected').val() + "</strong>");
+    }
+    if ($("input[name='dispuesto']:checked").val() == null) errors.push("Por favor selecciona si apoyarias o no a un politico en la pregunta 4");
+    if ($(".personalinfo input:empty").length > 0 && $("input[name='usertype']:checked").val() != 'anonymous') errors.push("Por favor llena tus datos personales");
 
     return errors;
+}
+
+function consumeWebService(url, method, data) {
+    var type = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "json";
+
+    $.ajax({
+        url: url,
+        type: method,
+        dataType: type,
+        data: data,
+        beforeSend: function beforeSend(xhr) {
+            //Espacio para enviar headers de auth y cosas así necesarias
+            xhr.setRequestHeader('X-Test-Header', 'test-value');
+        },
+        statusCode: {
+            404: function _() {
+                //Si la URL no existe
+                alert("page not found");
+            }
+        }
+    }).done(function (response) {
+        //Si todo sale bien
+        console.log("success");
+        console.log("response");
+    }).fail(function () {
+        //Si hay un error en el llamado
+        console.log("error");
+    }).always(function () {
+        //Siempre que termine el call sin importar si HTTP 200 o lo que sea
+        console.log("complete");
+    });
 }
 $(document).ready(function () {
     if ($(window).width() <= 768) is_mobile = true;
@@ -2328,7 +2365,7 @@ $(document).ready(function () {
     $(".personalinfo input:not([type='radio'])").on("change", function () {
         console.log("input change");
         var input = $(this);
-        if (input.val()) {
+        if (input.val() || $("input[name='usertype']:checked").val() == 'anonymous') {
             input.removeClass("is-danger");
             validPersonalInfo = true;
         } else {
@@ -2354,6 +2391,10 @@ $(document).ready(function () {
                 });
             }
         }, { scope: 'public_profile, email' });
+    });
+
+    $("#pruebaservice").click(function (e) {
+        consumeWebService("https://prueba", "GET");
     });
 
     //1. Automatic creation of questions

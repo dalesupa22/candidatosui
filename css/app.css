@@ -7676,6 +7676,11 @@ a.tag:hover {
   #contact .is-half:not(:first-of-type) {
     padding-left: 4rem; } }
 
+ul.errors {
+  list-style: initial; }
+  ul.errors li, ul.errors strong {
+    color: #ff3860; }
+
 footer {
   background: #fafafa !important;
   border-top: 2px solid #f0f0f0; }
