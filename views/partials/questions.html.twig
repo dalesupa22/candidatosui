@@ -7,9 +7,9 @@
 						<h3 class="title is-6" style="margin-bottom: 0.4rem">¿Como te interesaría que tu petición llegara al político que piensas apoyar?</h3>
 						<div class="field">
 							<div class="selector with-radios">
-								<input type="radio" id="tipoqueja" name="tipoform" value="queja" hidden >
-							    <input type="radio" id="tipoopinion" name="tipoform" value="opinion" hidden checked>
-							    <input type="radio" id="tipopropuesta" name="tipoform" value="propuesta" hidden>
+								<input type="radio" id="tiporeclamo" name="type" value="Reclamo" >
+							    <input type="radio" id="tipoopinion" name="type" value="Opinion" checked>
+							    <input type="radio" id="tipopropuesta" name="type" value="Propuesta" >
 								<div>
 									<div class="option notnext motive opinion active" data-value="tipoopinion">
 										<div></div>
@@ -30,195 +30,198 @@
 						<h3 class="title is-6" style="margin-bottom: 0.4rem">¿Cuál tema te preocupa más?</h3>
 						<div class="field">
 							<div class="selector with-select with-step">
-								<select name="motive" hidden>
+								<select name="CATEGORY_A" hidden>
 									<option value="" disabled selected></option>
-									<option value="ambiente">ambiente</option>
-									<option value="salud">salud</option>
-									<option value="infancia">infancia</option>
-									<option value="educacion">educacion</option>
-									<option value="obras">obras</option>
-									<option value="seguridad">seguridad</option>
-									<option value="corrupcion">corrupcion</option>
-									<option value="serviciospublicos">servicios</option>
-									<option value="discriminacion">discriminacion</option>
+									<option value="A">ambiente</option>
+									<option value="B">salud</option>
+									<option value="C">infancia</option>
+									<option value="D">educacion</option>
+									<option value="E">obras</option>
+									<option value="F">seguridad</option>
+									<option value="G">corrupcion</option>
+									<option value="H">servicios</option>
+									<option value="I">discriminacion</option>
+									<option value="J">movilidad</option>
 								</select>
 								<div>
-									<div class="option answers is-small ambiente" data-value="ambiente">
+									<div class="option answers is-small ambiente" data-value="A">
 										<div></div>
 										<p class="has-text-centered">Ambiente</p>
 									</div>
 								</div>
 								<div>
-									<div class="option answers is-small salud" data-value="salud">
+									<div class="option answers is-small salud" data-value="B">
 										<div></div>
 										<p class="has-text-centered">Salud</p>
 									</div>
 								</div>
 								<div>
-									<div class="option answers is-small infancia" data-value="infancia">
+									<div class="option answers is-small infancia" data-value="C">
 										<div></div>
 										<p class="has-text-centered">Infancia</p>
 									</div>
 								</div>
 								<div>
-									<div class="option answers is-small educacion" data-value="educacion">
+									<div class="option answers is-small educacion" data-value="D">
 										<div></div>
 										<p class="has-text-centered">Educación</p>
 									</div>
 								</div>
 								<div>
-									<div class="option answers is-small obras" data-value="obras">
+									<div class="option answers is-small obras" data-value="E">
 										<div></div>
 										<p class="has-text-centered">Obras</p>
 									</div>
 								</div>
 								<div>
-									<div class="option answers is-small movilidad" data-value="movilidad">
-										<div></div>
-										<p class="has-text-centered">Movilidad</p>
-									</div>
-								</div>
-								<div>
-									<div class="option answers is-small seguridad" data-value="seguridad">
+									<div class="option answers is-small seguridad" data-value="F">
 										<div></div>
 										<p class="has-text-centered">Seguridad</p>
 									</div>
 								</div>
 								<div>
-									<div class="option answers is-small corrupcion" data-value="corrupcion">
+									<div class="option answers is-small corrupcion" data-value="G">
 										<div></div>
 										<p class="has-text-centered is-capitalized">corrupcion</p>
 									</div>
 								</div>
 								<div>
-									<div class="option answers is-small serviciospublicos" data-value="serviciospublicos">
+									<div class="option answers is-small serviciospublicos" data-value="H">
 										<div></div>
 										<p class="has-text-centered is-capitalized">Servicios Públicos</p>
 									</div>
 								</div>
 								<div>
-									<div class="option answers is-small discriminacion" data-value="discriminacion">
+									<div class="option answers is-small discriminacion" data-value="I">
 										<div></div>
 										<p class="has-text-centered is-capitalized">Discriminación</p>
 									</div>
 								</div>
+								<div>
+									<div class="option answers is-small movilidad" data-value="J">
+										<div></div>
+										<p class="has-text-centered">Movilidad</p>
+									</div>
+								</div>
 							</div>
 						</div>
-						<select name="submotive" hidden>
+						<select name="CATEGORY_B" hidden>
 							<option value="" disabled selected></option>
 							{# Ambiente #}
-							<option value="contaminacionAgua">jose</option>
-							<option value="contaminacionAire">jose</option>
-							<option value="residuosToxicos">jose</option>
-							<option value="basuras">jose</option>
-							<option value="minerias">jose</option>
-							<option value="deforestacion">jose</option>
-							<option value="plagas">jose</option>
+							<option value="A1">jose</option>
+							<option value="A2">jose</option>
+							<option value="A3">jose</option>
+							<option value="A4">jose</option>
+							<option value="A5">jose</option>
+							<option value="A6">jose</option>
+							<option value="A7">jose</option>
 
 							{# Salud #}
-							<option value="citas">jose</option>
-							<option value="acceso">jose</option>
-							<option value="autorizaciones">jose</option>
-							<option value="entrega">jose</option>
+							<option value="B1">jose</option>
+							<option value="B2">jose</option>
+							<option value="B3">jose</option>
+							<option value="B4">jose</option>
 
 							{# Infancia #}
-							<option value="forzado">jose</option>
-							<option value="abandono">jose</option>
-							<option value="violencia">jose</option>
-							<option value="salud"><jose</option>
-							<option value="educacion"><jose</option>
+							<option value="C1">jose</option>
+							<option value="C2">jose</option>
+							<option value="C3">jose</option>
+							<option value="C4"><jose</option>
+							<option value="C5"><jose</option>
 
 							{# Educacion #}
-							<option value="centros"></option>
-							<option value="accesoCentro">jose</option>
-							<option value="profesor">jose</option>
+							<option value="D1"></option>
+							<option value="D2">jose</option>
+							<option value="D3">jose</option>
 
 							{# Obras #}
-							<option value="viales"></option>
-							<option value="espacio">jose</option>
-							<option value="parques">jose</option>
-							<option value="acueducto">jose</option>
-							<option value="alumbrado">jose</option>
+							<option value="E1"></option>
+							<option value="E2">jose</option>
+							<option value="E3">jose</option>
+							<option value="E4">jose</option>
+							<option value="E5">jose</option>
 
-							{# Movilidad #}
-							<option value="transporte"></option>
-							<option value="carreteras">jose</option>
-							<option value="senalizacion">jose</option>
-							<option value="accidentes">jose</option>
-							
 							{# Seguridad #}
-							<option value="grupos">jose3</option>
-							<option value="intrafamiliar">jose3</option>
-							<option value="amenazas">jose3</option>
-							<option value="desplazamiento">jose3</option>
-							<option value="robo">jose3</option>
-							<option value="rinas">jose3</option>
+							<option value="F1">jose3</option>
+							<option value="F2">jose3</option>
+							<option value="F3">jose3</option>
+							<option value="F4">jose3</option>
+							<option value="F5">jose3</option>
+							<option value="F6">jose3</option>
 
 							{# Corrupcion #}
-							<option value="obras"></option>
-							<option value="educacion"></option>
-							<option value="salud"></option>
-							<option value="otros"></option>
+							<option value="G1"></option>
+							<option value="G2"></option>
+							<option value="G3"></option>
+							<option value="G4"></option>
 
 							{# Servicios publicos #}
-							<option value="acueducto"></option>
-							<option value="luz"></option>
-							<option value="gas"></option>
-							<option value="internet"></option>
-							<option value="transportepublico"></option>
+							<option value="H1"></option>
+							<option value="H2"></option>
+							<option value="H3"></option>
+							<option value="H4"></option>
+							<option value="H5"></option>
 
 							{# Discriminacion #}
-							<option value="lgbti"></option>
-							<option value="racial"></option>
-							<option value="social"></option>
-							<option value="ideologia"></option>
-							
+							<option value="I1"></option>
+							<option value="I2"></option>
+							<option value="I3"></option>
+							<option value="I4"></option>
+
+							{# Movilidad #}
+							<option value="J1"></option>
+							<option value="J2">jose</option>
+							<option value="J3">jose</option>
+							<option value="J4">jose</option>
 						</select>
-						
 					</div>
 				</div>
 			</div>
 			
 			{# Ambiente #}
-			{% include 'partials/step2.html.twig' with {'name':'ambiente', 
+			{% include 'partials/step2.html.twig' with {'name':'ambiente','code':"A", 
 			'items':["Contaminación de Agua","Contaminación de Aire","Residuos Tóxicos",
-			"Basuras", 'Minería','Deforestación','Plagas'],'values':['contaminacionAire','residuosToxicos','basuras','minerias','deforestacion','plagas'] }  %}
+			"Basuras", 'Minería','Deforestación','Plagas'],'values':['A1','A2','A3','A4','A5','A6'] }  %}
 
 			{# Salud #}
-			{% include 'partials/salud.html.twig' with {'name':'salud', 
-			'items':['Citas', "No hay acceso a un centro de salud a menos de 30 Km",'Autorizaciones',"Entrega de Medicamentos"],'values':['citas','accesos','autorizaciones','entregas'] }  %}
+			{% include 'partials/salud.html.twig' with {'name':'salud','code':"B", 
+			'items':['Citas', "No hay acceso a un centro de salud a menos de 30 Km",'Autorizaciones',"Entrega de Medicamentos"],'values':['B1','B2','B3','B5'] }  %}
 
-			{# Corrupcion #}
-			{% include 'partials/step2.html.twig' with {'name':'corrupcion', 
-			'items':['Obras', 'Educación',"Salud", "Otros"], 'values':['obras', 'educación',"salud", "otros"] }  %}
-
-			{# Educacion #}
-			{% include 'partials/educacion.html.twig' with {'name':'educacion', 
-			'items':['No hay centro educativo', 'No hay como llegar al centro educativo',"No hay quien dicte clases en el centro educativo"],'values':['centros', 'accesoCentro',"profesor"] }  %}
+			
 
 			{# Infancia #}
-			{% include 'partials/step2.html.twig' with {'name':'infancia', 
-			'items':['Trabajo Forzado', 'Abandono',"Violencia","Salud","Educación"],'values':['forzado', 'abandono',"violencia", "salud","educacion"] }  %}
+			{% include 'partials/step2.html.twig' with {'name':'infancia','code':"C", 
+			'items':['Trabajo Forzado', 'Abandono',"Violencia","Salud","Educación"],'values':['C1', 'C2',"C3", "C4","C5"] }  %}
 
-			{# Servicios Publicos #}
-			{% include 'partials/serviciospublicos.html.twig' with {'name':'serviciospublicos', 
-			'items':['Acueducto y Alcantarillado', 'Luz',"Gas","Internet","Transporte Público"],'values':['acueducto', 'luz',"gas", "internet","transportepublico"] }  %}
+			{# Educacion #}
+			{% include 'partials/educacion.html.twig' with {'name':'educacion','code':"D", 
+			'items':['No hay centro educativo', 'No hay como llegar al centro educativo',"No hay quien dicte clases en el centro educativo"],'values':['D1', 'D2',"D3"] }  %}
+
+			
+			{# Obras #}
+			{% include 'partials/step2.html.twig' with {'name':'obras','code':"E", 
+			'items':['Viales', 'Espacio Público',"Parques","Acueducto y Alcantarillado","Alumbrado","Transporte Público"],'values':['E1', 'E2',"E3", "E4","E5"] }  %}
 
 			{# Seguridad #}
-			{% include 'partials/step2.html.twig' with {'name':'seguridad', 
-			'items':['Grupos al margen de la ley', 'Violencia Intrafamiliar',"Amenazas","Desplazamiento","Robo","Riñas"],'values':['grupos', 'intrafamiliar',"amenazas", "desplazamiento","robo","rinas"] }  %}
+			{% include 'partials/step2.html.twig' with {'name':'seguridad','code':"F", 
+			'items':['Grupos al margen de la ley', 'Violencia Intrafamiliar',"Amenazas","Desplazamiento","Robo","Riñas"],'values':['F1', 'F2',"F3", "F4","F5","F6"] }  %}
 
-			{# Obras #}
-			{% include 'partials/step2.html.twig' with {'name':'obras', 
-			'items':['Viales', 'Espacio Público',"Parques","Acueducto y Alcantarillado","Alumbrado","Transporte Público"],'values':['viales', 'espacio',"parques", "acueducto","alumbrado"] }  %}
+			{# Corrupcion #}
+			{% include 'partials/step2.html.twig' with {'name':'corrupcion','code':"G", 
+			'items':['Obras', 'Educación',"Salud", "Otros"], 'values':['G1', 'G2',"G3", "G4"] }  %}
 
-			{# Movilidad #}
-			{% include 'partials/step2.html.twig' with {'name':'movilidad', 
-			'items':['Falta de transporte público',"Falta de carreteras/infraestructura para transporte","Señalización","Accidentes en la vía"],'values':['transporte', 'carreteras',"senalizacion", "accidentes"] }  %}
+			{# Servicios Publicos #}
+			{% include 'partials/serviciospublicos.html.twig' with {'name':'serviciospublicos','code':"H",'items':['Acueducto y Alcantarillado', 'Luz',"Gas","Internet","Transporte Público"],'values':['H1', 'H2',"H3", "H4","H5"] }  %}
+
 
 			{# Discriminación #}
-			{% include 'partials/step2.html.twig' with {'name':'discriminacion', 
-			'items':['LGBTI',"Racial","Social","Ideológica"],'values':['lgbti', 'racial',"social", "ideologia"] }  %}
+			{% include 'partials/step2.html.twig' with {'name':'discriminacion','code':"I", 
+			'items':['LGBTI',"Racial","Social","Ideológica"],'values':['I1', 'I2',"I3", "I4"] }  %}
+
+			{# Movilidad #}
+			{% include 'partials/step2.html.twig' with {'name':'movilidad','code':"J", 
+			'items':['Falta de transporte público',"Falta de carreteras/infraestructura para transporte","Señalización","Accidentes en la vía"],'values':['J1', 'J2',"J3", "J4"] }  %}
+
 			
 		</div>
 	</div>

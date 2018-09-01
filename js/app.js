@@ -2302,8 +2302,8 @@ function beforeSendValidations() {
 
     //check if motive selected
     var errors = [];
-    if ($('select[name="motive"] option:selected').val().length < 1) errors.push("Por favor selecciona por lo menos un motivo");else if ($('select[name="submotive"] option:selected').val().length < 1) {
-        errors.push("Por favor selecciona que te molesta más de <strong>" + $('select[name="motive"] option:selected').val() + "</strong>");
+    if ($('select[name="CATEGORY_A"] option:selected').val().length < 1) errors.push("Por favor selecciona por lo menos un motivo");else if ($('select[name="CATEGORY_B"] option:selected').val().length < 1) {
+        errors.push("Por favor selecciona que te molesta más de <strong>" + $('select[name="CATEGORY_A"] option:selected').val() + "</strong>");
     }
     if ($("input[name='dispuesto']:checked").val() == null) errors.push("Por favor selecciona si apoyarias o no a un politico en la pregunta 4");
     if ($(".personalinfo input:empty").length > 0 && $("input[name='usertype']:checked").val() != 'anonymous') errors.push("Por favor llena tus datos personales");
@@ -2443,7 +2443,7 @@ $(document).ready(function () {
 
     $(".selector.with-select.outter-select .option:not(.disabled)").click(function (e) {
         var parent = $(this).closest(".selector");
-        var selector = $("select.submotive");
+        var selector = $('select.[name="CATEGORY_B"]');
         //if active do nothing
         if (!$(this).hasClass("active")) {
             //Find active one and deactivates it
@@ -2549,9 +2549,9 @@ $(document).ready(function () {
         event.preventDefault();
 
         var err = beforeSendValidations();
-        console.log(err);
         if (err.length == 0) {
             //send
+            console.log($(this).serialize());
             $("#formodal").addClass("is-active");
             _TweenMax2.default.to($("#formodal"), 0.6, { opacity: 1 });
         } else {

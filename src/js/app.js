@@ -279,11 +279,11 @@ function beforeSendValidations(){
 
     //check if motive selected
     var errors = [];
-    if($('select[name="motive"] option:selected').val().length < 1)
+    if($('select[name="CATEGORY_A"] option:selected').val().length < 1)
         errors.push("Por favor selecciona por lo menos un motivo")
-    else if($('select[name="submotive"] option:selected').val().length < 1)
+    else if($('select[name="CATEGORY_B"] option:selected').val().length < 1)
     {
-        errors.push("Por favor selecciona que te molesta más de <strong>"+$('select[name="motive"] option:selected').val()+"</strong>")
+        errors.push("Por favor selecciona que te molesta más de <strong>"+$('select[name="CATEGORY_A"] option:selected').val()+"</strong>")
         
     }
     if($("input[name='dispuesto']:checked").val() == null)
@@ -446,7 +446,7 @@ $(document).ready(function(){
 
     $(".selector.with-select.outter-select .option:not(.disabled)").click(function(e){
         var parent = $(this).closest(".selector")
-        var selector = $("select.submotive")
+        var selector = $('select.[name="CATEGORY_B"]')
         //if active do nothing
         if(!$(this).hasClass("active"))
         {
@@ -576,10 +576,10 @@ $(document).ready(function(){
         event.preventDefault();
 
         var err = beforeSendValidations()
-        console.log(err)
         if(err.length == 0)
         {
             //send
+            console.log($(this).serialize())
             $("#formodal").addClass("is-active")
             TweenMax.to($("#formodal"), 0.6, {opacity: 1})
         }
