@@ -7,9 +7,9 @@
 						<h3 class="title is-6" style="margin-bottom: 0.4rem">¿Como te interesaría que tu petición llegara al político que piensas apoyar?</h3>
 						<div class="field">
 							<div class="selector with-radios">
-								<input type="radio" id="tiporeclamo" name="type" value="Reclamo" >
-							    <input type="radio" id="tipoopinion" name="type" value="Opinion" checked>
-							    <input type="radio" id="tipopropuesta" name="type" value="Propuesta" >
+								<input type="radio" id="tiporeclamo" name="type" value="Reclamo" hidden>
+							    <input type="radio" id="tipoopinion" name="type" value="Opinion" checked hidden>
+							    <input type="radio" id="tipopropuesta" name="type" value="Propuesta" hidden >
 								<div>
 									<div class="option notnext motive opinion active" data-value="tipoopinion">
 										<div></div>
@@ -236,23 +236,23 @@
 						<h2 class="title is-5">¿Te sientes identificado con algún político en especial?</h2>
 						<h3 class="subtitle is-7">De ser así, dinos quien por favor</h3>
 						<div class="field">
-							<input type="text" name="idenpoliticoname" class="input is-small">
+							<input type="text" name="politic_a" class="input is-small">
 						</div>
 					</div>
 					<div class="is-half column">
 						<h5 class="title is-6">¿Apoyarias a un político que oiga tus quejas, se identifique con tu forma de pensar y escuche las soluciones que planteas?</h5>
 						<div class="field">
 							<div class="selector with-radios">
-								<input type="radio" id="dispuestosi" name="dispuesto" value="Si" hidden>
-							    <input type="radio" id="dispuestono" name="dispuesto" value="No" hidden>
+								<input type="radio" id="dispuestosi" name="politic_b" value="Si" hidden>
+							    <input type="radio" id="dispuestono" name="politic_b" value="No" hidden>
 								<div>
-									<div class="option answers nonext is-small si" data-value="dispuestosi">
+									<div class="option answers notnext is-small si" data-value="dispuestosi">
 										<div></div>
 										<p class="has-text-centered">Si</p>
 									</div>
 								</div>
 								<div>
-									<div class="option answers nonext is-small no" data-value="dispuestono">
+									<div class="option answers notnext is-small no" data-value="dispuestono">
 										<div></div>
 										<p class="has-text-centered">No</p>
 									</div>
@@ -270,13 +270,13 @@
 			<div class="is-full column">
 				<div class="field">
 					<div class="selector with-checkboxes">
-						<input type="checkbox" name="partido" value="cr" id="cr" hidden>
-  						<input type="checkbox" name="partido" value="cd" id="cd" hidden>
-  						<input type="checkbox" name="partido" value="verde" id="verde" hidden>
-  						<input type="checkbox" name="partido" value="polo" id="polo" hidden>
-  						<input type="checkbox" name="partido" value="conservador" id="conservador" hidden>
-  						<input type="checkbox" name="partido" value="liberal" id="liberal" hidden>
-  						<input type="checkbox" name="partido" value="na" id="na" hidden checked>
+						<input type="checkbox" name="politic_c" value="cr" id="cr" hidden>
+  						<input type="checkbox" name="politic_c" value="cd" id="cd" hidden>
+  						<input type="checkbox" name="politic_c" value="verde" id="verde" hidden>
+  						<input type="checkbox" name="politic_c" value="polo" id="polo" hidden>
+  						<input type="checkbox" name="politic_c" value="conservador" id="conservador" hidden>
+  						<input type="checkbox" name="politic_c" value="liberal" id="liberal" hidden>
+  						<input type="checkbox" name="politic_c" value="na" id="na" hidden checked>
 						<div>
 							<div class="option partidos cambioradical" data-value="cr">
 								<div></div>
@@ -339,7 +339,7 @@
 							<div class="field-body">
 								<div class="field">
 								  <div class="control has-icons-left ">
-								    <input class="input is-small" type="text" placeholder="Nombre completo" name="fullname">
+								    <input class="input is-small" type="text" placeholder="Nombre completo" name="name">
 								    <span class="icon is-small is-left">
 								      <i class="fas fa-user"></i>
 								    </span>
@@ -378,7 +378,7 @@
 									<label class="label is-small">Municipio</label>
 									<div class="control">
 										<div class="select is-small">
-										  <select name="state">
+										  <select name="state_code">
 										  </select>
 										</div>
 									</div>
@@ -387,7 +387,7 @@
 									<label class="label is-small">Ciudad</label>
 									<div class="control">
 										<div class="select is-small">
-										  <select name="city">
+										  <select name="city_code">
 										  </select>
 										</div>
 									</div>
@@ -431,8 +431,8 @@
 						<h3 class="title is-6">O compelta el formulario como anónimo</h3>
 						<div class="field">
 							<div class="selector with-radios">
-								<input type="radio" id="usertypenormal" name="usertype" value="normal" checked>
-							    <input type="radio" id="usertypeanonymous" name="usertype" value="anonymous">
+								<input type="radio" id="usertypenormal" name="usertype" value="normal" checked hidden>
+							    <input type="radio" id="usertypeanonymous" name="usertype" value="anonymous" hidden>
 								<div>
 									<div class="option notnext usertype normal active has-text-centered" data-value="usertypenormal">
 										<div></div>

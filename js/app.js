@@ -2284,14 +2284,14 @@ function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
 }
 function getCities(stateId) {
-    $('[name="city"]').find('option').remove();
+    $('[name="city_code"]').find('option').remove();
     var theCities = JSON.search(_t_geo_city_2.default, '//*[STA_ID="' + stateId + '"]');
     for (var i = 0; i < theCities.length; i++) {
         var city = theCities[i];
 
         var id = city.CIT_CODE;
         var name = capitalizeFirstLetter(city.CIT_NAME);
-        $("[name='city']").append("<option value='" + id + "'>" + name + "</option>");
+        $("[name='city_code']").append("<option value='" + id + "'>" + name + "</option>");
     }
 }
 function beforeSendValidations() {
@@ -2305,7 +2305,7 @@ function beforeSendValidations() {
     if ($('select[name="CATEGORY_A"] option:selected').val().length < 1) errors.push("Por favor selecciona por lo menos un motivo");else if ($('select[name="CATEGORY_B"] option:selected').val().length < 1) {
         errors.push("Por favor selecciona que te molesta más de <strong>" + $('select[name="CATEGORY_A"] option:selected').val() + "</strong>");
     }
-    if ($("input[name='dispuesto']:checked").val() == null) errors.push("Por favor selecciona si apoyarias o no a un politico en la pregunta 4");
+    if ($("input[name='politic_b']:checked").val() == null) errors.push("Por favor selecciona si apoyarias o no a un politico en la pregunta 4");
     if ($(".personalinfo input:empty").length > 0 && $("input[name='usertype']:checked").val() != 'anonymous') errors.push("Por favor llena tus datos personales");
 
     return errors;
@@ -2352,15 +2352,15 @@ $(document).ready(function () {
 
         var id = state.STA_ID;
         var name = capitalizeFirstLetter(state.STA_NAME);
-        $("[name='state']").append("<option value='" + id + "'>" + name + "</option>");
+        $("[name='state_code']").append("<option value='" + id + "'>" + name + "</option>");
     }
-    $("[name='state']").val($("[name='state'] option:first").val());
+    $("[name='state_code']").val($("[name='state_code'] option:first").val());
 
-    $('[name="state"]').change(function () {
+    $('[name="state_code"]').change(function () {
         getCities($(this).val());
     });
 
-    $('[name="state"]').trigger("change");
+    $('[name="state_code"]').trigger("change");
 
     $(".personalinfo input:not([type='radio'])").on("change", function () {
         console.log("input change");
@@ -2443,7 +2443,7 @@ $(document).ready(function () {
 
     $(".selector.with-select.outter-select .option:not(.disabled)").click(function (e) {
         var parent = $(this).closest(".selector");
-        var selector = $('select.[name="CATEGORY_B"]');
+        var selector = $('select[name="CATEGORY_B"]');
         //if active do nothing
         if (!$(this).hasClass("active")) {
             //Find active one and deactivates it
@@ -2551,7 +2551,33 @@ $(document).ready(function () {
         var err = beforeSendValidations();
         if (err.length == 0) {
             //send
-            console.log($(this).serialize());
+            var ip = "";
+            $.getJSON('https://api.ipify.org?format=json', function (data) {
+                ip = data.ip;
+            });
+            var datos = {
+                type: $("input[name='type']").val(),
+                category_a: $("select[name='CATEGORY_A'] option:selected").val(),
+                category_b: $("select[name='CATEGORY_B'] option:selected").val(),
+                attachments: $("input[name='CATEGORY_B']").val(),
+                politic_a: $("input[name='politic_a']").val(),
+                politic_b: $("input[name='politic_b']:checked").val(),
+                politic_c: $("input[name='politic_c']:checked").val(),
+                anonymous: $("input[name='usertype']:checked").val() == 'anonymous',
+                name: $("input[name='name']").val(),
+                email: $("input[name='email']").val(),
+                phone: $("input[name='phone']").val(),
+                age: $("input[name='age']").val(),
+                state_code: $("select[name='state_code'] option:selected").val(),
+                city_code: $("select[name='city_code'] option:selected").val(),
+                gender: $("input[name='gender']:checked").val(),
+                ip_address: ip,
+                ip_info: $("input[name='email']").val(),
+                date: Date.now()
+            };
+            datos.comments = $("input[name='" + datos.category_a + "_extracomment']").val();
+            datos.attachments = $("input[name='" + datos.category_a + "_attachment']").val();
+            console.log(datos);
             $("#formodal").addClass("is-active");
             _TweenMax2.default.to($("#formodal"), 0.6, { opacity: 1 });
         } else {
