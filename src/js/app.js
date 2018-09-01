@@ -15,9 +15,14 @@ var started = false;
 var moving = false;
 var in_ending = false;
 var validPersonalInfo = false
+var validname =  false,
+validemail = false,
+validphone = false,
+validage = false;
 
 //Mobile breakdown
 var is_mobile = false
+var selected_file = ""
 
 
 
@@ -195,15 +200,20 @@ function showIntro(i)
 }
 function checkValidations(i)
 {
-    console.log(i)
-    console.log(validPersonalInfo)
-    console.log($("input[name='usertype']").val())
     if($("input[name='usertype']:checked").val() != 'anonymous')
     {
-        if(i == 2 && !validPersonalInfo)
+        if(i == 2)
         {
             $(".personalinfo input:not([type='radio'])").trigger("change")
-            return false;
+            if(validphone && validemail && validname && validage)
+            {
+                validPersonalInfo = true
+                return true;
+            }
+            else{
+                validPersonalInfo = false
+                return false;
+            }
         }
     }
     validPersonalInfo = true
@@ -278,6 +288,7 @@ function beforeSendValidations(){
     $(".personalinfo input:not([type='radio'])").trigger('change')
 
     //check if motive selected
+    checkValidations();
     var errors = [];
     if($('select[name="CATEGORY_A"] option:selected').val().length < 1)
         errors.push("Por favor selecciona por lo menos un motivo")
@@ -288,8 +299,10 @@ function beforeSendValidations(){
     }
     if($("input[name='politic_b']:checked").val() == null)
         errors.push("Por favor selecciona si apoyarias o no a un politico en la pregunta 4")
-    if($(".personalinfo input:empty").length > 0 && $("input[name='usertype']:checked").val() != 'anonymous')
+    if(!validPersonalInfo && $("input[name='usertype']:checked").val() != 'anonymous')
         errors.push("Por favor llena tus datos personales")
+    if($("input[name='email']").val() && !isEmail($("input[name='email']").val()))
+        errors.push("Por favor ingresa un correo electrónico valido")
 
 
 
@@ -331,6 +344,10 @@ function consumeWebService(url, method, data,type = "json")
     });
     
 }
+function isEmail(email) {
+    var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    return regex.test(email);
+}
 $(document).ready(function(){
     if( $(window).width() <= 768 )
         is_mobile = true
@@ -353,20 +370,72 @@ $(document).ready(function(){
 
     $('[name="state_code"]').trigger("change")
 
-    $(".personalinfo input:not([type='radio'])").on("change",function(){
-        console.log("input change")
+    $(".personalinfo input[name='name']").on("change",function(){
         var input=$(this);
         if(input.val() || $("input[name='usertype']:checked").val() == 'anonymous')
         {
             input.removeClass("is-danger")
-            validPersonalInfo = true
+            validname = true
         }
         else
         {
             input.addClass("is-danger")
-            validPersonalInfo = false
+            validname = false
         }
+        console.log("valid: "+validname)
     })
+    $(".personalinfo input[name='phone']").on("change",function(){
+        var input=$(this);
+        if(input.val() || $("input[name='usertype']:checked").val() == 'anonymous')
+        {
+            input.removeClass("is-danger")
+            validphone = true
+        }
+        else
+        {
+            input.addClass("is-danger")
+            validphone = false
+        }
+        console.log("valid: "+validphone)
+    })
+    $(".personalinfo input[name='age']").on("change",function(){
+        var input=$(this);
+        if(input.val() || $("input[name='usertype']:checked").val() == 'anonymous')
+        {
+            input.removeClass("is-danger")
+            validage = true
+        }
+        else
+        {
+            input.addClass("is-danger")
+            validage = false
+        }
+        console.log("valid: "+validage)
+    })
+    $(".personalinfo input[type='email']").on("change",function(){
+        var input=$(this);
+        console.log("email change!")
+        if(input.val() || $("input[name='usertype']:checked").val() == 'anonymous')
+        {
+            if(isEmail(input.val()))
+            {
+                input.removeClass("is-danger")
+                validemail = true
+            }
+            else
+            {
+                input.addClass("is-danger")
+                validemail = false
+            }
+        }
+        else
+        {
+            input.addClass("is-danger")
+            validemail = false
+        }
+        console.log("valid: "+validemail)
+    })
+
 
     $('#prooffile').change(function(e){ 
         var maxSize = $(this).data('max-size');
@@ -521,6 +590,19 @@ $(document).ready(function(){
         $(".personalinfo .option:not(.usertype)").toggleClass('disabled')
     })
 
+     $("input:file").change(function(e){
+          var reader = new FileReader();
+          reader.onload = function() {
+
+            var arrayBuffer = this.result,
+              array = new Uint8Array(arrayBuffer),
+              binaryString = String.fromCharCode.apply(null, array);
+
+            selected_file = binaryString
+          }
+          reader.readAsArrayBuffer(this.files[0]);
+    })
+
     //Create multiple checkbox functionality
     $(".selector.with-checkboxes .option:not(.disabled)").click(function(e){
         var parent = $(this).closest(".selector")
@@ -579,15 +661,11 @@ $(document).ready(function(){
         if(err.length == 0)
         {
             //send
-            var ip = "";
-            $.getJSON('https://api.ipify.org?format=json', function(data){
-                ip = data.ip;
-            });
             var datos = {
                 type: $("input[name='type']").val(),
                 category_a: $("select[name='CATEGORY_A'] option:selected").val(),
                 category_b: $("select[name='CATEGORY_B'] option:selected").val(),
-                attachments: $("input[name='CATEGORY_B']").val(),
+                attachments: selected_file,
                 politic_a: $("input[name='politic_a']").val(),
                 politic_b: $("input[name='politic_b']:checked").val(),
                 politic_c: $("input[name='politic_c']:checked").val(),
@@ -599,13 +677,14 @@ $(document).ready(function(){
                 state_code: $("select[name='state_code'] option:selected").val(),
                 city_code: $("select[name='city_code'] option:selected").val(),
                 gender: $("input[name='gender']:checked").val(),
-                ip_address: ip,
-                ip_info: $("input[name='email']").val(),
+                ip_info: navigator.userAgent,
                 date: Date.now()
             }
-            datos.comments = $("input[name='"+datos.category_a+"_extracomment']").val()
-            datos.attachments = $("input[name='"+datos.category_a+"_attachment']").val()
-            console.log(datos)
+            datos.comments = $("textarea[name='"+datos.category_a+"_extracomment']").val()
+            $.getJSON('https://api.ipify.org?format=json', function(data){
+                datos.ip_address = data.ip;
+                console.log(datos)
+            });
             $("#formodal").addClass("is-active")
             TweenMax.to($("#formodal"), 0.6, {opacity: 1})
         }
