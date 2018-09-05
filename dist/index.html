@@ -1,0 +1,1452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="../css/app.css">
+	<!-- HTTPS required. HTTP will give a 403 forbidden response -->
+	<script src="https://sdk.accountkit.com/en_US/sdk.js"></script>
+  <script src="https://raw.githubusercontent.com/hbi99/defiant.js/master/dist/defiant.min.js"></script>
+<link href="/css/main.css" rel="stylesheet"></head>
+<body>
+	<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId            : '389778738207187',
+      autoLogAppEvents : true,
+      xfbml            : true,
+      version          : 'v3.0'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+	
+<div class="modal" id="terms">
+	<div class="modal-background"></div>
+	<div class="modal-card">
+	    <div class="modal-card-head">
+	      <p class="modal-card-title">Términos y Condiciones</p>
+	    </div>
+	    <section class="modal-card-body">
+	      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut tempore quasi praesentium veniam odit, molestias rerum alias, omnis modi accusantium velit id eius voluptatem. Dicta dolor facilis, quia modi harum.</p>
+	    </section>
+	    <footer class="modal-card-foot">
+	      <button class="button closebtn is-primary" aria-label="close">Cerrar</button>
+	    </footer>
+	  </div>
+</div>
+<div class="modal" id="formodal">
+  <div class="modal-background"></div>
+  <div class="modal-content has-text-centered box">
+    	<img src="../css/img/thankyou.png" alt="gracias" style="max-width: 65%; margin: 0 auto"><br>
+    	<h5 class="subtitle is-size-7 is-size-6-desktop">Estamos procesando tu información para hacerla llegar a las personas correctas y asegurarno que tu voz tenga efecto :)</h5>
+    	<br>
+    	<button class="button is-linkcolor closebtn">Ok</button>
+  </div>
+  <button class="modal-close is-large" aria-label="close"></button>
+</div>
+<section class="section hero" id="home">
+	<div class="hero-head" id="progress">	
+		<div class="container">
+			<div class="columns is-centered">
+				<div class="is-full column has-text-centered">	
+					<small>Pregunta <span>1</span> de <span>10</span></small>
+					<progress class="progress is-small" value="0" max="100">
+					</progress>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="hero-body">
+		<div class="container" id="intro_full">
+			<div class="columns is-multiline is-centered has-text-centered">
+				<div class="is-full column">
+					<h2 class="title is-size-3 is-size-1-desktop">Formulario De Problematicas</h2>
+				</div>
+				<div class="is-full column">
+					<div class="slide" id="intro1">
+							<br>	
+						<div class="columns has-text-centered is-centered">
+							<div class="column">
+								<div class="infografia one"></div>
+								<h4 class="title is-6">Captura de información de la población</h4>
+							</div>
+							<div class="column">
+								<div class="infografia two"></div>
+								<h4 class="title is-6">Segmentación de información</h4>
+							</div>
+							<div class="column">
+								<div class="infografia three"></div>
+								<h4 class="title is-6">Entrega de info a politicos y entidades publicas</h4>
+							</div>
+							<div class="column">
+								<div class="infografia four"></div>
+								<h4 class="title is-6">Publicación de resultados</h4>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<form action="" id="formulario">
+		<div class="container questionare">
+				<div class="item" id="q1">
+	<div class="container">
+		<div class="columns is-centered is-multiline">
+			<div class="is-full column step1">
+				<div class="columns">
+					<div class="column is-full">
+						<h3 class="title is-6" style="margin-bottom: 0.4rem">¿Como te interesaría que tu petición llegara al político que piensas apoyar?</h3>
+						<div class="field">
+							<div class="selector with-radios">
+								<input type="radio" id="tiporeclamo" name="type" value="Reclamo" hidden>
+							    <input type="radio" id="tipoopinion" name="type" value="Opinion" checked hidden>
+							    <input type="radio" id="tipopropuesta" name="type" value="Propuesta" hidden >
+								<div>
+									<div class="option notnext motive opinion active" data-value="tipoopinion">
+										<div></div>
+									</div>
+								</div>
+								<div>
+									<div class="option notnext motive propuesta" data-value="tipopropuesta">
+										<div></div>
+									</div>
+								</div>
+								<div>
+									<div class="option notnext motive reclamo" data-value="tiporeclamo">
+										<div></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<h3 class="title is-6" style="margin-bottom: 0.4rem">¿Cuál tema te preocupa más?</h3>
+						<div class="field">
+							<div class="selector with-select with-step">
+								<select name="CATEGORY_A" hidden>
+									<option value="" disabled selected></option>
+									<option value="A">ambiente</option>
+									<option value="B">salud</option>
+									<option value="C">infancia</option>
+									<option value="D">educacion</option>
+									<option value="E">obras</option>
+									<option value="F">seguridad</option>
+									<option value="G">corrupcion</option>
+									<option value="H">servicios</option>
+									<option value="I">discriminacion</option>
+									<option value="J">movilidad</option>
+								</select>
+								<div>
+									<div class="option answers is-small ambiente" data-value="A">
+										<div></div>
+										<p class="has-text-centered">Ambiente</p>
+									</div>
+								</div>
+								<div>
+									<div class="option answers is-small salud" data-value="B">
+										<div></div>
+										<p class="has-text-centered">Salud</p>
+									</div>
+								</div>
+								<div>
+									<div class="option answers is-small infancia" data-value="C">
+										<div></div>
+										<p class="has-text-centered">Infancia</p>
+									</div>
+								</div>
+								<div>
+									<div class="option answers is-small educacion" data-value="D">
+										<div></div>
+										<p class="has-text-centered">Educación</p>
+									</div>
+								</div>
+								<div>
+									<div class="option answers is-small obras" data-value="E">
+										<div></div>
+										<p class="has-text-centered">Obras</p>
+									</div>
+								</div>
+								<div>
+									<div class="option answers is-small seguridad" data-value="F">
+										<div></div>
+										<p class="has-text-centered">Seguridad</p>
+									</div>
+								</div>
+								<div>
+									<div class="option answers is-small corrupcion" data-value="G">
+										<div></div>
+										<p class="has-text-centered is-capitalized">corrupcion</p>
+									</div>
+								</div>
+								<div>
+									<div class="option answers is-small serviciospublicos" data-value="H">
+										<div></div>
+										<p class="has-text-centered is-capitalized">Servicios Públicos</p>
+									</div>
+								</div>
+								<div>
+									<div class="option answers is-small discriminacion" data-value="I">
+										<div></div>
+										<p class="has-text-centered is-capitalized">Discriminación</p>
+									</div>
+								</div>
+								<div>
+									<div class="option answers is-small movilidad" data-value="J">
+										<div></div>
+										<p class="has-text-centered">Movilidad</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<select name="CATEGORY_B" hidden>
+							<option value="" disabled selected></option>
+							
+							<option value="A1">jose</option>
+							<option value="A2">jose</option>
+							<option value="A3">jose</option>
+							<option value="A4">jose</option>
+							<option value="A5">jose</option>
+							<option value="A6">jose</option>
+							<option value="A7">jose</option>
+
+							
+							<option value="B1">jose</option>
+							<option value="B2">jose</option>
+							<option value="B3">jose</option>
+							<option value="B4">jose</option>
+
+							
+							<option value="C1">jose</option>
+							<option value="C2">jose</option>
+							<option value="C3">jose</option>
+							<option value="C4"><jose</option>
+							<option value="C5"><jose</option>
+
+							
+							<option value="D1"></option>
+							<option value="D2">jose</option>
+							<option value="D3">jose</option>
+
+							
+							<option value="E1"></option>
+							<option value="E2">jose</option>
+							<option value="E3">jose</option>
+							<option value="E4">jose</option>
+							<option value="E5">jose</option>
+
+							
+							<option value="F1">jose3</option>
+							<option value="F2">jose3</option>
+							<option value="F3">jose3</option>
+							<option value="F4">jose3</option>
+							<option value="F5">jose3</option>
+							<option value="F6">jose3</option>
+
+							
+							<option value="G1"></option>
+							<option value="G2"></option>
+							<option value="G3"></option>
+							<option value="G4"></option>
+
+							
+							<option value="H1"></option>
+							<option value="H2"></option>
+							<option value="H3"></option>
+							<option value="H4"></option>
+							<option value="H5"></option>
+
+							
+							<option value="I1"></option>
+							<option value="I2"></option>
+							<option value="I3"></option>
+							<option value="I4"></option>
+
+							
+							<option value="J1"></option>
+							<option value="J2">jose</option>
+							<option value="J3">jose</option>
+							<option value="J4">jose</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			
+			
+			<div class="is-full column step2 A inactive">
+	<h3 class="subtitle is-6">¿Qué es lo que te preocupa de <strong>ambiente</strong>?</h3>
+	<div class="field">
+		<div class="selector with-select outter-select only-texts">
+			
+			<div>
+				<div class="option text notnext" data-value="A1">
+					<p>Contaminación de Agua</p>
+				</div>
+			</div>
+			
+			<div>
+				<div class="option text notnext" data-value="A2">
+					<p>Contaminación de Aire</p>
+				</div>
+			</div>
+			
+			<div>
+				<div class="option text notnext" data-value="A3">
+					<p>Residuos Tóxicos</p>
+				</div>
+			</div>
+			
+			<div>
+				<div class="option text notnext" data-value="A4">
+					<p>Basuras</p>
+				</div>
+			</div>
+			
+			<div>
+				<div class="option text notnext" data-value="A5">
+					<p>Minería</p>
+				</div>
+			</div>
+			
+			<div>
+				<div class="option text notnext" data-value="A6">
+					<p>Deforestación</p>
+				</div>
+			</div>
+			
+			<div>
+				<div class="option text notnext" data-value="">
+					<p>Plagas</p>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	<div class="field" >
+	<div class="control">
+		<label for="">¿Algo especifico que te gustaria comentar/denunciar?</label>
+		<textarea name="A_extracomment" rows="1" class="textarea"></textarea>
+	</div>
+</div>
+<div class="field">
+	<div class="control">
+		<label for="ambiente_prooffile" class="filelabel">
+			<div class="level">
+			  <!-- Left side -->
+			  	<div class="level-left">
+			    	<div class="level-item">
+			    		<i class="icon is-medium">
+							<span class="far fa-file-image fa-2x"></span>
+						</i>
+				    </div>
+				    <div class="level-item">
+			    		<i class="icon is-medium">
+							<span class="far fa-file-pdf fa-2x"></span>
+						</i>
+				    </div>
+				    <div class="level-item">
+				    	<span>Adjunta un doc de prueba (< 2mb)</span>
+				    </div>
+				</div>
+			</div>
+		</label>
+		<input type="file" id="ambiente_prooffile" name="A_attachement" 
+	accept="image/png, image/jpeg, aplication/pdf" data-max-size="2048"/>
+      <p class="help is-danger" id="fileproblem">Recuerda: No puedes adjuntar un arhcivo que no sea imagen, PDF y que pese mas de 2mb</p>
+		
+	</div>
+</div>
+	<div class="field">
+		<a class="button is-rounded is-linkcolor is-small backstep is-hidden-mobile" data-step="A">
+		    <span class="icon">
+		      <i class="fas fa-chevron-left "></i>
+		    </span>
+			<span>Atras</span>
+		</a>
+	</div>
+</div>
+
+			
+			<div class="is-full column step2 B inactive">
+	<h3 class="subtitle is-6">¿Qué es lo que te preocupa de <strong>Salud</strong>?</h3>
+	<div class="columns is-multiline">
+		<div class="column is-half">
+			<div class="field">
+				<div class="selector with-select outter-select only-texts">
+					
+					<div>
+						<div class="option notnext text" data-value="B1">
+							<p>Citas</p>
+						</div>
+					</div>
+					
+					<div>
+						<div class="option notnext text" data-value="B2">
+							<p>No hay acceso a un centro de salud a menos de 30 Km</p>
+						</div>
+					</div>
+					
+					<div>
+						<div class="option notnext text" data-value="B3">
+							<p>Autorizaciones</p>
+						</div>
+					</div>
+					
+					<div>
+						<div class="option notnext text" data-value="B4">
+							<p>Entrega de Medicamentos</p>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		<div class="column is-half">
+			<div class="field">
+				<div class="control">
+					<label class="label is-small">¿Quién no te está dando la atención, medicamento o autorización? Hospital/EPS</label>
+					<div class="select is-small">
+					  <select name="salud_extra_eps">
+					    <option value="EPS" selected="">EPS</option>
+					    <option value="Hospital">Hospital</option>
+					  </select>
+					</div>
+				</div>
+			</div>
+			<div class="field">
+				<div class="control">
+					<label class="label is-small">Nombre de la EPS u Hospital</label>
+					<input type="text" name="salud_extra_eps_name" class="input is-small">
+				</div>
+			</div>
+			
+		</div>
+		<div class="column is-full">
+			<div class="field" >
+	<div class="control">
+		<label for="">¿Algo especifico que te gustaria comentar/denunciar?</label>
+		<textarea name="B_extracomment" rows="1" class="textarea"></textarea>
+	</div>
+</div>
+<div class="field">
+	<div class="control">
+		<label for="salud_prooffile" class="filelabel">
+			<div class="level">
+			  <!-- Left side -->
+			  	<div class="level-left">
+			    	<div class="level-item">
+			    		<i class="icon is-medium">
+							<span class="far fa-file-image fa-2x"></span>
+						</i>
+				    </div>
+				    <div class="level-item">
+			    		<i class="icon is-medium">
+							<span class="far fa-file-pdf fa-2x"></span>
+						</i>
+				    </div>
+				    <div class="level-item">
+				    	<span>Adjunta un doc de prueba (< 2mb)</span>
+				    </div>
+				</div>
+			</div>
+		</label>
+		<input type="file" id="salud_prooffile" name="B_attachement" 
+	accept="image/png, image/jpeg, aplication/pdf" data-max-size="2048"/>
+      <p class="help is-danger" id="fileproblem">Recuerda: No puedes adjuntar un arhcivo que no sea imagen, PDF y que pese mas de 2mb</p>
+		
+	</div>
+</div>
+		</div>
+	</div>
+	<div class="field">
+		<a class="button is-rounded is-linkcolor is-small backstep is-hidden-mobile" data-step="B">
+		    <span class="icon">
+		      <i class="fas fa-chevron-left "></i>
+		    </span>
+			<span>Atras</span>
+		</a>
+	</div>
+</div>
+
+			
+
+			
+			<div class="is-full column step2 C inactive">
+	<h3 class="subtitle is-6">¿Qué es lo que te preocupa de <strong>infancia</strong>?</h3>
+	<div class="field">
+		<div class="selector with-select outter-select only-texts">
+			
+			<div>
+				<div class="option text notnext" data-value="C1">
+					<p>Trabajo Forzado</p>
+				</div>
+			</div>
+			
+			<div>
+				<div class="option text notnext" data-value="C2">
+					<p>Abandono</p>
+				</div>
+			</div>
+			
+			<div>
+				<div class="option text notnext" data-value="C3">
+					<p>Violencia</p>
+				</div>
+			</div>
+			
+			<div>
+				<div class="option text notnext" data-value="C4">
+					<p>Salud</p>
+				</div>
+			</div>
+			
+			<div>
+				<div class="option text notnext" data-value="C5">
+					<p>Educación</p>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	<div class="field" >
+	<div class="control">
+		<label for="">¿Algo especifico que te gustaria comentar/denunciar?</label>
+		<textarea name="C_extracomment" rows="1" class="textarea"></textarea>
+	</div>
+</div>
+<div class="field">
+	<div class="control">
+		<label for="infancia_prooffile" class="filelabel">
+			<div class="level">
+			  <!-- Left side -->
+			  	<div class="level-left">
+			    	<div class="level-item">
+			    		<i class="icon is-medium">
+							<span class="far fa-file-image fa-2x"></span>
+						</i>
+				    </div>
+				    <div class="level-item">
+			    		<i class="icon is-medium">
+							<span class="far fa-file-pdf fa-2x"></span>
+						</i>
+				    </div>
+				    <div class="level-item">
+				    	<span>Adjunta un doc de prueba (< 2mb)</span>
+				    </div>
+				</div>
+			</div>
+		</label>
+		<input type="file" id="infancia_prooffile" name="C_attachement" 
+	accept="image/png, image/jpeg, aplication/pdf" data-max-size="2048"/>
+      <p class="help is-danger" id="fileproblem">Recuerda: No puedes adjuntar un arhcivo que no sea imagen, PDF y que pese mas de 2mb</p>
+		
+	</div>
+</div>
+	<div class="field">
+		<a class="button is-rounded is-linkcolor is-small backstep is-hidden-mobile" data-step="C">
+		    <span class="icon">
+		      <i class="fas fa-chevron-left "></i>
+		    </span>
+			<span>Atras</span>
+		</a>
+	</div>
+</div>
+
+			
+			<div class="is-full column step2 D inactive">
+	<h3 class="subtitle is-6">¿Qué es lo que te preocupa de <strong>Educación</strong>?</h3>
+	<div class="field">
+		<label class="label is-small">Selecciona que clase de problema es</label>
+		<div class="control">
+		  <label class="radio">
+		    <input type="radio" name="answer">
+		    Con Educación Primaria/Secundaria
+		  </label>
+		  <label class="radio">
+		    <input type="radio" name="answer">
+		    Acceso a Educación Superior
+		  </label>
+		</div>
+	</div>
+	<div class="field">
+		<div class="selector with-select outter-select only-texts">
+			
+			<div>
+				<div class="option notnext text" data-value="D1">
+					<p>No hay centro educativo</p>
+				</div>
+			</div>
+			
+			<div>
+				<div class="option notnext text" data-value="D2">
+					<p>No hay como llegar al centro educativo</p>
+				</div>
+			</div>
+			
+			<div>
+				<div class="option notnext text" data-value="D3">
+					<p>No hay quien dicte clases en el centro educativo</p>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	<div class="field" >
+	<div class="control">
+		<label for="">¿Algo especifico que te gustaria comentar/denunciar?</label>
+		<textarea name="D_extracomment" rows="1" class="textarea"></textarea>
+	</div>
+</div>
+<div class="field">
+	<div class="control">
+		<label for="educacion_prooffile" class="filelabel">
+			<div class="level">
+			  <!-- Left side -->
+			  	<div class="level-left">
+			    	<div class="level-item">
+			    		<i class="icon is-medium">
+							<span class="far fa-file-image fa-2x"></span>
+						</i>
+				    </div>
+				    <div class="level-item">
+			    		<i class="icon is-medium">
+							<span class="far fa-file-pdf fa-2x"></span>
+						</i>
+				    </div>
+				    <div class="level-item">
+				    	<span>Adjunta un doc de prueba (< 2mb)</span>
+				    </div>
+				</div>
+			</div>
+		</label>
+		<input type="file" id="educacion_prooffile" name="D_attachement" 
+	accept="image/png, image/jpeg, aplication/pdf" data-max-size="2048"/>
+      <p class="help is-danger" id="fileproblem">Recuerda: No puedes adjuntar un arhcivo que no sea imagen, PDF y que pese mas de 2mb</p>
+		
+	</div>
+</div>
+	
+	<div class="field">
+		<a class="button is-rounded is-linkcolor is-small backstep is-hidden-mobile" data-step="D">
+		    <span class="icon">
+		      <i class="fas fa-chevron-left "></i>
+		    </span>
+			<span>Atras</span>
+		</a>
+	</div>
+</div>
+
+			
+			
+			<div class="is-full column step2 E inactive">
+	<h3 class="subtitle is-6">¿Qué es lo que te preocupa de <strong>obras</strong>?</h3>
+	<div class="field">
+		<div class="selector with-select outter-select only-texts">
+			
+			<div>
+				<div class="option text notnext" data-value="E1">
+					<p>Viales</p>
+				</div>
+			</div>
+			
+			<div>
+				<div class="option text notnext" data-value="E2">
+					<p>Espacio Público</p>
+				</div>
+			</div>
+			
+			<div>
+				<div class="option text notnext" data-value="E3">
+					<p>Parques</p>
+				</div>
+			</div>
+			
+			<div>
+				<div class="option text notnext" data-value="E4">
+					<p>Acueducto y Alcantarillado</p>
+				</div>
+			</div>
+			
+			<div>
+				<div class="option text notnext" data-value="E5">
+					<p>Alumbrado</p>
+				</div>
+			</div>
+			
+			<div>
+				<div class="option text notnext" data-value="">
+					<p>Transporte Público</p>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	<div class="field" >
+	<div class="control">
+		<label for="">¿Algo especifico que te gustaria comentar/denunciar?</label>
+		<textarea name="E_extracomment" rows="1" class="textarea"></textarea>
+	</div>
+</div>
+<div class="field">
+	<div class="control">
+		<label for="obras_prooffile" class="filelabel">
+			<div class="level">
+			  <!-- Left side -->
+			  	<div class="level-left">
+			    	<div class="level-item">
+			    		<i class="icon is-medium">
+							<span class="far fa-file-image fa-2x"></span>
+						</i>
+				    </div>
+				    <div class="level-item">
+			    		<i class="icon is-medium">
+							<span class="far fa-file-pdf fa-2x"></span>
+						</i>
+				    </div>
+				    <div class="level-item">
+				    	<span>Adjunta un doc de prueba (< 2mb)</span>
+				    </div>
+				</div>
+			</div>
+		</label>
+		<input type="file" id="obras_prooffile" name="E_attachement" 
+	accept="image/png, image/jpeg, aplication/pdf" data-max-size="2048"/>
+      <p class="help is-danger" id="fileproblem">Recuerda: No puedes adjuntar un arhcivo que no sea imagen, PDF y que pese mas de 2mb</p>
+		
+	</div>
+</div>
+	<div class="field">
+		<a class="button is-rounded is-linkcolor is-small backstep is-hidden-mobile" data-step="E">
+		    <span class="icon">
+		      <i class="fas fa-chevron-left "></i>
+		    </span>
+			<span>Atras</span>
+		</a>
+	</div>
+</div>
+
+			
+			<div class="is-full column step2 F inactive">
+	<h3 class="subtitle is-6">¿Qué es lo que te preocupa de <strong>seguridad</strong>?</h3>
+	<div class="field">
+		<div class="selector with-select outter-select only-texts">
+			
+			<div>
+				<div class="option text notnext" data-value="F1">
+					<p>Grupos al margen de la ley</p>
+				</div>
+			</div>
+			
+			<div>
+				<div class="option text notnext" data-value="F2">
+					<p>Violencia Intrafamiliar</p>
+				</div>
+			</div>
+			
+			<div>
+				<div class="option text notnext" data-value="F3">
+					<p>Amenazas</p>
+				</div>
+			</div>
+			
+			<div>
+				<div class="option text notnext" data-value="F4">
+					<p>Desplazamiento</p>
+				</div>
+			</div>
+			
+			<div>
+				<div class="option text notnext" data-value="F5">
+					<p>Robo</p>
+				</div>
+			</div>
+			
+			<div>
+				<div class="option text notnext" data-value="F6">
+					<p>Riñas</p>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	<div class="field" >
+	<div class="control">
+		<label for="">¿Algo especifico que te gustaria comentar/denunciar?</label>
+		<textarea name="F_extracomment" rows="1" class="textarea"></textarea>
+	</div>
+</div>
+<div class="field">
+	<div class="control">
+		<label for="seguridad_prooffile" class="filelabel">
+			<div class="level">
+			  <!-- Left side -->
+			  	<div class="level-left">
+			    	<div class="level-item">
+			    		<i class="icon is-medium">
+							<span class="far fa-file-image fa-2x"></span>
+						</i>
+				    </div>
+				    <div class="level-item">
+			    		<i class="icon is-medium">
+							<span class="far fa-file-pdf fa-2x"></span>
+						</i>
+				    </div>
+				    <div class="level-item">
+				    	<span>Adjunta un doc de prueba (< 2mb)</span>
+				    </div>
+				</div>
+			</div>
+		</label>
+		<input type="file" id="seguridad_prooffile" name="F_attachement" 
+	accept="image/png, image/jpeg, aplication/pdf" data-max-size="2048"/>
+      <p class="help is-danger" id="fileproblem">Recuerda: No puedes adjuntar un arhcivo que no sea imagen, PDF y que pese mas de 2mb</p>
+		
+	</div>
+</div>
+	<div class="field">
+		<a class="button is-rounded is-linkcolor is-small backstep is-hidden-mobile" data-step="F">
+		    <span class="icon">
+		      <i class="fas fa-chevron-left "></i>
+		    </span>
+			<span>Atras</span>
+		</a>
+	</div>
+</div>
+
+			
+			<div class="is-full column step2 G inactive">
+	<h3 class="subtitle is-6">¿Qué es lo que te preocupa de <strong>corrupcion</strong>?</h3>
+	<div class="field">
+		<div class="selector with-select outter-select only-texts">
+			
+			<div>
+				<div class="option text notnext" data-value="G1">
+					<p>Obras</p>
+				</div>
+			</div>
+			
+			<div>
+				<div class="option text notnext" data-value="G2">
+					<p>Educación</p>
+				</div>
+			</div>
+			
+			<div>
+				<div class="option text notnext" data-value="G3">
+					<p>Salud</p>
+				</div>
+			</div>
+			
+			<div>
+				<div class="option text notnext" data-value="G4">
+					<p>Otros</p>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	<div class="field" >
+	<div class="control">
+		<label for="">¿Algo especifico que te gustaria comentar/denunciar?</label>
+		<textarea name="G_extracomment" rows="1" class="textarea"></textarea>
+	</div>
+</div>
+<div class="field">
+	<div class="control">
+		<label for="corrupcion_prooffile" class="filelabel">
+			<div class="level">
+			  <!-- Left side -->
+			  	<div class="level-left">
+			    	<div class="level-item">
+			    		<i class="icon is-medium">
+							<span class="far fa-file-image fa-2x"></span>
+						</i>
+				    </div>
+				    <div class="level-item">
+			    		<i class="icon is-medium">
+							<span class="far fa-file-pdf fa-2x"></span>
+						</i>
+				    </div>
+				    <div class="level-item">
+				    	<span>Adjunta un doc de prueba (< 2mb)</span>
+				    </div>
+				</div>
+			</div>
+		</label>
+		<input type="file" id="corrupcion_prooffile" name="G_attachement" 
+	accept="image/png, image/jpeg, aplication/pdf" data-max-size="2048"/>
+      <p class="help is-danger" id="fileproblem">Recuerda: No puedes adjuntar un arhcivo que no sea imagen, PDF y que pese mas de 2mb</p>
+		
+	</div>
+</div>
+	<div class="field">
+		<a class="button is-rounded is-linkcolor is-small backstep is-hidden-mobile" data-step="G">
+		    <span class="icon">
+		      <i class="fas fa-chevron-left "></i>
+		    </span>
+			<span>Atras</span>
+		</a>
+	</div>
+</div>
+
+			
+			<div class="is-full column step2 H inactive">
+	<h3 class="subtitle is-6">¿Qué es lo que te preocupa de <strong>Servicios Públicos</strong>?</h3>
+	<div class="field">
+		<div class="selector with-select outter-select only-texts">
+			
+			<div>
+				<div class="option notnext text" data-value="H1">
+					<p>Acueducto y Alcantarillado</p>
+				</div>
+			</div>
+			
+			<div>
+				<div class="option notnext text" data-value="H2">
+					<p>Luz</p>
+				</div>
+			</div>
+			
+			<div>
+				<div class="option notnext text" data-value="H3">
+					<p>Gas</p>
+				</div>
+			</div>
+			
+			<div>
+				<div class="option notnext text" data-value="H4">
+					<p>Internet</p>
+				</div>
+			</div>
+			
+			<div>
+				<div class="option notnext text" data-value="H5">
+					<p>Transporte Público</p>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	<div class="field">
+		<label class="label is-small">¿Cuál de estas opciones hace más referencia a tu queja?</label>
+		<div class="control">
+		  <label class="radio">
+		    <input type="radio" name="answer">
+		    Infraestructura
+		  </label>
+		  <label class="radio">
+		    <input type="radio" name="answer">
+		    Prestación del Servicio
+		  </label>
+		  <label class="radio">
+		    <input type="radio" name="answer">
+		    Pirateria
+		  </label>
+		</div>
+	</div>
+	<div class="field" >
+	<div class="control">
+		<label for="">¿Algo especifico que te gustaria comentar/denunciar?</label>
+		<textarea name="H_extracomment" rows="1" class="textarea"></textarea>
+	</div>
+</div>
+<div class="field">
+	<div class="control">
+		<label for="serviciospublicos_prooffile" class="filelabel">
+			<div class="level">
+			  <!-- Left side -->
+			  	<div class="level-left">
+			    	<div class="level-item">
+			    		<i class="icon is-medium">
+							<span class="far fa-file-image fa-2x"></span>
+						</i>
+				    </div>
+				    <div class="level-item">
+			    		<i class="icon is-medium">
+							<span class="far fa-file-pdf fa-2x"></span>
+						</i>
+				    </div>
+				    <div class="level-item">
+				    	<span>Adjunta un doc de prueba (< 2mb)</span>
+				    </div>
+				</div>
+			</div>
+		</label>
+		<input type="file" id="serviciospublicos_prooffile" name="H_attachement" 
+	accept="image/png, image/jpeg, aplication/pdf" data-max-size="2048"/>
+      <p class="help is-danger" id="fileproblem">Recuerda: No puedes adjuntar un arhcivo que no sea imagen, PDF y que pese mas de 2mb</p>
+		
+	</div>
+</div>
+	<div class="field">
+		<a class="button is-rounded is-linkcolor is-small backstep is-hidden-mobile" data-step="H">
+		    <span class="icon">
+		      <i class="fas fa-chevron-left "></i>
+		    </span>
+			<span>Atras</span>
+		</a>
+	</div>
+</div>
+
+
+			
+			<div class="is-full column step2 I inactive">
+	<h3 class="subtitle is-6">¿Qué es lo que te preocupa de <strong>discriminacion</strong>?</h3>
+	<div class="field">
+		<div class="selector with-select outter-select only-texts">
+			
+			<div>
+				<div class="option text notnext" data-value="I1">
+					<p>LGBTI</p>
+				</div>
+			</div>
+			
+			<div>
+				<div class="option text notnext" data-value="I2">
+					<p>Racial</p>
+				</div>
+			</div>
+			
+			<div>
+				<div class="option text notnext" data-value="I3">
+					<p>Social</p>
+				</div>
+			</div>
+			
+			<div>
+				<div class="option text notnext" data-value="I4">
+					<p>Ideológica</p>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	<div class="field" >
+	<div class="control">
+		<label for="">¿Algo especifico que te gustaria comentar/denunciar?</label>
+		<textarea name="I_extracomment" rows="1" class="textarea"></textarea>
+	</div>
+</div>
+<div class="field">
+	<div class="control">
+		<label for="discriminacion_prooffile" class="filelabel">
+			<div class="level">
+			  <!-- Left side -->
+			  	<div class="level-left">
+			    	<div class="level-item">
+			    		<i class="icon is-medium">
+							<span class="far fa-file-image fa-2x"></span>
+						</i>
+				    </div>
+				    <div class="level-item">
+			    		<i class="icon is-medium">
+							<span class="far fa-file-pdf fa-2x"></span>
+						</i>
+				    </div>
+				    <div class="level-item">
+				    	<span>Adjunta un doc de prueba (< 2mb)</span>
+				    </div>
+				</div>
+			</div>
+		</label>
+		<input type="file" id="discriminacion_prooffile" name="I_attachement" 
+	accept="image/png, image/jpeg, aplication/pdf" data-max-size="2048"/>
+      <p class="help is-danger" id="fileproblem">Recuerda: No puedes adjuntar un arhcivo que no sea imagen, PDF y que pese mas de 2mb</p>
+		
+	</div>
+</div>
+	<div class="field">
+		<a class="button is-rounded is-linkcolor is-small backstep is-hidden-mobile" data-step="I">
+		    <span class="icon">
+		      <i class="fas fa-chevron-left "></i>
+		    </span>
+			<span>Atras</span>
+		</a>
+	</div>
+</div>
+
+			
+			<div class="is-full column step2 J inactive">
+	<h3 class="subtitle is-6">¿Qué es lo que te preocupa de <strong>movilidad</strong>?</h3>
+	<div class="field">
+		<div class="selector with-select outter-select only-texts">
+			
+			<div>
+				<div class="option text notnext" data-value="J1">
+					<p>Falta de transporte público</p>
+				</div>
+			</div>
+			
+			<div>
+				<div class="option text notnext" data-value="J2">
+					<p>Falta de carreteras/infraestructura para transporte</p>
+				</div>
+			</div>
+			
+			<div>
+				<div class="option text notnext" data-value="J3">
+					<p>Señalización</p>
+				</div>
+			</div>
+			
+			<div>
+				<div class="option text notnext" data-value="J4">
+					<p>Accidentes en la vía</p>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	<div class="field" >
+	<div class="control">
+		<label for="">¿Algo especifico que te gustaria comentar/denunciar?</label>
+		<textarea name="J_extracomment" rows="1" class="textarea"></textarea>
+	</div>
+</div>
+<div class="field">
+	<div class="control">
+		<label for="movilidad_prooffile" class="filelabel">
+			<div class="level">
+			  <!-- Left side -->
+			  	<div class="level-left">
+			    	<div class="level-item">
+			    		<i class="icon is-medium">
+							<span class="far fa-file-image fa-2x"></span>
+						</i>
+				    </div>
+				    <div class="level-item">
+			    		<i class="icon is-medium">
+							<span class="far fa-file-pdf fa-2x"></span>
+						</i>
+				    </div>
+				    <div class="level-item">
+				    	<span>Adjunta un doc de prueba (< 2mb)</span>
+				    </div>
+				</div>
+			</div>
+		</label>
+		<input type="file" id="movilidad_prooffile" name="J_attachement" 
+	accept="image/png, image/jpeg, aplication/pdf" data-max-size="2048"/>
+      <p class="help is-danger" id="fileproblem">Recuerda: No puedes adjuntar un arhcivo que no sea imagen, PDF y que pese mas de 2mb</p>
+		
+	</div>
+</div>
+	<div class="field">
+		<a class="button is-rounded is-linkcolor is-small backstep is-hidden-mobile" data-step="J">
+		    <span class="icon">
+		      <i class="fas fa-chevron-left "></i>
+		    </span>
+			<span>Atras</span>
+		</a>
+	</div>
+</div>
+
+			
+		</div>
+	</div>
+</div>
+
+<div class="item" id="q2">
+	<div class="container">
+		<div class="columns is-centered is-multiline">
+			<div class="column is-full">
+				<div class="columns">
+					<div class="is-half column">
+						<h2 class="title is-5">¿Te sientes identificado con algún político en especial?</h2>
+						<h3 class="subtitle is-7">De ser así, dinos quien por favor</h3>
+						<div class="field">
+							<input type="text" name="politic_a" class="input is-small">
+						</div>
+					</div>
+					<div class="is-half column">
+						<h5 class="title is-6">¿Apoyarias a un político que oiga tus quejas, se identifique con tu forma de pensar y escuche las soluciones que planteas?</h5>
+						<div class="field">
+							<div class="selector with-radios">
+								<input type="radio" id="dispuestosi" name="politic_b" value="Si" hidden>
+							    <input type="radio" id="dispuestono" name="politic_b" value="No" hidden>
+								<div>
+									<div class="option answers notnext is-small si" data-value="dispuestosi">
+										<div></div>
+										<p class="has-text-centered">Si</p>
+									</div>
+								</div>
+								<div>
+									<div class="option answers notnext is-small no" data-value="dispuestono">
+										<div></div>
+										<p class="has-text-centered">No</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+			<div class="is-full column">
+				<h2 class="title is-5">¿Te importa el partido politico?</h2>
+				<h3 class="subtitle is-7">Puedes escoger uno o varios. O elegir "no importa"</h3>
+			</div>
+			<div class="is-full column">
+				<div class="field">
+					<div class="selector with-checkboxes">
+						<input type="checkbox" name="politic_c" value="cr" id="cr" hidden>
+  						<input type="checkbox" name="politic_c" value="cd" id="cd" hidden>
+  						<input type="checkbox" name="politic_c" value="verde" id="verde" hidden>
+  						<input type="checkbox" name="politic_c" value="polo" id="polo" hidden>
+  						<input type="checkbox" name="politic_c" value="conservador" id="conservador" hidden>
+  						<input type="checkbox" name="politic_c" value="liberal" id="liberal" hidden>
+  						<input type="checkbox" name="politic_c" value="na" id="na" hidden checked>
+						<div>
+							<div class="option partidos cambioradical" data-value="cr">
+								<div></div>
+							</div>
+						</div>
+						<div>
+							<div class="option partidos centrodemocratico" data-value="cd">
+								<div></div>
+							</div>
+						</div>
+						<div>
+							<div class="option partidos verde" data-value="verde">
+								<div></div>
+							</div>
+						</div>
+						<div>
+							<div class="option partidos polo" data-value="polo">
+								<div></div>
+							</div>
+						</div>
+						<div>
+							<div class="option partidos conservador" data-value="conservador">
+								<div></div>
+							</div>
+						</div>
+						<div>
+							<div class="option partidos liberal" data-value="liberal">
+								<div></div>
+							</div>
+						</div>
+						<div>
+							<div class="option partidos noimporta deselectall active" data-value="na">
+								<div></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="item" id="q3">
+	<div class="container">
+		<div class="columns is-centered is-multiline">
+			<div class="is-full column personalinfo">
+				<div class="columns">
+					<div class="column is-half">
+						<h3 class="title is-6">Llena con tus datos personales</h3>
+						<div class="field">
+							<div class="control">
+								<button class="button is-link fblogin is-small">
+									<span>Completar con Facebook</span>
+										<span class="icon is-small">
+											<i class="fab fa-facebook-f"></i>
+										</span>
+								</button>
+							</div>
+						</div>
+						<div class="field is-horizontal">
+							<div class="field-body">
+								<div class="field">
+								  <div class="control has-icons-left ">
+								    <input class="input is-small" type="text" placeholder="Nombre completo" name="name">
+								    <span class="icon is-small is-left">
+								      <i class="fas fa-user"></i>
+								    </span>
+								  </div>
+								</div>
+								<div class="field">
+								  <div class="control has-icons-left ">
+								    <input class="input is-small" type="email" placeholder="Correo Electrónico" name="email">
+								    <span class="icon is-small is-left">
+								      <i class="fas fa-envelope"></i>
+								    </span>
+								  </div>
+								</div>
+							</div>
+						</div>
+						<div class="field is-horizontal">
+							<div class="field-body">
+								<div class="field">
+								  <div class="control has-icons-left ">
+								    <input class="input is-small" type="number" placeholder="Celular" name="phone">
+								    <span class="icon is-small is-left">
+								      <i class="fab fa-whatsapp"></i>
+								    </span>
+								  </div>
+								</div>
+								<div class="field">
+								  <div class="control ">
+								    <input class="input is-small" type="text" placeholder="Edad" name="age">
+								  </div>
+								</div>
+							</div>
+						</div>
+						<div class="field us-horizontal">
+							<div class="field-body">
+								<div class="field">
+									<label class="label is-small">Municipio</label>
+									<div class="control">
+										<div class="select is-small">
+										  <select name="state_code">
+										  </select>
+										</div>
+									</div>
+								</div>
+								<div class="field">
+									<label class="label is-small">Ciudad</label>
+									<div class="control">
+										<div class="select is-small">
+										  <select name="city_code">
+										  </select>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="field">
+							<label for="" class="label">Genero</label>
+							<div class="selector with-radios">
+								<input type="radio" id="genderm" name="gender" value="M" hidden checked>
+							    <input type="radio" id="genderf" name="gender" value="F" hidden>
+							    <input type="radio" id="genderlgbt" name="gender" value="LGBT" hidden>
+								<div>
+									<div class="option notnext has-text-centered active" data-value="genderm">
+										<i class="icon is-large">
+											<span class="fas fa-male fa-2x"></span>
+										</i>
+										<p>Hombre</p>
+									</div>
+								</div>
+								<div>
+									<div class="option notnext has-text-centered" data-value="genderf">
+										<i class="icon is-large">
+											<span class="fas fa-female fa-2x"></span>
+										</i>
+										<p>Mujer</p>
+									</div>
+								</div>
+								<div>
+									<div class="option notnext has-text-centered" data-value="genderlgbt">
+										<i class="icon is-large">
+											<span class="fas fa-transgender fa-2x"></span>
+										</i>
+										<p>LGBT</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="column is-half">
+						<h3 class="title is-6">O compelta el formulario como anónimo</h3>
+						<div class="field">
+							<div class="selector with-radios">
+								<input type="radio" id="usertypenormal" name="usertype" value="normal" checked hidden>
+							    <input type="radio" id="usertypeanonymous" name="usertype" value="anonymous" hidden>
+								<div>
+									<div class="option notnext usertype normal active has-text-centered" data-value="usertypenormal">
+										<div></div>
+										<p>Normal</p>
+									</div>
+								</div>
+								<div>
+									<div class="option notnext usertype anonymous has-text-centered" data-value="usertypeanonymous">
+										<div></div>
+										<p>Anónimo</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			
+		</div>
+	</div>
+</div>
+			
+		</div>
+		<div class="container" id="ending">
+			<div class="columns is-multiline is-centered has-text-centered">
+				<div class="column is-full">
+					<h2 class="title is-1 is-hidden-mobile">Formulario De Problematicas</h2>
+				</div>
+				<div class="is-two-thirds column">
+					<p class="content">Al enviar estás aceptando nuestro <a href="#" id="termswitch">Términos y Condiciones</a></p>
+					<button class="button is-primary is-huge" type="submit">enviar respuestas</button>
+					<ul class="errors"></ul>
+				</div>
+
+				<button id="pruebaservice" class="button">prueba service</button>
+
+			</div>
+		</div>
+		</form>
+	</div>
+	<div class="hero-foot" id="controls">
+		<div class="container">
+			<div class="columns is-centered">
+				<div class="is-full column">
+					<div class="level introdirs active">
+						<div class="level-item">
+							<a class="button is-rounded is-linkcolor next">
+								<span>Siguiente</span>
+							    <span class="icon">
+							      <i class="fas fa-chevron-right "></i>
+							    </span>
+							</a>
+						</div>
+					</div>
+					<div class="level questiondirs">
+						<div class="level-item">
+							<a class="button is-rounded circled is-linkcolor prev">
+							    <span class="icon">
+							      <i class="fas fa-chevron-left "></i>
+							    </span>
+							</a>
+						</div>
+						<div class="level-item">
+							<p class="content"><strong>Enter</strong> para siguiente pregunta o <strong>backspace</strong> para regresar a la anterior preguntas</p>
+						</div>
+						<div class="level-item">
+							<a class="button is-rounded circled right is-linkcolor next">
+							    <span class="icon">
+							      <i class="fas fa-chevron-right "></i>
+							    </span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+	<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  
+	<script src="./js/app.js"></script>
+
+
+    
+<script type="text/javascript" src="./app.js"></script></body>
+</html>

@@ -1,0 +1,130 @@
+{% extends "./base.twig" %}
+{% block content %}
+<div class="modal" id="terms">
+	<div class="modal-background"></div>
+	<div class="modal-card">
+	    <div class="modal-card-head">
+	      <p class="modal-card-title">Términos y Condiciones</p>
+	    </div>
+	    <section class="modal-card-body">
+	      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut tempore quasi praesentium veniam odit, molestias rerum alias, omnis modi accusantium velit id eius voluptatem. Dicta dolor facilis, quia modi harum.</p>
+	    </section>
+	    <footer class="modal-card-foot">
+	      <button class="button closebtn is-primary" aria-label="close">Cerrar</button>
+	    </footer>
+	  </div>
+</div>
+<div class="modal" id="formodal">
+  <div class="modal-background"></div>
+  <div class="modal-content has-text-centered box">
+    	<img src="../css/img/thankyou.png" alt="gracias" style="max-width: 65%; margin: 0 auto"><br>
+    	<h5 class="subtitle is-size-7 is-size-6-desktop">Estamos procesando tu información para hacerla llegar a las personas correctas y asegurarno que tu voz tenga efecto :)</h5>
+    	<br>
+    	<button class="button is-linkcolor closebtn">Ok</button>
+  </div>
+  <button class="modal-close is-large" aria-label="close"></button>
+</div>
+<section class="section hero" id="home">
+	<div class="hero-head" id="progress">	
+		<div class="container">
+			<div class="columns is-centered">
+				<div class="is-full column has-text-centered">	
+					<small>Pregunta <span>1</span> de <span>10</span></small>
+					<progress class="progress is-small" value="0" max="100">
+					</progress>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="hero-body">
+		<div class="container" id="intro_full">
+			<div class="columns is-multiline is-centered has-text-centered">
+				<div class="is-full column">
+					<h2 class="title is-size-3 is-size-1-desktop">Formulario De Problematicas</h2>
+				</div>
+				<div class="is-full column">
+					<div class="slide" id="intro1">
+							<br>	
+						<div class="columns has-text-centered is-centered">
+							<div class="column">
+								<div class="infografia one"></div>
+								<h4 class="title is-6">Captura de información de la población</h4>
+							</div>
+							<div class="column">
+								<div class="infografia two"></div>
+								<h4 class="title is-6">Segmentación de información</h4>
+							</div>
+							<div class="column">
+								<div class="infografia three"></div>
+								<h4 class="title is-6">Entrega de info a politicos y entidades publicas</h4>
+							</div>
+							<div class="column">
+								<div class="infografia four"></div>
+								<h4 class="title is-6">Publicación de resultados</h4>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<form action="" id="formulario">
+		<div class="container questionare">
+				{% include './partials/questions.html.twig' %}
+			
+		</div>
+		<div class="container" id="ending">
+			<div class="columns is-multiline is-centered has-text-centered">
+				<div class="column is-full">
+					<h2 class="title is-1 is-hidden-mobile">Formulario De Problematicas</h2>
+				</div>
+				<div class="is-two-thirds column">
+					<p class="content">Al enviar estás aceptando nuestro <a href="#" id="termswitch">Términos y Condiciones</a></p>
+					<button class="button is-primary is-huge" type="submit">enviar respuestas</button>
+					<ul class="errors"></ul>
+				</div>
+
+				<button id="pruebaservice" class="button">prueba service</button>
+
+			</div>
+		</div>
+		</form>
+	</div>
+	<div class="hero-foot" id="controls">
+		<div class="container">
+			<div class="columns is-centered">
+				<div class="is-full column">
+					<div class="level introdirs active">
+						<div class="level-item">
+							<a class="button is-rounded is-linkcolor next">
+								<span>Siguiente</span>
+							    <span class="icon">
+							      <i class="fas fa-chevron-right "></i>
+							    </span>
+							</a>
+						</div>
+					</div>
+					<div class="level questiondirs">
+						<div class="level-item">
+							<a class="button is-rounded circled is-linkcolor prev">
+							    <span class="icon">
+							      <i class="fas fa-chevron-left "></i>
+							    </span>
+							</a>
+						</div>
+						<div class="level-item">
+							<p class="content"><strong>Enter</strong> para siguiente pregunta o <strong>backspace</strong> para regresar a la anterior preguntas</p>
+						</div>
+						<div class="level-item">
+							<a class="button is-rounded circled right is-linkcolor next">
+							    <span class="icon">
+							      <i class="fas fa-chevron-right "></i>
+							    </span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock %}

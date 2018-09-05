@@ -1,0 +1,37 @@
+<div class="is-full column step2 {{code}} inactive">
+	<h3 class="subtitle is-6">¿Qué es lo que te preocupa de <strong>Educación</strong>?</h3>
+	<div class="field">
+		<label class="label is-small">Selecciona que clase de problema es</label>
+		<div class="control">
+		  <label class="radio">
+		    <input type="radio" name="answer">
+		    Con Educación Primaria/Secundaria
+		  </label>
+		  <label class="radio">
+		    <input type="radio" name="answer">
+		    Acceso a Educación Superior
+		  </label>
+		</div>
+	</div>
+	<div class="field">
+		<div class="selector with-select outter-select only-texts">
+			{% for item in items %}
+			<div>
+				<div class="option notnext text" data-value="{{values[loop.index0]}}">
+					<p>{{item}}</p>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+	{% include './extra_comment.twig' %}
+	
+	<div class="field">
+		<a class="button is-rounded is-linkcolor is-small backstep is-hidden-mobile" data-step="{{code}}">
+		    <span class="icon">
+		      <i class="fas fa-chevron-left "></i>
+		    </span>
+			<span>Atras</span>
+		</a>
+	</div>
+</div>

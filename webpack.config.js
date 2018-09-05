@@ -4,18 +4,20 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require( 'html-webpack-plugin' );
+
+
+const PATHS = {
+    source: path.join( __dirname, './src' ),
+    build:  path.join( __dirname, './dist' )
+};
 
 
 const config = {
-  context: path.resolve(__dirname, "src"),
-  // configurations here
-  entry: {
-    app: './js/app.js'
-  },
+  entry:  './src/app.js',
   output: {
-    filename: './js/[name].js',
-    // Output path using nodeJs path module
-    path: path.resolve(__dirname)
+      path:     PATHS.build,
+      filename: './app.js'
   },
   // Adding jQuery as external library
   externals: {
@@ -35,6 +37,13 @@ const config = {
         })
       },
       {
+          test: /\.twig$/,
+          loader: "twig-loader",
+          options: {
+              // See options section below
+          },
+      },
+      {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
         use: [
@@ -52,12 +61,14 @@ const config = {
   plugins: [
     require('autoprefixer'),
     new ExtractTextPlugin("/css/[name].css"),
+    new HtmlWebpackPlugin( {
+        filename: 'index.html',
+        template: path.join( __dirname, './src' )+'/index.twig.js',
+    } ),
     new BrowserSyncPlugin({
         files: [
           './**/*.html',
           '*.html',
-          '*.html.twig',
-          './**/*.html.twig',
           '*.php'
         ],
         host: 'localhost',
