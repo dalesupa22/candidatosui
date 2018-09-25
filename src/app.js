@@ -316,6 +316,8 @@ function consumeWebService(url, method, data,type = "json")
         url: url,
         type: method,
         dataType: type,
+        crossDomain:'true',
+        async:'true',
         data: data,
         beforeSend: function(xhr){
             //Espacio para enviar headers de auth y cosas así necesarias
@@ -332,7 +334,7 @@ function consumeWebService(url, method, data,type = "json")
     .done(function( response) {
         //Si todo sale bien
         console.log("success");
-        console.log("response")
+        console.log(response)
     })
     .fail(function() {
         //Si hay un error en el llamado
@@ -461,9 +463,6 @@ $(document).ready(function(){
         },{scope: 'public_profile, email'})
     });
 
-    $("#pruebaservice").click(function(e){
-        consumeWebService("https://prueba", "GET");
-    })
 
 	//1. Automatic creation of questions
     $(this).find(".item").each(function(){
@@ -683,7 +682,7 @@ $(document).ready(function(){
             datos.comments = $("textarea[name='"+datos.category_a+"_extracomment']").val()
             $.getJSON('https://api.ipify.org?format=json', function(data){
                 datos.ip_address = data.ip;
-                console.log(datos)
+                consumeWebService("http://40.71.189.102:40003/recordController/createRecord","POST",datos)
             });
             $("#formodal").addClass("is-active")
             TweenMax.to($("#formodal"), 0.6, {opacity: 1})
