@@ -294,7 +294,7 @@ function beforeSendValidations(){
         errors.push("Por favor selecciona por lo menos un motivo")
     else if($('select[name="CATEGORY_B"] option:selected').val().length < 1)
     {
-        errors.push("Por favor selecciona que te molesta más de <strong>"+$('select[name="CATEGORY_A"] option:selected').val()+"</strong>")
+        errors.push("Por favor selecciona que te molesta más de <strong>"+$('select[name="CATEGORY_A"] option:selected').text()+"</strong>")
         
     }
     if($("input[name='politic_b']:checked").val() == null)
@@ -310,16 +310,18 @@ function beforeSendValidations(){
     
 }
 
-function consumeWebService(url, method, data,type = "json")
+function consumeWebService(url, method, datos,type = "json")
 {
     $.ajax({
         url: url,
+        contentType: 'application/json',
+        crossDomain:'true',
+        async:'true',
+        data: datos,
         type: method,
         dataType: type,
-        data: data,
         beforeSend: function(xhr){
             //Espacio para enviar headers de auth y cosas así necesarias
-            xhr.setRequestHeader('X-Test-Header', 'test-value');
         },
         statusCode: {
             404: function() {
@@ -332,7 +334,7 @@ function consumeWebService(url, method, data,type = "json")
     .done(function( response) {
         //Si todo sale bien
         console.log("success");
-        console.log("response")
+        console.log(response)
     })
     .fail(function() {
         //Si hay un error en el llamado
@@ -341,6 +343,8 @@ function consumeWebService(url, method, data,type = "json")
     .always(function() {
         //Siempre que termine el call sin importar si HTTP 200 o lo que sea
         console.log("complete");
+        $("#formodal").addClass("is-active")
+        TweenMax.to($("#formodal"), 0.6, {opacity: 1})
     });
     
 }
@@ -592,15 +596,14 @@ $(document).ready(function(){
 
      $("input:file").change(function(e){
           var reader = new FileReader();
-          reader.onload = function() {
-
-            var arrayBuffer = this.result,
-              array = new Uint8Array(arrayBuffer),
-              binaryString = String.fromCharCode.apply(null, array);
-
-            selected_file = binaryString
-          }
-          reader.readAsArrayBuffer(this.files[0]);
+          
+          reader.onload = function(theFile) {
+            return function(e) {
+              // Render thumbnail.
+              
+            };
+          };
+          reader.readAsBinaryString(this.files[0])
     })
 
     //Create multiple checkbox functionality
@@ -661,11 +664,12 @@ $(document).ready(function(){
         if(err.length == 0)
         {
             //send
+            let tmp = $("select[name='CATEGORY_A'] option:selected").val()
             var datos = {
                 type: $("input[name='type']").val(),
                 category_a: $("select[name='CATEGORY_A'] option:selected").val(),
                 category_b: $("select[name='CATEGORY_B'] option:selected").val(),
-                attachments: selected_file,
+                //attachments: "",//$('input[name="'+tmp+'_attachement"]').prop("files")[0].name,
                 politic_a: $("input[name='politic_a']").val(),
                 politic_b: $("input[name='politic_b']:checked").val(),
                 politic_c: $("input[name='politic_c']:checked").val(),
@@ -673,20 +677,22 @@ $(document).ready(function(){
                 name: $("input[name='name']").val(),
                 email: $("input[name='email']").val(),
                 phone: $("input[name='phone']").val(),
-                age: $("input[name='age']").val(),
-                state_code: $("select[name='state_code'] option:selected").val(),
-                city_code: $("select[name='city_code'] option:selected").val(),
+                age: parseInt($("input[name='age']").val()),
+                code_state: $("select[name='state_code'] option:selected").val(),
+                code_city: $("select[name='city_code'] option:selected").val(),
                 gender: $("input[name='gender']:checked").val(),
-                ip_info: navigator.userAgent,
-                date: Date.now()
+                ip_info: navigator.userAgent
+                //date: Date.now()
             }
             datos.comments = $("textarea[name='"+datos.category_a+"_extracomment']").val()
             $.getJSON('https://api.ipify.org?format=json', function(data){
                 datos.ip_address = data.ip;
                 console.log(datos)
+                var jsonData=JSON.stringify(datos);
+               consumeWebService('http://40.71.189.102:40003/recordController/createRecord','POST',jsonData);
+                
             });
-            $("#formodal").addClass("is-active")
-            TweenMax.to($("#formodal"), 0.6, {opacity: 1})
+            
         }
         else{
             //show errors
