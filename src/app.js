@@ -320,6 +320,12 @@ function consumeWebService(url, method, datos,type = "json")
         data: datos,
         type: method,
         dataType: type,
+<<<<<<< HEAD
+=======
+        crossDomain:'true',
+        async:'true',
+        data: data,
+>>>>>>> c52ccd71174902cc9e45d48c7ecfaa4a538ca4aa
         beforeSend: function(xhr){
             //Espacio para enviar headers de auth y cosas así necesarias
         },
@@ -465,9 +471,6 @@ $(document).ready(function(){
         },{scope: 'public_profile, email'})
     });
 
-    $("#pruebaservice").click(function(e){
-        consumeWebService("https://prueba", "GET");
-    })
 
 	//1. Automatic creation of questions
     $(this).find(".item").each(function(){
@@ -687,10 +690,8 @@ $(document).ready(function(){
             datos.comments = $("textarea[name='"+datos.category_a+"_extracomment']").val()
             $.getJSON('https://api.ipify.org?format=json', function(data){
                 datos.ip_address = data.ip;
-                console.log(datos)
                 var jsonData=JSON.stringify(datos);
                consumeWebService('http://40.71.189.102:40003/recordController/createRecord','POST',jsonData);
-                
             });
             
         }
