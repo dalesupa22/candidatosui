@@ -297,7 +297,7 @@ function beforeSendValidations(){
         errors.push("Por favor selecciona que te molesta más de <strong>"+$('select[name="CATEGORY_A"] option:selected').text()+"</strong>")
         
     }
-    if($("input[name='politic_b']:checked").val() == null)
+    if($("input[name='politic_c']:checked").val() == null)
         errors.push("Por favor selecciona si apoyarias o no a un politico en la pregunta 4")
     if(!validPersonalInfo && $("input[name='usertype']:checked").val() != 'anonymous')
         errors.push("Por favor llena tus datos personales")
@@ -315,17 +315,11 @@ function consumeWebService(url, method, datos,type = "json")
     $.ajax({
         url: url,
         contentType: 'application/json',
-        crossDomain:'true',
-        async:'true',
         data: datos,
         type: method,
         dataType: type,
-<<<<<<< HEAD
-=======
         crossDomain:'true',
         async:'true',
-        data: data,
->>>>>>> c52ccd71174902cc9e45d48c7ecfaa4a538ca4aa
         beforeSend: function(xhr){
             //Espacio para enviar headers de auth y cosas así necesarias
         },
@@ -667,15 +661,15 @@ $(document).ready(function(){
         if(err.length == 0)
         {
             //send
-            let tmp = $("select[name='CATEGORY_A'] option:selected").val()
+            //let tmp = $("select[name='CATEGORY_A'] option:selected").val()
             var datos = {
                 type: $("input[name='type']").val(),
-                category_a: $("select[name='CATEGORY_A'] option:selected").val(),
-                category_b: $("select[name='CATEGORY_B'] option:selected").val(),
+                categoryA: $("select[name='CATEGORY_A'] option:selected").val(),
+                categoryB: $("select[name='CATEGORY_B'] option:selected").val(),
                 //attachments: "",//$('input[name="'+tmp+'_attachement"]').prop("files")[0].name,
-                politic_a: $("input[name='politic_a']").val(),
-                politic_b: $("input[name='politic_b']:checked").val(),
-                politic_c: $("input[name='politic_c']:checked").val(),
+                //politicA: $("input[name='politic_a']").val(),
+                //politicB: $("input[name='politic_b']:checked").val(),
+                politicC: $("input[name='politic_c']:checked").val(),
                 anonymous: $("input[name='usertype']:checked").val() == 'anonymous',
                 name: $("input[name='name']").val(),
                 email: $("input[name='email']").val(),
@@ -691,7 +685,7 @@ $(document).ready(function(){
             $.getJSON('https://api.ipify.org?format=json', function(data){
                 datos.ip_address = data.ip;
                 var jsonData=JSON.stringify(datos);
-               consumeWebService('http://40.71.189.102:40003/recordController/createRecord','POST',jsonData);
+               consumeWebService('http://34.201.19.114:40003/recordController/createRecord','POST',jsonData);
             });
             
         }

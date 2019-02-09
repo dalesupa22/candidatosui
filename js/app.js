@@ -2319,7 +2319,7 @@ function beforeSendValidations() {
     if ($('select[name="CATEGORY_A"] option:selected').val().length < 1) errors.push("Por favor selecciona por lo menos un motivo");else if ($('select[name="CATEGORY_B"] option:selected').val().length < 1) {
         errors.push("Por favor selecciona que te molesta más de <strong>" + $('select[name="CATEGORY_A"] option:selected').val() + "</strong>");
     }
-    if ($("input[name='politic_b']:checked").val() == null) errors.push("Por favor selecciona si apoyarias o no a un politico en la pregunta 4");
+    //if ($("input[name='politic_b']:checked").val() == null) errors.push("Por favor selecciona si apoyarias o no a un politico en la pregunta 4");
     if (!validPersonalInfo && $("input[name='usertype']:checked").val() != 'anonymous') errors.push("Por favor llena tus datos personales");
     if ($("input[name='email']").val() && !isEmail($("input[name='email']").val())) errors.push("Por favor ingresa un correo electrónico valido");
 
